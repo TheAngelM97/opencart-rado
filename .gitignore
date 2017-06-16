@@ -52,3 +52,5 @@ admin/config.php
 
 #htaccess
 .htaccess
+.htaccess
+*.htaccess
