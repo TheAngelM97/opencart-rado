@@ -14,3 +14,15 @@
 .updates {
 	float: right;
 }
+a.delete-all-link {
+	position: absolute;
+		bottom: 10px;
+		right: 10px;
+	padding: 10px;
+	background: red;
+	color: white;
+	transition: 0.3s;
+}
+a.delete-all-link:hover {
+	padding: 15px;
+}

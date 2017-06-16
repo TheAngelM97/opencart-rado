@@ -139,5 +139,12 @@ class ModelExtensionModuleCrawledProduct extends Model
 
 		return false;
 	}
+
+	public function deleteAll()
+	{
+		$sql = 'DELETE FROM oc_crawled_products';
+
+		return $this->db->query($sql);
+	}
 }
 ?>

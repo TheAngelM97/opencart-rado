@@ -65,6 +65,9 @@
 
 			//Delete update link
 			$this->data['deleteUpdateLink'] = $this->url->link('extension/module/product_crawler/deleteUpdate');
+
+			//Delete all link
+			$this->data['deleteAllLink'] = $this->url->link('extension/module/product_crawler/deleteAll');
 		}
 
 		public function index()
@@ -495,6 +498,20 @@
 			}
 
 			$this->response->redirect($this->url->link('extension/module/crawler_updates', 'token=' . $this->session->data['token'], true));
+		}
+
+		public function deleteAll()
+		{
+			$this->load->model('extension/module/crawled_product');
+
+			if ($this->model_extension_module_crawled_product->deleteAll()) {
+				$_SESSION['all-deleted'] = 'Продуктите бяха изтрити';
+			}
+			else {
+				$_SESSION['all-deleted-error'] = 'Възникна проблем при изтриването на проудктите';
+			}
+
+			$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
 		}
 	}
 ?>

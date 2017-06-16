@@ -10,31 +10,35 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-3 col-md-offset-2">
-					<form method="POST" action="<?php echo $action ?>">
-						<div class="form-group">
-							<label>URL</label>
-							<input type="text" name="site-url" class="form-control">
-						</div>
+				<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-7 form">
+						<form method="POST" action="<?php echo $action ?>">
+							<div class="form-group">
+								<label>URL</label>
+								<input type="text" name="site-url" class="form-control">
+							</div>
 
-						<div class="form-group">
-							<label>Магазин</label>
-							<select class="form-control" name="site">
-								<option value="" selected>--Моля избери--</option>
-								<option value="dims-92">Dims-92</option>
-								<option value="sky-r">Sky-r</option>
-								<option value="vip-giftshop">Vip-giftshop</option>
-								<option value="art93">art93</option>
-								<option value="wenger">wenger</option>
-								<option value="max-pen">max-pen</option>
-							</select>
-						</div>
+							<div class="form-group">
+								<label>Магазин</label>
+								<select class="form-control" name="site">
+									<option value="" selected>--Моля избери--</option>
+									<option value="dims-92">Dims-92</option>
+									<option value="sky-r">Sky-r</option>
+									<option value="vip-giftshop">Vip-giftshop</option>
+									<option value="art93">art93</option>
+									<option value="wenger">wenger</option>
+									<option value="max-pen">max-pen</option>
+								</select>
+							</div>
 
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Качи</button>
-							<a href="<?= $updates_link ?>" class="link updates">Промени в цени и количества</a>
-						</div>
-					</form>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Качи</button>
+								<a href="<?= $updates_link ?>" class="link updates">Промени в цени и количества</a>
+							</div>
+						</form>
+						<div class="clearfix"></div>
+					</div>
+					<a href="<?= $deleteAllLink ?>" class="delete-all-link">Изтрий всички продукти от чакащата опашка</a>
 				</div>
 			</div>
 		</div>
@@ -79,6 +83,22 @@
 						unset($_SESSION['error']);
 					}
 					?>
+
+				<?php 
+					if (isset($_SESSION['all-deleted'])) { ?>
+						<div class="alert alert-success">
+							<strong><?= $_SESSION['all-deleted'] ?></strong>
+						</div>
+			<?php		unset($_SESSION['all-deleted']);
+					}
+
+					if (isset($_SESSION['all-deleted-error'])) { ?>
+						<div class="alert alert-danger">
+							<strong><?= $_SESSION['all-deleted-error'] ?></strong>
+						</div>
+			<?php		unset($_SESSION['all-deleted-error']);
+					}
+				?>
 			</div>
 		</div>
 		<div class="col-md-8 col-md-offset-2">
