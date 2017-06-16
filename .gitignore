@@ -49,3 +49,6 @@ Temporary Items
 #Configuration files
 config.php
 admin/config.php
+
+#htaccess
+.htaccess
