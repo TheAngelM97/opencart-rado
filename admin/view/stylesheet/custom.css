@@ -1,0 +1,16 @@
+.link {
+	padding: 10px;
+	color: white;
+	background: purple;
+	transition: 0.3s;
+}
+.link:hover {
+	color: white;
+	padding: 13px;
+}
+.spider {
+	float: left;
+}
+.updates {
+	float: right;
+}

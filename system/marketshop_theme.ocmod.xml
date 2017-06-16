@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>MarketShop Theme</name>
+  <code>MarketShopTheme</code>
+  <version>2.9</version>
+  <author>Harnish Design</author>
+  <link>http://www.harnishdesign.net</link>
+  <file path="catalog/controller/common/{language,currency}*.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[public function index() {]]>
+      </search>
+      <add position="after">
+        <![CDATA[$data['marketshop_language_currency_title'] = $this->config->get('marketshop_language_currency_title');]]>
+      </add>
+    </operation>
+	</file>
+  <file path="catalog/controller/extension/module/slideshow.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['banners'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[$data['marketshop_homepage_slideshow'] = $this->config->get('marketshop_homepage_slideshow');]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/featured.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_featured_slider_product_per_row'] = $this->config->get('marketshop_featured_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>	
+	<file path="catalog/controller/extension/module/latest.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_latest_slider_product_per_row'] = $this->config->get('marketshop_latest_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/special.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_specials_slider_product_per_row'] = $this->config->get('marketshop_specials_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/marketshop_product_tab.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_product_tab_slider_product_per_row'] = $this->config->get('marketshop_product_tab_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/latest_products_brand.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_latest_product_brand_per_row'] = $this->config->get('marketshop_latest_product_brand_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/latest_products_category.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_lpbc_slider_product_per_row'] = $this->config->get('marketshop_lpbc_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/extension/module/bestseller.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['products'] = array();]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_bestsellers_slider_product_per_row'] = $this->config->get('marketshop_bestsellers_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/category.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$this->load->model('tool/image');]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_refine_categories'] = $this->config->get('marketshop_refine_categories');
+			$data['marketshop_refine_categories_images'] = $this->config->get('marketshop_refine_categories_images');
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_category_product_per_row'] = $this->config->get('marketshop_category_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/product.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$this->load->model('tool/image');]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['config_language_id'] = $this->config->get('config_language_id');
+			$data['marketshop_cloud_zoom'] = $this->config->get('marketshop_cloud_zoom');
+			$data['marketshop_cloud_zoom_gallery'] = $this->config->get('marketshop_cloud_zoom_gallery');
+			$data['marketshop_cloud_zoom_gallery_text'] = $this->config->get('marketshop_cloud_zoom_gallery_text');
+			$data['marketshop_cloud_zoom_inner'] = $this->config->get('marketshop_cloud_zoom_inner');
+			$data['marketshop_share_plugin'] = $this->config->get('marketshop_share_plugin');
+			$data['marketshop_share_plugin_style'] = $this->config->get('marketshop_share_plugin_style');
+			$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+			$data['marketshop_related_slider_product_per_row'] = $this->config->get('marketshop_related_slider_product_per_row');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/search.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[public function index() {]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+		$data['marketshop_search_product_per_row'] = $this->config->get('marketshop_search_product_per_row');
+		$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/special.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[public function index() {]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+		$data['marketshop_special_product_per_row'] = $this->config->get('marketshop_special_product_per_row');
+		$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/manufacturer.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[if ($manufacturer_info) {]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+		$data['marketshop_manufacturer_product_per_row'] = $this->config->get('marketshop_manufacturer_product_per_row');
+		$data['marketshop_percentage_discount_badge'] = $this->config->get('marketshop_percentage_discount_badge');
+		]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/common/footer.php">
+	<operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['newsletter'] = $this->url->link('account/newsletter', '', true);]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+		$data['marketshop_status'] = $this->config->get('marketshop_status');
+		$data['config_language_id'] = $this->config->get('config_language_id');
+		$data['marketshop_feature_box_per_row'] = $this->config->get('marketshop_feature_box_per_row');
+		$data['marketshop_feature_box_homepage_only'] = $this->config->get('marketshop_feature_box_homepage_only');
+		$data['marketshop_feature_box_show_header_footer'] = $this->config->get('marketshop_feature_box_show_header_footer');
+		$data['marketshop_feature_box_per_row'] = $this->config->get('marketshop_feature_box_per_row');
+		$data['marketshop_feature_box1_title'] = $this->config->get('marketshop_feature_box1_title');
+		$data['marketshop_feature_box1_subtitle'] = $this->config->get('marketshop_feature_box1_subtitle');
+		$data['marketshop_feature_box2_title'] = $this->config->get('marketshop_feature_box2_title');
+		$data['marketshop_feature_box2_subtitle'] = $this->config->get('marketshop_feature_box2_subtitle');
+		$data['marketshop_feature_box3_title'] = $this->config->get('marketshop_feature_box3_title');
+		$data['marketshop_feature_box3_subtitle'] = $this->config->get('marketshop_feature_box3_subtitle');
+		$data['marketshop_feature_box4_title'] = $this->config->get('marketshop_feature_box4_title');
+		$data['marketshop_feature_box4_subtitle'] = $this->config->get('marketshop_feature_box4_subtitle');
+		$data['marketshop_feature_box1_status'] = $this->config->get('marketshop_feature_box1_status');
+		$data['marketshop_feature_box2_status'] = $this->config->get('marketshop_feature_box2_status');
+		$data['marketshop_feature_box3_status'] = $this->config->get('marketshop_feature_box3_status');
+		$data['marketshop_feature_box4_status'] = $this->config->get('marketshop_feature_box4_status');
+			
+		$data['marketshop_affiliate_status'] = $this->config->get('marketshop_affiliate_status');
+		$data['marketshop_about_contact_details'] = $this->config->get('marketshop_about_contact_details');
+		$data['marketshop_address'] = $this->config->get('marketshop_address');
+		$data['marketshop_contact'] = $this->config->get('marketshop_contact');
+		$data['marketshop_mobile'] = $this->config->get('marketshop_mobile');
+		$data['marketshop_email'] = $this->config->get('marketshop_email');
+		
+		$data['marketshop_contact_status'] = $this->config->get('marketshop_contact_status');
+		$data['marketshop_address_status'] = $this->config->get('marketshop_address_status');
+		$data['marketshop_mobile_status'] = $this->config->get('marketshop_mobile_status');
+		$data['marketshop_email_status'] = $this->config->get('marketshop_email_status');
+		$data['marketshop_about_details'] = $this->config->get('marketshop_about_details');
+		
+		$data['marketshop_custom_payment_image_status'] = $this->config->get('marketshop_custom_payment_image_status');
+		$data['config_ssl'] = $this->config->get('config_ssl');
+		$data['marketshop_custom_payment_image'] = $this->config->get('marketshop_custom_payment_image');
+		$data['marketshop_custom_payment_image_url'] = $this->config->get('marketshop_custom_payment_image_url');
+		$data['marketshop_paypal'] = $this->config->get('marketshop_paypal');
+		$data['marketshop_paypal_url'] = $this->config->get('marketshop_paypal_url');
+		$data['marketshop_american'] = $this->config->get('marketshop_american');
+		$data['marketshop_american_url'] = $this->config->get('marketshop_american_url');
+		$data['marketshop_2checkout'] = $this->config->get('marketshop_2checkout');
+		$data['marketshop_2checkout_url'] = $this->config->get('marketshop_2checkout_url');
+		$data['marketshop_maestro'] = $this->config->get('marketshop_maestro');
+		$data['marketshop_maestro_url'] = $this->config->get('marketshop_maestro_url');
+		$data['marketshop_discover'] = $this->config->get('marketshop_discover');
+		$data['marketshop_discover_url'] = $this->config->get('marketshop_discover_url');
+		$data['marketshop_mastercard'] = $this->config->get('marketshop_mastercard');
+		$data['marketshop_mastercard_url'] = $this->config->get('marketshop_mastercard_url');
+		$data['marketshop_visa'] = $this->config->get('marketshop_visa');
+		$data['marketshop_visa_url'] = $this->config->get('marketshop_visa_url');
+		$data['marketshop_sagepay'] = $this->config->get('marketshop_sagepay');
+		$data['marketshop_sagepay_url'] = $this->config->get('marketshop_sagepay_url');
+		$data['marketshop_moneybookers'] = $this->config->get('marketshop_moneybookers');
+		$data['marketshop_moneybookers_url'] = $this->config->get('marketshop_moneybookers_url');
+		$data['marketshop_cirrus'] = $this->config->get('marketshop_cirrus');
+		$data['marketshop_cirrus_url'] = $this->config->get('marketshop_cirrus_url');
+		$data['marketshop_delta'] = $this->config->get('marketshop_delta');
+		$data['marketshop_delta_url'] = $this->config->get('marketshop_delta_url');
+		$data['marketshop_direct'] = $this->config->get('marketshop_direct');
+		$data['marketshop_direct_url'] = $this->config->get('marketshop_direct_url');
+		$data['marketshop_google'] = $this->config->get('marketshop_google');
+		$data['marketshop_google_url'] = $this->config->get('marketshop_google_url');
+		$data['marketshop_solo'] = $this->config->get('marketshop_solo');
+		$data['marketshop_solo_url'] = $this->config->get('marketshop_solo_url');
+		$data['marketshop_switch'] = $this->config->get('marketshop_switch');
+		$data['marketshop_switch_url'] = $this->config->get('marketshop_switch_url');
+		$data['marketshop_western_union'] = $this->config->get('marketshop_western_union');
+		$data['marketshop_western_union_url'] = $this->config->get('marketshop_western_union_url');
+		$data['marketshop_ebay'] = $this->config->get('marketshop_ebay');
+		
+		$data['marketshop_powered'] = $this->config->get('marketshop_powered');
+		
+		$data['marketshop_facebook_id'] = $this->config->get('marketshop_facebook_id');
+		$data['marketshop_twitter_username'] = $this->config->get('marketshop_twitter_username');
+		$data['marketshop_gplus_id'] = $this->config->get('marketshop_gplus_id');
+		$data['marketshop_pint_id'] = $this->config->get('marketshop_pint_id');
+		$data['marketshop_rss'] = $this->config->get('marketshop_rss');
+		$data['marketshop_blogger'] = $this->config->get('marketshop_blogger');
+		$data['marketshop_myspace'] = $this->config->get('marketshop_myspace');
+		$data['marketshop_linkedin'] = $this->config->get('marketshop_linkedin');
+		$data['marketshop_evernote'] = $this->config->get('marketshop_evernote');
+		$data['marketshop_dopplr'] = $this->config->get('marketshop_dopplr');
+		$data['marketshop_ember'] = $this->config->get('marketshop_ember');
+		$data['marketshop_flickr'] = $this->config->get('marketshop_flickr');
+		$data['marketshop_picasa_web'] = $this->config->get('marketshop_picasa_web');
+		$data['marketshop_youtube'] = $this->config->get('marketshop_youtube');
+		$data['marketshop_technorati'] = $this->config->get('marketshop_technorati');
+		$data['marketshop_grooveshark'] = $this->config->get('marketshop_grooveshark');
+		$data['marketshop_vimeo'] = $this->config->get('marketshop_vimeo');
+		$data['marketshop_sharethis'] = $this->config->get('marketshop_sharethis');
+		$data['marketshop_yahoobuzz'] = $this->config->get('marketshop_yahoobuzz');
+		$data['marketshop_viddler'] = $this->config->get('marketshop_viddler');
+		$data['marketshop_skype'] = $this->config->get('marketshop_skype');
+		$data['marketshop_google_googletalk'] = $this->config->get('marketshop_google_googletalk');
+		$data['marketshop_digg'] = $this->config->get('marketshop_digg');
+		$data['marketshop_reddit'] = $this->config->get('marketshop_reddit');
+		$data['marketshop_delicious'] = $this->config->get('marketshop_delicious');
+		$data['marketshop_stumbleupon'] = $this->config->get('marketshop_stumbleupon');
+		$data['marketshop_friendfeed'] = $this->config->get('marketshop_friendfeed');
+		$data['marketshop_tumblr'] = $this->config->get('marketshop_tumblr');
+		$data['marketshop_yelp'] = $this->config->get('marketshop_yelp');
+		$data['marketshop_posterous'] = $this->config->get('marketshop_posterous');
+		$data['marketshop_bebo'] = $this->config->get('marketshop_bebo');
+		$data['marketshop_virb'] = $this->config->get('marketshop_virb');
+		$data['marketshop_last_fm'] = $this->config->get('marketshop_last_fm');
+		$data['marketshop_pandora'] = $this->config->get('marketshop_pandora');
+		$data['marketshop_mixx'] = $this->config->get('marketshop_mixx');
+		$data['marketshop_newsvine'] = $this->config->get('marketshop_newsvine');
+		$data['marketshop_openid'] = $this->config->get('marketshop_openid');
+		$data['marketshop_readernaut'] = $this->config->get('marketshop_readernaut');
+		$data['marketshop_xing_me'] = $this->config->get('marketshop_xing_me');
+		$data['marketshop_instagram'] = $this->config->get('marketshop_instagram');
+		$data['marketshop_spotify'] = $this->config->get('marketshop_spotify');
+		$data['marketshop_forrst'] = $this->config->get('marketshop_forrst');
+		$data['marketshop_viadeo'] = $this->config->get('marketshop_viadeo');
+		$data['marketshop_vk_com'] = $this->config->get('marketshop_vk_com');
+		
+		$data['marketshop_custom_column_footer_status'] = $this->config->get('marketshop_custom_column_footer_status');
+		$data['marketshop_custom_column_footer'] = $this->config->get('marketshop_custom_column_footer');
+		$data['marketshop_back_to_top'] = $this->config->get('marketshop_back_to_top');
+		$data['marketshop_facebook_block_status'] = $this->config->get('marketshop_facebook_block_status');
+		$data['marketshop_facebook_box_align'] = $this->config->get('marketshop_facebook_box_align');
+		$data['marketshop_facebook_block_sort_order'] = $this->config->get('marketshop_facebook_block_sort_order');
+		$data['marketshop_facebook_id_box'] = $this->config->get('marketshop_facebook_id_box');
+		$data['marketshop_twitter_block_status'] = $this->config->get('marketshop_twitter_block_status');
+		$data['marketshop_twitter_box_align'] = $this->config->get('marketshop_twitter_box_align');
+		$data['marketshop_twitter_block_sort_order'] = $this->config->get('marketshop_twitter_block_sort_order');
+		$data['twitter_username'] = $this->config->get('twitter_username');
+		$data['marketshop_widget_id'] = $this->config->get('marketshop_widget_id');
+		$data['marketshop_video_box_status'] = $this->config->get('marketshop_video_box_status');
+		$data['marketshop_video_box_align'] = $this->config->get('marketshop_video_box_align');
+		$data['marketshop_video_box_sort_order'] = $this->config->get('marketshop_video_box_sort_order');
+		$data['marketshop_video_box_content'] = $this->config->get('marketshop_video_box_content');
+		$data['marketshop_custom_column_status'] = $this->config->get('marketshop_custom_column_status');
+		$data['marketshop_custom_column'] = $this->config->get('marketshop_custom_column');
+		$data['marketshop_custom_side_block_align'] = $this->config->get('marketshop_custom_side_block_align');
+		$data['marketshop_custom_side_block_sort_order'] = $this->config->get('marketshop_custom_side_block_sort_order');
+		]]>
+      </add>
+    </operation>
+	</file>
+  <file path="catalog/controller/common/header.php">
+  <operation info="variable for theme panel">
+      <search>
+        <![CDATA[$data['name'] = $this->config->get('config_name');]]>
+      </search>
+      <add position="after">
+        <![CDATA[
+			$data['marketshop_custom_column_status'] = $this->config->get('marketshop_custom_column_status');
+			$data['marketshop_video_box_status'] = $this->config->get('marketshop_video_box_status');
+			$data['marketshop_facebook_block_status'] = $this->config->get('marketshop_facebook_block_status');
+			$data['marketshop_twitter_block_status'] = $this->config->get('marketshop_twitter_block_status');
+			$data['marketshop_skin'] = $this->config->get('marketshop_skin');
+			$data['marketshop_status'] = $this->config->get('marketshop_status');
+			$data['config_language_id'] = $this->config->get('config_language_id');
+			$data['marketshop_search_auto_complete'] = $this->config->get('marketshop_search_auto_complete');
+			$data['marketshop_title_font'] = $this->config->get('marketshop_title_font');
+			$data['marketshop_body_font'] = $this->config->get('marketshop_body_font');
+			$data['marketshop_top_bar_font'] = $this->config->get('marketshop_top_bar_font');
+			$data['marketshop_secondary_titles_font'] = $this->config->get('marketshop_secondary_titles_font');
+			$data['marketshop_footer_titles_font'] = $this->config->get('marketshop_footer_titles_font');
+			$data['marketshop_header_style'] = $this->config->get('marketshop_header_style');
+			$data['marketshop_main_menu_font'] = $this->config->get('marketshop_main_menu_font');
+			
+			$data['marketshop_background_color'] = $this->config->get('marketshop_background_color');
+			$data['config_ssl'] = $this->config->get('config_ssl');
+			$data['config_url'] = $this->config->get('config_url');
+			$data['marketshop_custom_image'] = $this->config->get('marketshop_custom_image');
+			$data['marketshop_custom_image_position'] = $this->config->get('marketshop_custom_image_position');
+			$data['marketshop_custom_image_repeat'] = $this->config->get('marketshop_custom_image_repeat');
+			$data['marketshop_custom_image_attachment'] = $this->config->get('marketshop_custom_image_attachment');
+			$data['marketshop_pattern_overlay'] = $this->config->get('marketshop_pattern_overlay');
+			$data['marketshop_general_links_color'] = $this->config->get('marketshop_general_links_color');
+			$data['marketshop_body_text_color'] = $this->config->get('marketshop_body_text_color');
+			$data['marketshop_general_links_hover_color'] = $this->config->get('marketshop_general_links_hover_color');
+			$data['marketshop_heading_color'] = $this->config->get('marketshop_heading_color');
+			$data['marketshop_secondary_heading_color'] = $this->config->get('marketshop_heading_color');
+			$data['marketshop_body_text_color'] = $this->config->get('marketshop_secondary_heading_color');
+			$data['marketshop_secondary_heading_border_color'] = $this->config->get('marketshop_secondary_heading_border_color');
+			$data['marketshop_secondary_heading_border_hl_color'] = $this->config->get('marketshop_secondary_heading_border_hl_color');
+			$data['marketshop_layout_border_radius'] = $this->config->get('marketshop_layout_border_radius');
+			$data['marketshop_layout_top_margin'] = $this->config->get('marketshop_layout_top_margin');
+			$data['marketshop_header_margin'] = $this->config->get('marketshop_header_margin');
+			$data['marketshop_logo_margin'] = $this->config->get('marketshop_logo_margin');
+			$data['marketshop_top_bar_bg_color'] = $this->config->get('marketshop_top_bar_bg_color');
+			$data['marketshop_top_bar_link_color'] = $this->config->get('marketshop_top_bar_link_color');
+			$data['marketshop_top_bar_link_separator_color'] = $this->config->get('marketshop_top_bar_link_separator_color');
+			$data['marketshop_top_bar_link_hover_color'] = $this->config->get('marketshop_top_bar_link_hover_color');
+			$data['marketshop_top_bar_tele_email_color'] = $this->config->get('marketshop_top_bar_tele_email_color');
+			$data['marketshop_top_bar_link_color'] = $this->config->get('marketshop_top_bar_link_color');
+			$data['marketshop_top_bar_link_separator_style'] = $this->config->get('marketshop_top_bar_link_separator_style');
+			$data['marketshop_top_bar_sub_link_color'] = $this->config->get('marketshop_top_bar_sub_link_color');
+			$data['marketshop_top_bar_sub_link_hover_color'] = $this->config->get('marketshop_top_bar_sub_link_hover_color');
+			$data['marketshop_sub_menu_top_border_color'] = $this->config->get('marketshop_sub_menu_top_border_color');
+			$data['marketshop_header_bg_color'] = $this->config->get('marketshop_header_bg_color');
+			$data['marketshop_mini_cart_icon_color'] = $this->config->get('marketshop_mini_cart_icon_color');
+			$data['marketshop_mini_cart_icon_color'] = $this->config->get('marketshop_mini_cart_icon_color');
+			$data['marketshop_mini_cart_link_color'] = $this->config->get('marketshop_mini_cart_link_color');
+			$data['marketshop_mini_cart_active_link_color'] = $this->config->get('marketshop_mini_cart_active_link_color');
+			$data['marketshop_search_bar_background_color'] = $this->config->get('marketshop_search_bar_background_color');
+			$data['marketshop_search_bar_border_color'] = $this->config->get('marketshop_search_bar_border_color');
+			$data['marketshop_search_bar_text_color'] = $this->config->get('marketshop_search_bar_text_color');
+			$data['marketshop_search_bar_border_hover_color'] = $this->config->get('marketshop_search_bar_border_hover_color');
+			$data['marketshop_search_bar_icon_color'] = $this->config->get('marketshop_search_bar_icon_color');
+			$data['marketshop_search_bar_icon_bg_color'] = $this->config->get('marketshop_search_bar_icon_bg_color');
+			$data['marketshop_main_menu_align'] = $this->config->get('marketshop_main_menu_align');
+			$data['marketshop_menu_bg_color'] = $this->config->get('marketshop_menu_bg_color');
+			$data['marketshop_menu_bg_color_status'] = $this->config->get('marketshop_menu_bg_color_status');
+			$data['marketshop_home_page_link_icon_color'] = $this->config->get('marketshop_home_page_link_icon_color');
+			$data['marketshop_home_page_link_icon_color_hover'] = $this->config->get('marketshop_home_page_link_icon_color_hover');
+			$data['marketshop_myaccount_section_background_color'] = $this->config->get('marketshop_myaccount_section_background_color');
+			$data['marketshop_myaccount_section_background_color_hover'] = $this->config->get('marketshop_myaccount_section_background_color_hover');
+			$data['marketshop_myaccount_section_link_color'] = $this->config->get('marketshop_myaccount_section_link_color');
+			$data['marketshop_myaccount_section_link_color_hover'] = $this->config->get('marketshop_myaccount_section_link_color_hover');
+			$data['marketshop_custom_link_right_background_color'] = $this->config->get('marketshop_custom_link_right_background_color');
+			$data['marketshop_custom_link_right_background_color_hover'] = $this->config->get('marketshop_custom_link_right_background_color_hover');
+			$data['marketshop_custom_link_right_link_color'] = $this->config->get('marketshop_custom_link_right_link_color');
+			$data['marketshop_custom_link_right_link_color_hover'] = $this->config->get('marketshop_custom_link_right_link_color_hover');
+			$data['marketshop_menu_link_color'] = $this->config->get('marketshop_menu_link_color');
+			$data['marketshop_menu_link_hover_color'] = $this->config->get('marketshop_menu_link_hover_color');
+			$data['marketshop_menu_link_hover_bg_color'] = $this->config->get('marketshop_menu_link_hover_bg_color');
+			$data['marketshop_menu_link_separator_size'] = $this->config->get('marketshop_menu_link_separator_size');
+			$data['marketshop_menu_link_separator_style'] = $this->config->get('marketshop_menu_link_separator_style');
+			$data['marketshop_menu_link_separator_color'] = $this->config->get('marketshop_menu_link_separator_color');
+			$data['marketshop_menu_link_separator_status'] = $this->config->get('marketshop_menu_link_separator_status');
+			$data['marketshop_menu_link_border_top_size'] = $this->config->get('marketshop_menu_link_border_top_size');
+			$data['marketshop_menu_link_border_top_style'] = $this->config->get('marketshop_menu_link_border_top_style');
+			$data['marketshop_menu_link_border_top_color'] = $this->config->get('marketshop_menu_link_border_top_color');
+			$data['marketshop_menu_link_border_top_status'] = $this->config->get('marketshop_menu_link_border_top_status');
+			$data['marketshop_menu_link_border_bottom_size'] = $this->config->get('marketshop_menu_link_border_bottom_size');
+			$data['marketshop_menu_link_border_bottom_style'] = $this->config->get('marketshop_menu_link_border_bottom_style');
+			$data['marketshop_menu_link_border_bottom_color'] = $this->config->get('marketshop_menu_link_border_bottom_color');
+			$data['marketshop_menu_link_border_bottom_status'] = $this->config->get('marketshop_menu_link_border_bottom_status');
+			$data['marketshop_sub_menu_background_color'] = $this->config->get('marketshop_sub_menu_background_color');
+			$data['marketshop_sub_menu_heading_text_color'] = $this->config->get('marketshop_sub_menu_heading_text_color');
+			$data['marketshop_sub_menu_heading_text_separator_color'] = $this->config->get('marketshop_sub_menu_heading_text_separator_color');
+			$data['marketshop_sub_menu_heading_text_separator_style'] = $this->config->get('marketshop_sub_menu_heading_text_separator_style');
+			$data['marketshop_sub_menu_link_color'] = $this->config->get('marketshop_sub_menu_link_color');
+			$data['marketshop_sub_menu_link_hover_color'] = $this->config->get('marketshop_sub_menu_link_hover_color');
+			$data['marketshop_sub_menu_link_separator_color'] = $this->config->get('marketshop_sub_menu_link_separator_color');
+			$data['marketshop_sub_menu_link_separator_style'] = $this->config->get('marketshop_sub_menu_link_separator_style');
+			$data['marketshop_home_page_link_background_color'] = $this->config->get('marketshop_home_page_link_background_color');
+			$data['marketshop_home_page_link_background_color_hover'] = $this->config->get('marketshop_home_page_link_background_color_hover');
+			$data['marketshop_home_page_link_link_color'] = $this->config->get('marketshop_home_page_link_link_color');
+			$data['marketshop_home_page_link_link_color_hover'] = $this->config->get('marketshop_home_page_link_link_color_hover');
+			$data['marketshop_categories_section_background_color'] = $this->config->get('marketshop_categories_section_background_color');
+			$data['marketshop_categories_section_background_color_hover'] = $this->config->get('marketshop_categories_section_background_color_hover');
+			$data['marketshop_categories_section_link_color'] = $this->config->get('marketshop_categories_section_link_color');
+			$data['marketshop_categories_section_link_color_hover'] = $this->config->get('marketshop_categories_section_link_color_hover');
+			$data['marketshop_brands_section_background_color'] = $this->config->get('marketshop_brands_section_background_color');
+			$data['marketshop_brands_section_background_color_hover'] = $this->config->get('marketshop_brands_section_background_color_hover');
+			$data['marketshop_brands_section_link_color'] = $this->config->get('marketshop_brands_section_link_color');
+			$data['marketshop_brands_section_link_color_hover'] = $this->config->get('marketshop_brands_section_link_color_hover');
+			$data['marketshop_custom_link_section_background_color'] = $this->config->get('marketshop_custom_link_section_background_color');
+			$data['marketshop_custom_link_section_background_color_hover'] = $this->config->get('marketshop_custom_link_section_background_color_hover');
+			$data['marketshop_custom_link_section_link_color'] = $this->config->get('marketshop_custom_link_section_link_color');
+			$data['marketshop_custom_link_section_link_color_hover'] = $this->config->get('marketshop_custom_link_section_link_color_hover');
+			$data['marketshop_custom_block_section_background_color'] = $this->config->get('marketshop_custom_block_section_background_color');
+			$data['marketshop_custom_block_section_background_color_hover'] = $this->config->get('marketshop_custom_block_section_background_color_hover');
+			$data['marketshop_custom_block_section_link_color'] = $this->config->get('marketshop_custom_block_section_link_color');
+			$data['marketshop_custom_block_section_link_color_hover'] = $this->config->get('marketshop_custom_block_section_link_color_hover');
+			$data['marketshop_information_section_background_color'] = $this->config->get('marketshop_information_section_background_color');
+			$data['marketshop_information_section_background_color_hover'] = $this->config->get('marketshop_information_section_background_color_hover');
+			$data['marketshop_information_section_link_color'] = $this->config->get('marketshop_information_section_link_color');
+			$data['marketshop_information_section_link_color_hover'] = $this->config->get('marketshop_information_section_link_color_hover');
+			$data['marketshop_contact_section_background_color'] = $this->config->get('marketshop_contact_section_background_color');
+			$data['marketshop_contact_section_background_color_hover'] = $this->config->get('marketshop_contact_section_background_color_hover');
+			$data['marketshop_contact_section_link_color'] = $this->config->get('marketshop_contact_section_link_color');
+			$data['marketshop_contact_section_link_color_hover'] = $this->config->get('marketshop_contact_section_link_color_hover');
+			$data['marketshop_custom_block_bg_color'] = $this->config->get('marketshop_custom_block_bg_color');
+			$data['marketshop_video_block_bg_color'] = $this->config->get('marketshop_video_block_bg_color');
+			$data['marketshop_footer_bg_color'] = $this->config->get('marketshop_footer_bg_color');
+			$data['marketshop_footer_titles_color'] = $this->config->get('marketshop_footer_titles_color');
+			$data['marketshop_footer_text_color'] = $this->config->get('marketshop_footer_text_color');
+			$data['marketshop_footer_link_color'] = $this->config->get('marketshop_footer_link_color');
+			$data['marketshop_footer_link_hover_color'] = $this->config->get('marketshop_footer_link_hover_color');
+			$data['marketshop_contact_icon_color'] = $this->config->get('marketshop_contact_icon_color');
+			$data['marketshop_contact_icon_bg_color'] = $this->config->get('marketshop_contact_icon_bg_color');
+			$data['marketshop_footer_second_bg_color'] = $this->config->get('marketshop_footer_second_bg_color');
+			$data['marketshop_footer_second_text_color'] = $this->config->get('marketshop_footer_second_text_color');
+			$data['marketshop_footer_second_link_color'] = $this->config->get('marketshop_footer_second_link_color');
+			$data['marketshop_footer_second_link_hover_color'] = $this->config->get('marketshop_footer_second_link_hover_color');
+			$data['marketshop_footer_second_separator_color'] = $this->config->get('marketshop_footer_second_separator_color');
+			$data['marketshop_footer_second_separator_style'] = $this->config->get('marketshop_footer_second_separator_style');
+			$data['marketshop_footer_second_fst_separator_status'] = $this->config->get('marketshop_footer_second_fst_separator_status');
+			$data['marketshop_footer_second_2nd_separator_color'] = $this->config->get('marketshop_footer_second_2nd_separator_color');
+			$data['marketshop_footer_second_2nd_separator_style'] = $this->config->get('marketshop_footer_second_2nd_separator_style');
+			$data['marketshop_footer_second_2nd_separator_status'] = $this->config->get('marketshop_footer_second_2nd_separator_status');
+			$data['marketshop_footer_second_2nd_separator_status'] = $this->config->get('marketshop_footer_second_2nd_separator_status');
+			$data['marketshop_footer_backtotop_bg_color'] = $this->config->get('marketshop_footer_backtotop_bg_color');
+			$data['marketshop_product_box_border_hover_color'] = $this->config->get('marketshop_product_box_border_hover_color');
+			$data['marketshop_product_name_color'] = $this->config->get('marketshop_product_name_color');
+			$data['marketshop_product_name_hover_color'] = $this->config->get('marketshop_product_name_hover_color');
+			$data['marketshop_price_color'] = $this->config->get('marketshop_price_color');
+			$data['marketshop_tax_price_color'] = $this->config->get('marketshop_tax_price_color');
+			$data['marketshop_old_price_color'] = $this->config->get('marketshop_old_price_color');
+			$data['marketshop_new_price_color'] = $this->config->get('marketshop_new_price_color');
+			$data['marketshop_saving_percentage_bg_color'] = $this->config->get('marketshop_saving_percentage_bg_color');
+			$data['marketshop_saving_percentage_text_color'] = $this->config->get('marketshop_saving_percentage_text_color');
+			$data['marketshop_wishlist_compare_bg_color'] = $this->config->get('marketshop_wishlist_compare_bg_color');
+			$data['marketshop_wishlist_compare_text_color'] = $this->config->get('marketshop_wishlist_compare_text_color');
+			$data['marketshop_wishlist_compare_hover_bg_color'] = $this->config->get('marketshop_wishlist_compare_hover_bg_color');
+			$data['marketshop_wishlist_compare_hover_text_color'] = $this->config->get('marketshop_wishlist_compare_hover_text_color');
+			$data['marketshop_button_bg_color'] = $this->config->get('marketshop_button_bg_color');
+			$data['marketshop_button_bg_hover_color'] = $this->config->get('marketshop_button_bg_hover_color');
+			$data['marketshop_button_text_color'] = $this->config->get('marketshop_button_text_color');
+			$data['marketshop_button_text_hover_color'] = $this->config->get('marketshop_button_text_hover_color');
+			$data['marketshop_default_button_bg_color'] = $this->config->get('marketshop_default_button_bg_color');
+			$data['marketshop_default_button_bg_hover_color'] = $this->config->get('marketshop_default_button_bg_hover_color');
+			$data['marketshop_default_button_text_color'] = $this->config->get('marketshop_default_button_text_color');
+			$data['marketshop_default_button_text_hover_color'] = $this->config->get('marketshop_default_button_text_hover_color');
+			$data['marketshop_cart_button_bg_color'] = $this->config->get('marketshop_cart_button_bg_color');
+			$data['marketshop_cart_button_bg_hover_color'] = $this->config->get('marketshop_cart_button_bg_hover_color');
+			$data['marketshop_cart_button_text_color'] = $this->config->get('marketshop_cart_button_text_color');
+			$data['marketshop_cart_button_text_hover_color'] = $this->config->get('marketshop_cart_button_text_hover_color');
+			$data['marketshop_price_bg_color'] = $this->config->get('marketshop_price_bg_color');
+			$data['marketshop_price_text_color'] = $this->config->get('marketshop_price_text_color');
+			$data['marketshop_old_price_product_page_color'] = $this->config->get('marketshop_old_price_product_page_color');
+			$data['marketshop_excl_button_bg_color'] = $this->config->get('marketshop_excl_button_bg_color');
+			$data['marketshop_excl_button_bg_hover_color'] = $this->config->get('marketshop_excl_button_bg_hover_color');
+			$data['marketshop_excl_button_text_color'] = $this->config->get('marketshop_excl_button_text_color');
+			$data['marketshop_excl_button_text_hover_color'] = $this->config->get('marketshop_excl_button_text_hover_color');
+			$data['marketshop_feature_box1_border_color'] = $this->config->get('marketshop_feature_box1_border_color');
+			$data['marketshop_feature_box1_bg_color'] = $this->config->get('marketshop_feature_box1_bg_color');
+			$data['marketshop_feature_box1_title_color'] = $this->config->get('marketshop_feature_box1_title_color');
+			$data['marketshop_feature_box1_subtitle_color'] = $this->config->get('marketshop_feature_box1_subtitle_color');
+			$data['marketshop_feature_box2_border_color'] = $this->config->get('marketshop_feature_box2_border_color');
+			$data['marketshop_feature_box2_bg_color'] = $this->config->get('marketshop_feature_box2_bg_color');
+			$data['marketshop_feature_box2_title_color'] = $this->config->get('marketshop_feature_box2_title_color');
+			$data['marketshop_feature_box2_subtitle_color'] = $this->config->get('marketshop_feature_box2_subtitle_color');
+			$data['marketshop_feature_box3_border_color'] = $this->config->get('marketshop_feature_box3_border_color');
+			$data['marketshop_feature_box3_bg_color'] = $this->config->get('marketshop_feature_box3_bg_color');
+			$data['marketshop_feature_box3_title_color'] = $this->config->get('marketshop_feature_box3_title_color');
+			$data['marketshop_feature_box3_subtitle_color'] = $this->config->get('marketshop_feature_box3_subtitle_color');
+			$data['marketshop_feature_box4_border_color'] = $this->config->get('marketshop_feature_box4_border_color');
+			$data['marketshop_feature_box4_bg_color'] = $this->config->get('marketshop_feature_box4_bg_color');
+			$data['marketshop_feature_box4_title_color'] = $this->config->get('marketshop_feature_box4_title_color');
+			$data['marketshop_feature_box4_subtitle_color'] = $this->config->get('marketshop_feature_box4_subtitle_color');
+			$data['marketshop_feature_box_title_font_size'] = $this->config->get('marketshop_feature_box_title_font_size');
+			$data['marketshop_feature_box_title_font_weight'] = $this->config->get('marketshop_feature_box_title_font_weight');
+			$data['marketshop_feature_box_title_font_transform'] = $this->config->get('marketshop_feature_box_title_font_transform');
+			$data['marketshop_feature_box_subtitle_font_size'] = $this->config->get('marketshop_feature_box_subtitle_font_size');
+			$data['marketshop_feature_box_subtitle_font_weight'] = $this->config->get('marketshop_feature_box_subtitle_font_weight');
+			$data['marketshop_feature_box_subtitle_font_transform'] = $this->config->get('marketshop_feature_box_subtitle_font_transform');
+			$data['marketshop_title_font_size'] = $this->config->get('marketshop_title_font_size');
+			$data['marketshop_title_font_weight'] = $this->config->get('marketshop_title_font_weight');
+			$data['marketshop_title_font_uppercase'] = $this->config->get('marketshop_title_font_uppercase');
+			$data['marketshop_main_menu_font_size'] = $this->config->get('marketshop_main_menu_font_size');
+			$data['marketshop_main_menu_font_weight'] = $this->config->get('marketshop_main_menu_font_weight');
+			$data['marketshop_main_menu_font_uppercase'] = $this->config->get('marketshop_main_menu_font_uppercase');
+			$data['marketshop_top_bar_font_size'] = $this->config->get('marketshop_top_bar_font_size');
+			$data['marketshop_top_bar_font_weight'] = $this->config->get('marketshop_top_bar_font_weight');
+			$data['marketshop_top_bar_font_uppercase'] = $this->config->get('marketshop_top_bar_font_uppercase');
+			$data['marketshop_secondary_titles_font_size'] = $this->config->get('marketshop_secondary_titles_font_size');
+			$data['marketshop_secondary_titles_font_weight'] = $this->config->get('marketshop_secondary_titles_font_weight');
+			$data['marketshop_secondary_titles_font_weight'] = $this->config->get('marketshop_secondary_titles_font_weight');
+			$data['marketshop_secondary_titles_font_uppercase'] = $this->config->get('marketshop_secondary_titles_font_uppercase');
+			$data['marketshop_footer_titles_font_size'] = $this->config->get('marketshop_footer_titles_font_size');
+			$data['marketshop_footer_titles_font_weight'] = $this->config->get('marketshop_footer_titles_font_weight');
+			$data['marketshop_footer_titles_font_uppercase'] = $this->config->get('marketshop_footer_titles_font_uppercase');
+			$data['marketshop_custom_css'] = $this->config->get('marketshop_custom_css');
+			
+			$data['marketshop_layout_style'] = $this->config->get('marketshop_layout_style');
+			$data['marketshop_custom_link1_top'] = $this->config->get('marketshop_custom_link1_top');
+			$data['marketshop_custom_link1_top_title'] = $this->config->get('marketshop_custom_link1_top_title');
+			$data['marketshop_custom_link1_top_url'] = $this->config->get('marketshop_custom_link1_top_url');
+			$data['marketshop_target_link1_top'] = $this->config->get('marketshop_target_link1_top');
+			$data['marketshop_custom_link2_top'] = $this->config->get('marketshop_custom_link2_top');
+			$data['marketshop_custom_link2_top_title'] = $this->config->get('marketshop_custom_link2_top_title');
+			$data['marketshop_custom_link2_top_url'] = $this->config->get('marketshop_custom_link2_top_url');
+			$data['marketshop_target_link2_top'] = $this->config->get('marketshop_target_link2_top');
+			$data['marketshop_custom_link3_top'] = $this->config->get('marketshop_custom_link3_top');
+			$data['marketshop_custom_link3_top_title'] = $this->config->get('marketshop_custom_link3_top_title');
+			$data['marketshop_custom_link3_top_url'] = $this->config->get('marketshop_custom_link3_top_url');
+			$data['marketshop_target_link3_top'] = $this->config->get('marketshop_target_link3_top');
+			$data['marketshop_custom_block_top_status'] = $this->config->get('marketshop_custom_block_top_status');
+			$data['marketshop_custom_block_top_title'] = $this->config->get('marketshop_custom_block_top_title');
+			$data['marketshop_custom_block_top_content'] = $this->config->get('marketshop_custom_block_top_content');
+			$data['marketshop_custom_block2_top_status'] = $this->config->get('marketshop_custom_block2_top_status');
+			$data['marketshop_custom_block2_top_title'] = $this->config->get('marketshop_custom_block2_top_title');
+			$data['marketshop_custom_block2_top_content'] = $this->config->get('marketshop_custom_block2_top_content');
+			$data['marketshop_wishlist_top_link'] = $this->config->get('marketshop_wishlist_top_link');
+			$data['marketshop_checkout_top_link'] = $this->config->get('marketshop_checkout_top_link');
+			$data['marketshop_top_bar_contact_status'] = $this->config->get('marketshop_top_bar_contact_status');
+			$data['marketshop_top_bar_contact'] = $this->config->get('marketshop_top_bar_contact');
+			$data['marketshop_top_bar_email_status'] = $this->config->get('marketshop_top_bar_email_status');
+			$data['marketshop_top_bar_email'] = $this->config->get('marketshop_top_bar_email');
+			
+			$data['marketshop_main_menu_style'] = $this->config->get('marketshop_main_menu_style');
+			$data['marketshop_mobile_menu_title'] = $this->config->get('marketshop_mobile_menu_title');
+			
+			$data['marketshop_home_page_link_icon'] = $this->config->get('marketshop_home_page_link_icon');
+			$data['marketshop_home_page_link'] = $this->config->get('marketshop_home_page_link');
+			$data['marketshop_top_menu'] = $this->config->get('marketshop_top_menu');
+			$data['marketshop_menu_categories_title'] = $this->config->get('marketshop_menu_categories_title');
+			$data['marketshop_menu_brands'] = $this->config->get('marketshop_menu_brands');
+			$data['marketshop_menu_brands_title'] = $this->config->get('marketshop_menu_brands_title');
+			$data['marketshop_brands_display_style'] = $this->config->get('marketshop_brands_display_style');
+			
+			$data['marketshop_custom_link1'] = $this->config->get('marketshop_custom_link1');
+			$data['marketshop_custom_link1_title'] = $this->config->get('marketshop_custom_link1_title');
+			$data['marketshop_custom_link1_url'] = $this->config->get('marketshop_custom_link1_url');
+			$data['marketshop_target_link1'] = $this->config->get('marketshop_target_link1');
+			$data['marketshop_custom_link2'] = $this->config->get('marketshop_custom_link2');
+			$data['marketshop_custom_link2_title'] = $this->config->get('marketshop_custom_link2_title');
+			$data['marketshop_custom_link2_url'] = $this->config->get('marketshop_custom_link2_url');
+			$data['marketshop_target_link2'] = $this->config->get('marketshop_target_link2');
+			$data['marketshop_custom_link3'] = $this->config->get('marketshop_custom_link3');
+			$data['marketshop_custom_link3_title'] = $this->config->get('marketshop_custom_link3_title');
+			$data['marketshop_custom_link3_url'] = $this->config->get('marketshop_custom_link3_url');
+			$data['marketshop_target_link3'] = $this->config->get('marketshop_target_link3');
+			$data['marketshop_custom_link4'] = $this->config->get('marketshop_custom_link4');
+			$data['marketshop_custom_link4_title'] = $this->config->get('marketshop_custom_link4_title');
+			$data['marketshop_custom_link4_url'] = $this->config->get('marketshop_custom_link4_url');
+			$data['marketshop_target_link4'] = $this->config->get('marketshop_target_link4');
+			$data['marketshop_custom_link5'] = $this->config->get('marketshop_custom_link5');
+			$data['marketshop_custom_link5_title'] = $this->config->get('marketshop_custom_link5_title');
+			$data['marketshop_custom_link5_url'] = $this->config->get('marketshop_custom_link5_url');
+			$data['marketshop_target_link5'] = $this->config->get('marketshop_target_link5');
+			
+			$data['marketshop_custom_block_status'] = $this->config->get('marketshop_custom_block_status');
+			$data['marketshop_custom_block_title'] = $this->config->get('marketshop_custom_block_title');
+			$data['marketshop_custom_block_content'] = $this->config->get('marketshop_custom_block_content');
+			$data['marketshop_custom_block2_status'] = $this->config->get('marketshop_custom_block2_status');
+			$data['marketshop_custom_block2_title'] = $this->config->get('marketshop_custom_block2_title');
+			$data['marketshop_custom_block2_content'] = $this->config->get('marketshop_custom_block2_content');
+			$data['marketshop_custom_block3_status'] = $this->config->get('marketshop_custom_block3_status');
+			$data['marketshop_custom_block3_title'] = $this->config->get('marketshop_custom_block3_title');
+			$data['marketshop_custom_block3_content'] = $this->config->get('marketshop_custom_block3_content');
+			
+			$data['marketshop_my_account'] = $this->config->get('marketshop_my_account');
+			$data['marketshop_custom_link_right'] = $this->config->get('marketshop_custom_link_right');
+			$data['marketshop_information_page'] = $this->config->get('marketshop_information_page');
+			$data['marketshop_contact_us'] = $this->config->get('marketshop_contact_us');
+			
+			$data['marketshop_custom_link_right'] = $this->config->get('marketshop_custom_link_right');
+			$data['marketshop_custom_link_right_title'] = $this->config->get('marketshop_custom_link_right_title');
+			$data['marketshop_custom_link_right_url'] = $this->config->get('marketshop_custom_link_right_url');
+			$data['marketshop_custom_link_right_target'] = $this->config->get('marketshop_custom_link_right_target');
+			
+			$data['marketshop_feature_box_per_row'] = $this->config->get('marketshop_feature_box_per_row');
+			$data['marketshop_feature_box_homepage_only'] = $this->config->get('marketshop_feature_box_homepage_only');
+			$data['marketshop_feature_box_show_header_footer'] = $this->config->get('marketshop_feature_box_show_header_footer');
+			$data['marketshop_feature_box_per_row'] = $this->config->get('marketshop_feature_box_per_row');
+			$data['marketshop_feature_box1_title'] = $this->config->get('marketshop_feature_box1_title');
+			$data['marketshop_feature_box1_subtitle'] = $this->config->get('marketshop_feature_box1_subtitle');
+			$data['marketshop_feature_box2_title'] = $this->config->get('marketshop_feature_box2_title');
+			$data['marketshop_feature_box2_subtitle'] = $this->config->get('marketshop_feature_box2_subtitle');
+			$data['marketshop_feature_box3_title'] = $this->config->get('marketshop_feature_box3_title');
+			$data['marketshop_feature_box3_subtitle'] = $this->config->get('marketshop_feature_box3_subtitle');
+			$data['marketshop_feature_box4_title'] = $this->config->get('marketshop_feature_box4_title');
+			$data['marketshop_feature_box4_subtitle'] = $this->config->get('marketshop_feature_box4_subtitle');
+			$data['marketshop_feature_box1_status'] = $this->config->get('marketshop_feature_box1_status');
+			$data['marketshop_feature_box2_status'] = $this->config->get('marketshop_feature_box2_status');
+			$data['marketshop_feature_box3_status'] = $this->config->get('marketshop_feature_box3_status');
+			$data['marketshop_feature_box4_status'] = $this->config->get('marketshop_feature_box4_status');
+		]]>
+      </add>
+    </operation>
+    <operation info="For Top Menu Brands">
+      <search>
+        <![CDATA[$this->load->model('catalog/product');]]>
+      </search>
+      <add position="after">
+        <![CDATA[$this->load->model('catalog/manufacturer');
+		$this->load->model('tool/image');
+		$results = $this->model_catalog_manufacturer->getManufacturers();
+		foreach ($results as $result) {	
+			if ($result['image']) {
+						$image = $result['image'];
+					} else {
+						$image = 'no_image.jpg';
+					}			
+			$data['manufacturers'][] = array(
+				'name' => $result['name'],
+				'image' => $this->model_tool_image->resize($image, 60, 60),
+				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
+			);
+		}]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/common/header.php">
+    <operation info="For Top Menu 3rd Categories">
+      <search>
+        <![CDATA[$children_data[] = array(]]>
+      </search>
+      <add position="before">
+        <![CDATA[$children_level2 = $this->model_catalog_category->getCategories($child['category_id']);
+					$children_data_level2 = array();
+					foreach ($children_level2 as $child_level2) {
+							$data_level2 = array(
+									'filter_category_id'  => $child_level2['category_id'],
+									'filter_sub_category' => true
+							);
+							$product_total_level2 = '';
+							//if ($this->config->get('config_product_count')) {
+							//		$product_total_level2 = ' (' . $this->model_catalog_product->getTotalProducts($data_level2) . ')';
+							//}
+
+							$children_data_level2[] = array(
+									'name'  =>  $child_level2['name'] . $product_total_level2,
+									'href'  => $this->url->link('product/category', 'path=' . $category['category_id']. '_' . $child['category_id'] . '_' . $child_level2['category_id']),
+									'id' => $category['category_id']. '_' . $child['category_id']. '_' . $child_level2['category_id']
+							);
+					}]]>
+      </add>
+    </operation>
+	<operation info="For Top Menu 3rd Categories">
+      <search>
+        <![CDATA['name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),]]>
+      </search>
+      <add position="replace">
+        <![CDATA['name'  => $child['name'],]]>
+      </add>
+    </operation>
+	<operation info="For Top Menu 3rd Categories">
+      <search>
+        <![CDATA['href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
+							'id' => $category['category_id']. '_' . $child['category_id'],
+							'children_level2' => $children_data_level2,]]>
+      </add>
+    </operation>
+	<operation>
+      <search>
+        <![CDATA[$data['text_checkout'] = $this->language->get('text_checkout');]]>
+      </search>
+      <add position="after">
+        <![CDATA[$data['text_information'] = $this->language->get('text_information');
+		$data['text_contact'] = $this->language->get('text_contact');
+		$data['text_newsletter'] = $this->language->get('text_newsletter');
+		]]>
+      </add>
+    </operation>
+	<operation>
+      <search>
+        <![CDATA[$data['checkout'] = $this->url->link('checkout/checkout', '', true);]]>
+      </search>
+      <add position="after">
+        <![CDATA[$this->load->model('catalog/information');
+		$data['informations'] = array();
+		foreach ($this->model_catalog_information->getInformations() as $result) {
+			if ($result['bottom']) {
+				$data['informations'][] = array(
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+				);
+			}
+    	}
+
+		$data['manufacturer'] = $this->url->link('product/manufacturer');
+		$data['newsletter'] = $this->url->link('account/newsletter', '', true);]]>
+      </add>
+    </operation>
+	<operation info="For Remove autocomplet js from affiliate page">
+      <search>
+        <![CDATA[$data['name'] = $this->config->get('config_name');]]>
+      </search>
+      <add position="after">
+        <![CDATA[$data['route'] = isset($this->request->get['route']) ? $this->request->get['route'] : 'common/home';]]>
+      </add>
+    </operation>
+	<operation info="For Display Feature box in Only HomePage Header">
+      <search>
+        <![CDATA[$data['name'] = $this->config->get('config_name');]]>
+      </search>
+      <add position="after">
+        <![CDATA[if (!isset($this->request->get['route']) || $this->request->get['route'] == 'common/home'){
+$data['ishome']=1;
+}]]>
+      </add>
+    </operation>
+</file>
+<file path="catalog/controller/common/footer.php">
+<operation info="For Display Feature box in Only HomePage footer">
+      <search>
+        <![CDATA[$this->load->model('catalog/information');]]>
+      </search>
+      <add position="after">
+        <![CDATA[if (!isset($this->request->get['route']) || $this->request->get['route'] == 'common/home'){
+$data['ishome']=1;
+}]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/model/catalog/category.php">
+<operation info="latest products category module">
+      <search>
+        <![CDATA[public function getCategories($parent_id = 0) {]]>
+      </search>
+      <add position="before">
+        <![CDATA[public function getCategoryPath($category_id) {       
+        $query = $this->db->query("SELECT GROUP_CONCAT(path_id) as path FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "' GROUP BY category_id ORDER BY level");       
+       
+        return $query->row['path'];       
+}]]>
+      </add>
+    </operation>
+	</file>
+	<file path="catalog/controller/product/category.php">
+    <operation info="For Refine Search Category page">
+      <search>
+        <![CDATA[$data['categories'][] = array(]]>
+      </search>
+      <add position="before">
+        <![CDATA[if(isset($result)){
+    $image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+ }]]>
+      </add>
+    </operation>
+	<operation>
+      <search>
+        <![CDATA['href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url), 'thumb' => $image]]>
+      </add>
+    </operation>
+  </file>
+  <!-- Product Saving in Percentage -->
+  <file path="catalog/controller/extension/module/featured.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'    	 => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+          'saving' => $product_info['price'] == 0 ? 100 : round((($product_info['price'] - $product_info['special'])/$product_info['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/bestseller.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+		  'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/latest.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/special.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/category.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/manufacturer.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'manufacturer_id=' . $result['manufacturer_id'] . '&product_id=' . $result['product_id'] . $url)]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'        => $this->url->link('product/product', 'manufacturer_id=' . $result['manufacturer_id'] . '&product_id=' . $result['product_id'] . $url),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/product.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/search.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/special.php">
+    <operation>
+      <search>
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)]]>
+      </search>
+      <add position="replace">
+        <![CDATA['href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url),
+          'saving' => $result['price'] == 0 ? 100 : round((($result['price'] - $result['special'])/$result['price'])*100, 0)]]>
+      </add>
+    </operation>
+  </file>
+  
+  <!-- OwlCarousel CSS & JS -->
+  <file path="catalog/controller/extension/module/{carousel,banner}*.php">
+    <operation>
+      <search>
+        <![CDATA[$this->document->addStyle('catalog/view/javascript/jquery/owl-carousel/owl.carousel.css');]]>
+      </search>
+      <add position="replace">
+        <![CDATA[$this->document->addStyle('catalog/view/theme/marketshop/stylesheet/owl.carousel.css');]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/{featured,latest,bestseller,special}*.php">
+    <operation>
+      <search>
+        <![CDATA[$data['heading_title'] = $this->language->get('heading_title');]]>
+      </search>
+      <add position="before">
+        <![CDATA[$this->document->addStyle('catalog/view/theme/marketshop/stylesheet/owl.carousel.css');
+		$this->document->addScript('catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js');
+		]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/extension/module/slideshow.php">
+    <operation>
+      <search>
+        <![CDATA[$this->document->addStyle('catalog/view/javascript/jquery/owl-carousel/owl.carousel.css');]]>
+      </search>
+      <add index="1" position="replace">
+        <![CDATA[$this->document->addStyle('catalog/view/theme/marketshop/stylesheet/owl.carousel.css');
+		$this->document->addScript('catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js');
+		$this->document->addStyle('catalog/view/theme/marketshop/stylesheet/slideshow.css');
+		$this->document->addScript('catalog/view/theme/marketshop/js/jquery.nivo.slider.pack.js');
+		]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/product/product.php">
+    <operation>
+      <search>
+        <![CDATA[foreach ($results as $result) {]]>
+      </search>
+      <add position="after" index="2">
+        <![CDATA[if ($result) {
+				$this->document->addStyle('catalog/view/theme/marketshop/stylesheet/owl.carousel.css');
+		$this->document->addScript('catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js');
+			}
+		]]>
+      </add>
+    </operation>
+  </file>
+<!--Check module position-->
+  <file path="catalog/controller/extension/module/{special,featured,bestseller,latest}*.php">
+    <operation>
+      <search>
+        <![CDATA[$this->load->model('tool/image');]]>
+      </search>
+      <add position="after">
+        <![CDATA[$data['module'] = $setting;]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/controller/common/{content_top,content_bottom,column_right,column_left}*.php">
+    <operation>
+      <search>
+        <![CDATA[$setting_info = $this->model_extension_module->getModule($part[1]);]]>
+      </search>
+      <add position="after">
+        <![CDATA[$setting_info['position'] = basename(__FILE__, '.php');]]>
+      </add>
+    </operation>
+  </file>
+  <!--For Stock Color in Product Page-->
+  <file path="catalog/controller/product/product.php">
+    <operation>
+      <search>
+        <![CDATA[$data['text_manufacturer'] = $this->language->get('text_manufacturer');]]>
+      </search>
+      <add position="before">
+        <![CDATA[$data['direction'] = $this->language->get('direction');]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/view/theme/marketshop/template/product/product.tpl">
+		<operation>
+			<search><![CDATA[<li><b><?php echo $text_stock; ?></b> <?php echo $stock; ?></li>]]></search>
+			<add position="replace"><![CDATA[<?php if ($product_info['quantity']<= 0) { ?>
+			<li><b><?php echo $text_stock; ?></b> <span style="color:#f00; font-weight:bold;"><?php echo $stock; ?></span></li>
+        <?php } else { ?>
+		<li><b><?php echo $text_stock; ?></b> <span style="color:#53af2e; font-weight:bold;"><?php echo $stock; ?></span></li>
+        <?php } ?>]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search><![CDATA[if ($product_info['quantity'] <= 0) {]]></search>
+			<add position="after"><![CDATA[$data['product'] = $product_info['quantity'];]]></add>
+		</operation>
+		<operation><search><![CDATA[$product_info = $this->model_catalog_product->getProduct($product_id);]]></search>
+		<add position="after"><![CDATA[$data['product_info'] = $product_info;]]></add>
+		</operation>
+	</file>
+	<!-- Save & Stay button for admin -->
+  <file path="admin/language/*/*.php">
+    <operation>
+      <search>
+        <![CDATA[<?php]]>
+      </search>
+      <add position="after">
+        <![CDATA[$_['button_save_stay']                 = 'SAVE &amp; STAY';
+          $_['result_success']                 = 'Successfully Edited!';]]>
+      </add>
+    </operation>
+  </file>
+  <!-- Rich Snippets -->
+  <file path="catalog/language/*/*.php">
+		<operation>
+			<search><![CDATA[<i class="fa fa-home"></i>]]></search>
+			<add position="replace"><![CDATA[<i class="fa fa-home"><dd>Home</dd></i>]]></add>
+		</operation>
+	</file>
+	<!-- Custom Module Position -->
+	<file path="catalog/controller/common/header.php">
+		<operation error="skip">
+			<search><![CDATA[$data['styles'] = $this->document->getStyles();]]></search>
+			<add position="before"><![CDATA[$data['hd_ctf'] = $this->load->controller('common/hd_ctf');]]></add>
+		</operation>
+	</file>
+    <file path="catalog/view/theme/*/template/common/header.tpl">
+		<operation error="skip">
+			<search><![CDATA[<div id="container">]]></search>
+			<add position="before"><![CDATA[<?php echo $hd_ctf; ?>]]></add>
+		</operation>
+	</file>
+  <file path="catalog/controller/common/home.php">
+		<operation error="skip">
+			<search><![CDATA[$data['column_left'] = $this->load->controller('common/column_left');]]></search>
+			<add position="after"><![CDATA[
+			$data['hd_ct23'] = $this->load->controller('common/hd_ct23');
+			$data['hd_ct13'] = $this->load->controller('common/hd_ct13');
+            ]]></add>
+		</operation>
+	</file>
+    <file path="catalog/view/theme/*/template/common/home.tpl">
+		<operation error="skip">
+			<search><![CDATA[
+           <?php echo $header; ?>
+            ]]></search>
+			<add position="after"><![CDATA[
+			<?php if(!empty($hd_ct23)||($hd_ct13)) { ?>
+			<div class="container">
+            <div class="row">
+            <div class="col-sm-8"><?php echo $hd_ct23; ?></div>
+			<div class="col-sm-4 pull-right flip"><?php echo $hd_ct13; ?></div>
+            </div>
+            </div>
+			<?php } ?>
+            ]]></add>
+		</operation>
+	</file>
+  <file path="catalog/controller/{affiliate,checkout,information,product}/*.php">
+		<operation error="skip">
+			<search><![CDATA[
+            $data['column_left'] = $this->load->controller('common/column_left');
+            ]]></search>
+			<add position="after"><![CDATA[
+			$data['hd_ct23'] = $this->load->controller('common/hd_ct23');
+			$data['hd_ct13'] = $this->load->controller('common/hd_ct13');
+            ]]></add>
+		</operation>
+	</file>
+    <file path="catalog/view/theme/*/template/{affiliate,checkout,information,product}/*.tpl">
+		<operation error="skip">
+			<search><![CDATA[
+           <?php echo $header; ?>
+            ]]></search>
+			<add position="after"><![CDATA[
+			<?php if(!empty($hd_ct23)||($hd_ct13)) { ?>
+			<div class="container">
+            <div class="row">
+            <div class="col-sm-8"><?php echo $hd_ct23; ?></div>
+			<div class="col-sm-4 pull-right flip"><?php echo $hd_ct13; ?></div>
+            </div>
+            </div>
+			<?php } ?>
+            ]]></add>
+		</operation>
+	</file>
+
+    <file path="admin/controller/design/layout.php">
+		<operation error="skip">
+			<search><![CDATA[
+            $data['heading_title'] = $this->language->get('heading_title');
+            ]]></search>
+			<add position="after"><![CDATA[
+            $data['text_hd_ctf'] = $this->language->get('text_hd_ctf');
+			$data['text_hd_ct23'] = $this->language->get('text_hd_ct23');
+			$data['text_hd_ct13'] = $this->language->get('text_hd_ct13');
+            ]]></add>
+		</operation>
+	</file>
+    <file path="admin/language/*/design/layout.php">
+		<operation error="skip">
+			<search><![CDATA[
+            <?php
+            ]]></search>
+			<add position="after"><![CDATA[
+            $_['text_hd_ctf'] = 'Content Top Full';
+			$_['text_hd_ct23'] = 'Content Top 2/3';
+			$_['text_hd_ct13'] = 'Content Top 1/3';
+            ]]></add>
+		</operation>
+	</file>
+    <file path="admin/view/template/design/layout_form.tpl">
+		<operation error="skip">
+			<search><![CDATA[
+            <div class="row">
+            ]]></search>
+			<add position="before"><![CDATA[
+            <div class="row">
+			<div class="col-sm-12">
+                <table id="module-hd-ctf" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-center"><?php echo $text_hd_ctf; ?></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($layout_modules as $layout_module) { ?>
+                    <?php if ($layout_module['position'] == 'hd_ctf') { ?>
+                    <tr id="module-row<?php echo $module_row; ?>">
+                      <td class="text-left"><div class="input-group">
+                          <select name="layout_module[<?php echo $module_row; ?>][code]" class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <?php if ($extension['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $extension['code']; ?>" selected="selected"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } ?>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <?php if ($module['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $module['code']; ?>" selected="selected"><?php echo $module['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][position]" value="<?php echo $layout_module['position']; ?>" />
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][sort_order]" value="<?php echo $layout_module['sort_order']; ?>" />
+                          <div class="input-group-btn"><a href="<?php echo $layout_module['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                            <button type="button" onclick="$('#module-row<?php echo $module_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-sm"><i class="fa fa fa-minus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                    <?php $module_row++; ?>
+                    <?php } ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-left"><div class="input-group">
+                          <select class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <div class="input-group-btn">
+                            <button type="button" onclick="addModule('hd-ctf');" data-toggle="tooltip" title="<?php echo $button_module_add; ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+			  </div>
+			  <div class="row">
+			  <div class="col-lg-8 col-md-9 col-sm-12">
+                <table id="module-hd-ct23" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-center"><?php echo $text_hd_ct23; ?></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($layout_modules as $layout_module) { ?>
+                    <?php if ($layout_module['position'] == 'hd_ct23') { ?>
+                    <tr id="module-row<?php echo $module_row; ?>">
+                      <td class="text-left"><div class="input-group">
+                          <select name="layout_module[<?php echo $module_row; ?>][code]" class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <?php if ($extension['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $extension['code']; ?>" selected="selected"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } ?>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <?php if ($module['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $module['code']; ?>" selected="selected"><?php echo $module['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][position]" value="<?php echo $layout_module['position']; ?>" />
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][sort_order]" value="<?php echo $layout_module['sort_order']; ?>" />
+                          <div class="input-group-btn"><a href="<?php echo $layout_module['edit']; ?>" type="button" data-toggle="tooltip" title="<?php echo $button_edit; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                            <button type="button" onclick="$('#module-row<?php echo $module_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-sm"><i class="fa fa fa-minus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                    <?php $module_row++; ?>
+                    <?php } ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-left"><div class="input-group">
+                          <select class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <div class="input-group-btn">
+                            <button type="button" onclick="addModule('hd-ct23');" data-toggle="tooltip" title="<?php echo $button_module_add; ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="col-lg-4 col-md-3 col-sm-12">
+                <table id="module-hd-ct13" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-center"><?php echo $text_hd_ct13; ?></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($layout_modules as $layout_module) { ?>
+                    <?php if ($layout_module['position'] == 'hd_ct13') { ?>
+                    <tr id="module-row<?php echo $module_row; ?>">
+                      <td class="text-left"><div class="input-group">
+                          <select name="layout_module[<?php echo $module_row; ?>][code]" class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <?php if ($extension['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $extension['code']; ?>" selected="selected"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } ?>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <?php if ($module['code'] == $layout_module['code']) { ?>
+                            <option value="<?php echo $module['code']; ?>" selected="selected"><?php echo $module['name']; ?></option>
+                            <?php } else { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][position]" value="<?php echo $layout_module['position']; ?>" />
+                          <input type="hidden" name="layout_module[<?php echo $module_row; ?>][sort_order]" value="<?php echo $layout_module['sort_order']; ?>" />
+                          <div class="input-group-btn"><a href="<?php echo $layout_module['edit']; ?>" type="button" data-toggle="tooltip" title="<?php echo $button_edit; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                            <button type="button" onclick="$('#module-row<?php echo $module_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger btn-sm"><i class="fa fa fa-minus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                    <?php $module_row++; ?>
+                    <?php } ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-left"><div class="input-group">
+                          <select class="form-control input-sm">
+                            <?php foreach ($extensions as $extension) { ?>
+                            <optgroup label="<?php echo $extension['name']; ?>">
+                            <?php if (!$extension['module']) { ?>
+                            <option value="<?php echo $extension['code']; ?>"><?php echo $extension['name']; ?></option>
+                            <?php } else { ?>
+                            <?php foreach ($extension['module'] as $module) { ?>
+                            <option value="<?php echo $module['code']; ?>"><?php echo $module['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                            </optgroup>
+                            <?php } ?>
+                          </select>
+                          <div class="input-group-btn">
+                            <button type="button" onclick="addModule('hd-ct13');" data-toggle="tooltip" title="<?php echo $button_module_add; ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i></button>
+                          </div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+			  </div>
+            ]]></add>
+		</operation>
+        <operation error="skip">
+			<search><![CDATA[
+            $('#module-column-left, #module-column-right, #module-content-top, #module-content-bottom').delegate('select[name*=\'code\']', 'change', function() {
+            ]]></search>
+			<add position="replace"><![CDATA[
+            $('#module-column-left, #module-column-right, #module-content-top, #module-content-bottom, #module-hd-ctf, #module-hd-ct23, #module-hd-ct13').delegate('select[name*=\'code\']', 'change', function() {
+            ]]></add>
+		</operation>
+		<operation error="skip">
+			<search><![CDATA[
+            $('#module-column-left, #module-column-right, #module-content-top, #module-content-bottom').trigger('change');
+            ]]></search>
+			<add position="replace"><![CDATA[
+            $('#module-column-left, #module-column-right, #module-content-top, #module-content-bottom, #module-hd-ctf, #module-hd-ct23, #module-hd-ct13').trigger('change');
+            ]]></add>
+		</operation>
+		<operation error="skip">
+			<search><![CDATA[
+            <?php $module_row = 0; ?>
+            ]]></search>
+			<add position="after"><![CDATA[
+			<div class="table-outer">
+            ]]></add>
+		</operation>
+		<operation error="skip">
+			<search index="1"><![CDATA[
+            </fieldset>
+            ]]></search>
+			<add position="before"><![CDATA[
+			</div>
+            <style type="text/css">
+		.table-outer{background:#f2f2f2; padding:15px 15px 0px 15px;}
+        .table-outer .table{background-color:#fff; box-shadow:0 0 5px rgba(0, 0, 0, 0.15);}
+        </style>
+            ]]></add>
+		</operation>
+	</file>
+</modification>

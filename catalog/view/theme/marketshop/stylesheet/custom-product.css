@@ -1,0 +1,35 @@
+/*
+** Red  : #ef2809;
+** Blue : #013567;
+*/
+
+/* Color box option */
+.color-box > div > div > label > input[type="radio"] {
+	visibility: hidden !important;
+	height: 0;
+	width: 0;
+	opacity: 0;
+}
+.color-box > div > div > label {
+	float: left;
+	padding: 0;
+}
+.color-box > div > div > label {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.color-box > div > div > label > span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: black;
+    border: 3px solid #013567;
+}
+.color-box > div > div > label:hover > span {
+	transition: 0.5s;
+    border: 3px solid #ef2809;
+}
+.color-box > div > div > label > input[type="radio"]:checked + span {
+    border: 3px solid #ef2809;
+}

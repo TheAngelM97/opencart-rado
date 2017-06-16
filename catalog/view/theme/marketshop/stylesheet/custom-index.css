@@ -1,0 +1,53 @@
+
+/* --- Content --- */
+
+/* Always show aside menu on index */
+/*#column-left {
+	visibility: hidden;
+}
+#menu > div.collapse.navbar-collapse.navbar-ex1-collapse > ul > li.categories.dropdown.sub > div {
+	display: block !important;
+}
+.dropdown-menu {
+	width: 292px; /* Flexible */
+		left: 0;
+		top: 70px;
+	border-top: none !important;
+	box-shadow: none !important;
+}*/
+
+/* Products */
+#content > div:nth-child(4) > div > div{
+	border: 3px solid white;
+}
+#content > div:nth-child(4) > div > div:hover {
+	border: 3px solid #ef2809;
+	box-sizing: border-box;
+	border-radius: 5px;
+	transition: 0.3s;
+}
+#content > div:nth-child(4) > div > div > div.button-group > button {
+	background: #013567;
+	width: 75%;
+}
+.saving {
+	background: #ef2809;
+}
+.product-thumb .price{
+	font-size: 22px;
+}
+
+#content > div:nth-child(4) > div > div {
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+}
+.caption {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-thumb .rating {
+    padding-bottom: 0;
+}

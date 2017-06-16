@@ -1,0 +1,865 @@
+[18-Apr-2017 20:57:23 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'DB_DATABASE' (T_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 57
+[18-Apr-2017 20:59:37 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'DB_DATABASE' (T_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 58
+[18-Apr-2017 20:59:48 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'DB_DATABASE' (T_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 58
+[18-Apr-2017 21:06:07 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'DB_DATABASE' (T_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 61
+[18-Apr-2017 21:06:37 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '../../../config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 9
+[18-Apr-2017 21:08:32 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '../../../config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 9
+[18-Apr-2017 21:08:41 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '../../config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 9
+[18-Apr-2017 21:08:51 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '../../../../config.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 9
+[19-Apr-2017 21:01:45 Europe/Sofia] PHP Parse error:  syntax error, unexpected '{' in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/catalog/product_form.tpl on line 187
+[01-May-2017 20:54:09 Europe/Sofia] PHP Parse error:  syntax error, unexpected '{' in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/catalog/product_form.tpl on line 100
+[01-May-2017 21:23:25 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method PDO::execute() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php:80
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerCatalogProduct->add()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9i/...')
+#7 /home/dlydyv9i/public_html/ecom in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php on line 80
+[03-May-2017 14:12:42 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Table 'dlydyv9i_rado.oc_banner_image_description' doesn't exist<br />Error No: 1146<br />DELETE FROM oc_banner_image_description WHERE language_id = '1' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('DELETE FROM oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/localisation/language.php(222): DB->query('DELETE FROM oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelLocalisationLanguage->deleteLanguage('1')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/localisation/language.php(88): Proxy->__call('deleteLanguage', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerLocalisationL in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[10-May-2017 17:12:05 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetchRow() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php:1363
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php(86): ControllerCatalogProduct->getForm()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerCatalogProduct->add()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#7 / in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php on line 1363
+[10-May-2017 17:13:06 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetchRow() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php:1363
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php(86): ControllerCatalogProduct->getForm()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerCatalogProduct->add()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#7 / in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php on line 1363
+[10-May-2017 17:22:41 Europe/Sofia] PHP Parse error:  syntax error, unexpected '{' in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/catalog/product_form.tpl on line 116
+[10-May-2017 17:22:57 Europe/Sofia] PHP Parse error:  syntax error, unexpected '{' in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/catalog/product_form.tpl on line 116
+[14-May-2017 15:52:04 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')', expecting ']' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/category_weight.php on line 67
+[16-May-2017 16:59:04 Europe/Sofia] PHP Parse error:  syntax error, unexpected '$_' (T_VARIABLE) in /home/dlydyv9i/public_html/ecommerce/rado/admin/language/bg/catalog/product.php on line 38
+[18-May-2017 00:30:18 Europe/Sofia] PHP Parse error:  syntax error, unexpected '$country_data' (T_VARIABLE) in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/localisation/country.php on line 75
+[21-May-2017 18:01:27 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 13
+[21-May-2017 18:05:04 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 10
+[21-May-2017 18:05:55 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 10
+[22-May-2017 20:21:39 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:22:18 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:23:12 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:23:21 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:23:28 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:26:43 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:26:58 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function getAllVehicles() on null in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php:22
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9i/...')
+#7 in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 22
+[22-May-2017 20:29:55 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:33:38 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:33:40 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:33:40 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:08 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:09 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:11 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:11 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:11 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:34:17 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:36:26 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:37:25 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:36 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:37 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:37 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:37 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:37 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:38 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:39 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:40:54 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicles! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->di in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:42:46 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 20:51:11 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Could not load model extension/module/vehicle! in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(6): Loader->model('extension/modul...')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dis in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php on line 59
+[22-May-2017 23:19:53 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Column count doesn't match value count at row 1<br />Error No: 1136<br />INSERT INTO vehicle_types VALUES ("personal"), ("service") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO veh...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(26): DB->query('INSERT INTO veh...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->createTables('personal', 'service')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(57): Proxy->__call('createTables', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionMod in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[22-May-2017 23:21:16 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Table 'dlydyv9i_rado.vehicles' doesn't exist<br />Error No: 1146<br />SELECT * FROM vehicles in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM v...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(39): DB->query('SELECT * FROM v...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->getAllVehicles()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php(28): Proxy->__call('getAllVehicles', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleVehicles->index()
+#6 /home/dlydyv9i/public_html/ecomm in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[23-May-2017 16:40:58 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", ' at line 1<br />Error No: 1064<br />INSERT INTO vehicles (name, reg-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", "100000", NOW()) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO veh...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(65): DB->query('INSERT INTO veh...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->addVehicle(Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[23-May-2017 16:41:50 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", ' at line 1<br />Error No: 1064<br />INSERT INTO vehicles (name, reg-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", "100000", NOW()) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO veh...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(65): DB->query('INSERT INTO veh...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->addVehicle(Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[23-May-2017 16:41:53 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", ' at line 1<br />Error No: 1064<br />INSERT INTO vehicles (name, reg-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", "2", "100000", NOW()) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO veh...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(65): DB->query('INSERT INTO veh...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->addVehicle(Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[23-May-2017 16:42:15 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", 2, "1' at line 1<br />Error No: 1064<br />INSERT INTO vehicles (name, reg-number, type, kilometers, created_at) VALUES ("Тест", "СА0000МК", 2, "100000", NOW()) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO veh...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(65): DB->query('INSERT INTO veh...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->addVehicle(Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/e in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[25-May-2017 18:46:24 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 85
+[25-May-2017 19:04:35 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(name="Тест2", reg_number="СА0000МК", type=0, kilometers="100000", creat' at line 1<br />Error No: 1064<br />UPDATE vehicles SET (name="Тест2", reg_number="СА0000МК", type=0, kilometers="100000", created_at=NOW()) WHERE id=1 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE vehicles...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/vehicle.php(90): DB->query('UPDATE vehicles...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleVehicle->editVehicle('1', Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_ht in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[25-May-2017 19:24:07 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vehicles.php on line 139
+[31-May-2017 12:21:38 Europe/Sofia] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 45
+[31-May-2017 12:27:00 Europe/Sofia] PHP Parse error:  syntax error, unexpected '', '' (T_CONSTANT_ENCAPSED_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 57
+[31-May-2017 12:59:22 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:06:19 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:06:44 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:07:25 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:09:53 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:60
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 60
+[31-May-2017 13:11:47 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:13:40 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:14:15 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[31-May-2017 13:14:34 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(68): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[01-Jun-2017 11:49:24 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function getAllProducts() on null in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:59
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(75): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framewo in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 59
+[01-Jun-2017 12:16:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'PCT01' in 'where clause'<br />Error No: 1054<br />SELECT * FROM oc_crawled_products WHERE product_code = PCT01 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(26): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getProductByCode('PCT01')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(147): Proxy->__call('getProductByCod...', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): Controll in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[01-Jun-2017 12:17:23 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on array in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:153
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9 in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 153
+[01-Jun-2017 12:36:21 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php on line 36
+[01-Jun-2017 12:36:41 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' "", "")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, store) VALUES ("", "", , "", "") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(36): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\x9C\xD0\xB0\xD1\x81\xD1\x82\xD0\xB8\xD0\xBB\xD0\xBD\xD0...', 'PC331', '15.00 ', '\xD0\x94\xD0\xB0', 'dims92')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closu in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[01-Jun-2017 16:24:00 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method DOMElement::filter() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:189
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9 in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 189
+[01-Jun-2017 16:51:37 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot use object of type Symfony\Component\DomCrawler\Crawler as array in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:188
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): r in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 188
+[01-Jun-2017 16:58:55 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 187
+[01-Jun-2017 17:05:27 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method Symfony\Component\DomCrawler\Crawler::nodeValue() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:188
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(189): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dly in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 188
+[01-Jun-2017 17:06:32 Europe/Sofia] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 190
+[01-Jun-2017 17:21:22 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 190
+[01-Jun-2017 19:14:14 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(194): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(197): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[01-Jun-2017 19:27:17 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(201): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[01-Jun-2017 19:27:44 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(201): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(211): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[01-Jun-2017 19:29:19 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 202
+[01-Jun-2017 19:52:57 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 220
+[02-Jun-2017 17:08:11 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(169): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[02-Jun-2017 17:11:49 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '., "Да", "", "sky-r")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Mighty black химикал", "FL008", 19.00., "Да", "", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('Mighty black \xD1\x85...', 'FL008', '19.00.', '\xD0\x94\xD0\xB0', 'sky-r', '')
+#3 /home/dlydyv9i/public_html/ecomme in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[02-Jun-2017 17:12:40 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '., "Да", "", "sky-r")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Mighty black химикал", "FL008", 19.00., "Да", "", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('Mighty black \xD1\x85...', 'FL008', '19.00.', '\xD0\x94\xD0\xB0', 'sky-r', '')
+#3 /home/dlydyv9i/public_html/ecomme in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[02-Jun-2017 17:13:54 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '., "Да", "", "sky-r")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Mighty black химикал", "FL008", 19.00., "Да", "", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('Mighty black \xD1\x85...', 'FL008', '19.00.', '\xD0\x94\xD0\xB0', 'sky-r', '')
+#3 /home/dlydyv9i/public_html/ecomme in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 11:04:51 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Целувката"", "PW145", 3.90, "Да", "", "dims92")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Салфетки " Целувката"", "PW145", 3.90, "Да", "", "dims92") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0...', 'PW1 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 11:08:23 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method ModelExtensionModuleCrawledProduct::escape() in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php:42
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0...', 'PW145', '3.90', '\xD0\x94\xD0\xB0', 'dims92', '')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(182): Proxy->__call('upload', Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5 /home/dlydyv9i/public_html/ecommerce/r in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php on line 42
+[05-Jun-2017 11:11:26 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'наличност: Не, "Да", "", "dims92")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Салфетки лавандула", "PW109", В наличност: Не, "Да", "", "dims92") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0. in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 11:18:21 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'наличност: Не, "Не", "", "dims92")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Салфетки лавандула", "PW109", В наличност: Не, "Не", "", "dims92") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0. in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 11:18:45 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 137
+[05-Jun-2017 11:24:29 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'наличност: Не, "Да", "", "dims92")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Салфетки лавандула", "PW109", В наличност: Не, "Да", "", "dims92") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0. in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 11:25:19 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'наличност: Не, "Не", "", "dims92")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Салфетки лавандула", "PW109", В наличност: Не, "Не", "", "dims92") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA1\xD0\xB0\xD0\xBB\xD1\x84\xD0\xB5\xD1\x82\xD0\xBA\xD0. in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 12:21:42 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 179
+[05-Jun-2017 12:32:22 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function count() on string in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:187
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(195): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rad in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 187
+[05-Jun-2017 12:40:47 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column '00 ' in 'field list'<br />Error No: 1054<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("AMT Тиган грил индукционен 28х28", "AMT I-E285G", 179,00 , "Да", "", "vip-giftshop") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('AMT \xD0\xA2\xD0\xB8\xD0\xB3\xD0\xB0\xD0\xBD ...', 'AMT I-E285G', '179,00\xC2\xA0', '\xD0\x94\xD0\xB0', 'vip-giftshop', NULL)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 12:41:09 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column '00 ' in 'field list'<br />Error No: 1054<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("AMT Тиган грил индукционен 28х28", "AMT I-E285G", 179,00 , "Да", "", "vip-giftshop") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('AMT \xD0\xA2\xD0\xB8\xD0\xB3\xD0\xB0\xD0\xBD ...', 'AMT I-E285G', '179,00\xC2\xA0', '\xD0\x94\xD0\xB0', 'vip-giftshop', '')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader-> in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 12:45:02 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' , "Да", "", "vip-giftshop")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("AMT Тиган грил индукционен 28х28", "AMT I-E285G", 179.00 , "Да", "", "vip-giftshop") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('AMT \xD0\xA2\xD0\xB8\xD0\xB3\xD0\xB0\xD0\xBD ...', 'AMT I-E285G',  in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 12:49:35 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' "Да", "", "vip-giftshop")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("AMT Тиган грил индукционен 28х28", "AMT I-E285G", , "Да", "", "vip-giftshop") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('AMT \xD0\xA2\xD0\xB8\xD0\xB3\xD0\xB0\xD0\xBD ...', 'AMT I-E285G', Array, '\xD in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 12:49:52 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' лв., "Да", "", "vip-giftshop")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("AMT Тиган грил индукционен 28х28", "AMT I-E285G", 179.00 лв., "Да", "", "vip-giftshop") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('AMT \xD0\xA2\xD0\xB8\xD0\xB3\xD0\xB0\xD0\xBD ...', 'AMT  in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 13:00:00 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined function flotval() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:183
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(208): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/syste in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 183
+[05-Jun-2017 15:49:32 Europe/Sofia] PHP Fatal error:  Uncaught Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected selector, but <number ".1" at 9> found. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(283): Symfony\Component\CssSelector\Exception\SyntaxErrorException::unexpectedToken('selector', Object(Symfony\Component\CssSelector\Parser\Token))
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(142): Symfony\Component\CssSelector\Parser\Parser->parseSimpleSelector(Object(Symfony\Component\CssSelector\Parser\TokenStream))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(118): Symfony\Component\CssSelector\Parser\Parser->parserSelectorNode(Object(Symfony\Component in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Exception/SyntaxErrorException.php on line 34
+[05-Jun-2017 16:13:09 Europe/Sofia] PHP Fatal error:  Uncaught Symfony\Component\CssSelector\Exception\SyntaxErrorException: Expected operator, but <delimiter ":" at 12> found. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Exception/SyntaxErrorException.php:34
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(376): Symfony\Component\CssSelector\Exception\SyntaxErrorException::unexpectedToken('operator', Object(Symfony\Component\CssSelector\Parser\Token))
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(209): Symfony\Component\CssSelector\Parser\Parser->parseAttributeNode(Object(Symfony\Component\CssSelector\Node\ElementNode), Object(Symfony\Component\CssSelector\Parser\TokenStream))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Parser/Parser.php(142): Symfony\Component\CssSelector\ in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/Exception/SyntaxErrorException.php on line 34
+[05-Jun-2017 16:13:32 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'лв., "Да", "", "art93")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Мъжки портфейл", "Артикулен &numero; 410111", 35.00лв., "Да", "", "art93") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\x9C\xD1\x8A\xD0\xB6\xD0\xBA\xD0\xB8 \xD0\xBF\xD0\xBE...', '\xD0\x90\xD1\x in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jun-2017 16:14:25 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' "Да", "", "art93")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Мъжки портфейл", "Артикулен &numero; 410111", , "Да", "", "art93") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\x9C\xD1\x8A\xD0\xB6\xD0\xBA\xD0\xB8 \xD0\xBF\xD0\xBE...', '\xD0\x90\xD1\x80\xD1\x82\xD0\x in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[06-Jun-2017 10:27:02 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method Symfony\Component\DomCrawler\Crawler::firsrt() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:256
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(290): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dlydyv in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 256
+[06-Jun-2017 10:31:22 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(268): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(294): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 10:32:29 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(268): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(294): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 10:51:06 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '998.00, "Да", "", "wenger")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("Швейцарски джобен нож Wenger Giant Knife", "1.092.002.000", 3 998.00, "Да", "", "wenger") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(43): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\xA8\xD0\xB2\xD0\xB5\xD0\xB9\xD1\x86\xD0\xB0\xD1\x80\xD1...',  in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[06-Jun-2017 12:35:07 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(316): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(317): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 12:36:30 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(316): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(317): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 12:36:34 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(316): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(317): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 12:37:25 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(316): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(317): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5  in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 12:39:19 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(317): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 27)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(319): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5 in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[06-Jun-2017 12:46:08 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function each() on string in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:320
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(325): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rado in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 320
+[08-Jun-2017 14:00:12 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(252): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[08-Jun-2017 14:00:43 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(252): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[08-Jun-2017 14:01:33 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "resource". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(Resource id #42)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(252): Symfony\Component\DomCrawler\Crawler->__construct(Resource id #42)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[08-Jun-2017 14:11:28 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'store' in 'where clause'<br />Error No: 1054<br />SELECT * FROM oc_product WHERE admin_code = "L23.1020.03" AND store = "wenger" in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(36): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getProductByAdminCode('L23.1020.03', 'wenger')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(375): Proxy->__call('getProductByAdm...', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[08-Jun-2017 14:18:36 Europe/Sofia] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 393
+[08-Jun-2017 14:30:01 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'Да' in 'field list'<br />Error No: 1054<br />INSERT INTO crawled_updates (product_id, new_price, new_quantity) VALUES (2327, 490.00, Да) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(53): DB->query('INSERT INTO cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->uploadInUpdates('2327', '490.00', '\xD0\x94\xD0\xB0')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(393): Proxy->__call('uploadInUpdates', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/stor in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[08-Jun-2017 14:43:55 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'price' in 'field list'<br />Error No: 1054<br />UPDATE crawled_updates SET price = 490.00, quantity = "Да" in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE crawled_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(69): DB->query('UPDATE crawled_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->updateUpdates('2327', '490.00', '\xD0\x94\xD0\xB0')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(403): Proxy->__call('updateUpdates', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/actio in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[08-Jun-2017 17:40:30 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'id' in 'order clause'<br />Error No: 1054<br />SELECT * FROM crawled_updates INNER JOIN oc_product ON crawled_updates.update_product_id = oc_product.product_id ORDER BY id DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM c...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(28): DB->query('SELECT * FROM c...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getUpdateProducts(0, 30)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(61): Proxy->__call('getUpdateProduc...', Array)
+#5 /home/dlydyv9i/public_html/ecomm in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[08-Jun-2017 18:19:43 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'id' in 'where clause'<br />Error No: 1054<br />DELETE FROM crawled_updates WHERE id = 3 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('DELETE FROM cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(136): DB->query('DELETE FROM cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->deleteUpdate('3')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php(140): Proxy->__call('deleteUpdate', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerCatalogProduct->edit()
+#6 /home/dlydyv9i/public_htm in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[08-Jun-2017 18:26:01 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to undefined method Url::lunk() in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:67
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(72): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): F in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 67
+[14-Jun-2017 14:27:33 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/controller/catalog/product.php:1376
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/controller/catalog/product.php(87): ControllerCatalogProduct->getForm()
+#1 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/storage/modification/system/engine/action.php(51): ControllerCatalogProduct->add()
+#2 /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/framework.php(103): Front->dispatch(Object in /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/controller/catalog/product.php on line 1376
+[15-Jun-2017 15:25:02 Europe/Sofia] PHP Parse error:  syntax error, unexpected end of file in /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/view/template/user/user_group_form.tpl on line 86
