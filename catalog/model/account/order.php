@@ -128,7 +128,7 @@ class ModelAccountOrder extends Model {
 	}
 
 	public function getOrderOptions($order_id, $order_product_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option INNER JOIN ". DB_PREFIX ."product_option_value ON ". DB_PREFIX ."order_option.product_option_value_id = ". DB_PREFIX ."product_option_value.product_option_value_id WHERE ". DB_PREFIX ."order_option.order_id = '" . (int)$order_id . "' AND ". DB_PREFIX ."order_option.order_product_id = '" . (int)$order_product_id . "'");
 
 		return $query->rows;
 	}

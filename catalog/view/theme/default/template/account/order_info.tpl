@@ -87,7 +87,7 @@
                 <br />
                 &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
                 <?php } ?></td>
-              <td class="text-left"><?php echo $product['model']; ?></td>
+              <td class="text-left"><?php echo $product['model'] . '-' . $option['color-code']; ?></td>
               <td class="text-right"><?php echo $product['quantity']; ?></td>
               <td class="text-right"><?php echo $product['price']; ?></td>
               <td class="text-right"><?php echo $product['total']; ?></td>
