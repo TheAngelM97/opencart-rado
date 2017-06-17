@@ -33,6 +33,21 @@
       </ul>
     </div>
   </div>
+  <?php 
+    if (isset($products)) {
+      if (is_array($products)) { ?>
+          <div class="row">
+            <div class="col-md-12">
+              <?php 
+                foreach ($products as $product) { ?>
+                  <h3><?= $product['product_name'] ?></h3>
+          <?php  }
+              ?>
+            </div>
+          </div>
+<?php  }
+    }
+  ?>
   <div class="container-fluid">
     <?php if ($error_warning) { ?>
     <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>

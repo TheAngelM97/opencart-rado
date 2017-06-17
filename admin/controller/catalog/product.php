@@ -1387,6 +1387,18 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		//Multiple products in URL
+		if (isset($this->request->get['upload-many']) && isset($this->request->get['product-ids'])) {
+			if ($this->request->get['upload-many'] == 1) {
+				$data['products'] = array();
+				$productIds = explode('-', $this->request->get['product-ids']);
+
+				foreach ($productIds as $productId) {
+					$data['products'][] = $this->model_extension_module_crawled_product->getProduct(intval($productId));
+				}
+			}
+		}
+
 		$this->response->setOutput($this->load->view('catalog/product_form', $data));
 	}
 
