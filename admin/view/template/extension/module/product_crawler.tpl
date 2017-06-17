@@ -106,6 +106,7 @@
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
+							<th>Избери</th>
 							<th>Магазин</th>
 							<th>Име</th>
 							<th>Цена</th>
@@ -119,6 +120,9 @@
 							if (isset($allProducts)) {
 								foreach ($allProducts as $row) { ?>
 									<tr>
+										<td>
+											<input type="checkbox" data-product-id="<?= $row['id'] ?>" class="product-id">
+										</td>
 										<td><?= $row['store'] ?></td>
 										<td><?= $row['product_name'] ?></td>
 										<td><?= $row['product_price'] ?></td>
@@ -137,16 +141,73 @@
 				</table>
 			</div>
 
-			<ul class="pagination">
-				<?php 
-					for ($i=1; $i <= $pages; $i++) { ?>
-						<li><a href="<?= $crawler_link . '&page=' . $i ?>"><?= $i ?></a></li>
-			<?php	}
-				?>
-			</ul>
+			<div class="row">
+				<div class="col-md-8">
+					<ul class="pagination">
+						<?php 
+							for ($i=1; $i <= $pages; $i++) { ?>
+								<li><a href="<?= $crawler_link . '&page=' . $i ?>"><?= $i ?></a></li>
+					<?php	}
+						?>
+					</ul>
+				</div>
+				<div class="col-md-4 upload-many" style="display: none;">
+					<a href="<?= $upload_form ?>&upload-many=1" class="upload-many-link">Качи всички избрани</a>
+				</div>
+			</div>
 
 		</div>
 		<div class="clearfix"></div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		let firstLink = $('.upload-many-link').attr('href');
+		let productIds = [];
+
+		$('.product-id:checkbox:checked').each(function(index, el) {
+			$(this).parents('tr').addClass('active');
+			
+			productIds.push($(this).data('product-id'));
+		});
+
+		$('.product-id').change(function() {
+			let productId = $(this).data('product-id');
+			if (this.checked) {
+				$(this).parents('tr').addClass('active');
+
+				productIds.push(productId);
+			}
+			else {
+				$(this).parents('tr').removeClass('active');
+
+				let index = productIds.indexOf(productId);
+
+				if (index > -1) {
+					productIds.splice(index, 1);
+				}
+
+				if (productIds.length == 0) {
+					$('.upload-many').css('display', 'none');				
+				}
+			}
+
+			if (productIds.length > 0) {
+				$('.upload-many').css('display', 'block');	
+			}
+
+			let newLink = firstLink + '&product-ids=' + productIds.join('-');
+
+			$('.upload-many-link').attr('href', newLink);
+		});
+
+		if (productIds.length > 0) {
+			$('.upload-many').css('display', 'block');	
+		}
+
+		let newLink = firstLink + '&product-ids=' + productIds.join('-');
+
+		$('.upload-many-link').attr('href', newLink);
+	});
+</script>
 <?php echo $footer; ?>

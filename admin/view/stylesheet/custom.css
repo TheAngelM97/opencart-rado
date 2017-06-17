@@ -24,5 +24,18 @@ a.delete-all-link {
 	transition: 0.3s;
 }
 a.delete-all-link:hover {
-	padding: 15px;
+	padding: 13px;
+}
+.upload-many {
+	text-align: right;
+}
+.upload-many-link {
+	padding: 10px;
+	background: purple;
+	color: white;
+	transition: 0.2s;
+}
+.upload-many-link:hover {
+	color: white;
+	padding: 13px;
 }
