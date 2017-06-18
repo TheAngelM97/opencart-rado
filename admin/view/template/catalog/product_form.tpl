@@ -36,13 +36,15 @@
   <?php 
     if (isset($products)) {
       if (is_array($products)) { ?>
-          <div class="row">
+          <div class="row" style="margin: 0;">
             <div class="col-md-12">
+              <ul class="products">
               <?php 
                 foreach ($products as $product) { ?>
-                  <h3><?= $product['product_name'] ?></h3>
+                  <li><?= $product['product_name'] ?></li>
           <?php  }
               ?>
+              </ul>
             </div>
           </div>
 <?php  }
@@ -651,7 +653,8 @@
                               <td class="text-right"><?php echo $entry_price; ?></td>
                               <td class="text-right"><?php echo $entry_option_points; ?></td>
                               <td class="text-right"><?php echo $entry_weight; ?></td>
-                              <td></td>
+                              <td>Test</td>
+                              <td><?php var_dump($product_option); ?></td>
                             </tr>
                           </thead>
                           <tbody>
@@ -718,6 +721,15 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight]" value="<?php echo $product_option_value['weight']; ?>" placeholder="<?php echo $entry_weight; ?>" class="form-control" /></td>
+                                <td>
+                                  <select>
+                                    <?php 
+                                      foreach ($products as $product) { ?>
+                                          <option value="<?= $product['product_code'] ?>"><?= $product['product_name'] ?></option>
+                                <?php  }
+                                    ?>
+                                  </select>
+                                </td>
                               <td class="text-left"><button type="button" onclick="$(this).tooltip('destroy');$('#option-value-row<?php echo $option_value_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                             </tr>
                             <?php $option_value_row++; ?>
@@ -1302,6 +1314,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_option_points; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_weight; ?></td>';
+      html += '        <td>Принадлежи към</td>';
 			html += '        <td></td>';
 			html += '      </tr>';
 			html += '  	 </thead>';
@@ -1309,7 +1322,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '    </tbody>';
 			html += '    <tfoot>';
 			html += '      <tr>';
-			html += '        <td colspan="6"></td>';
+			html += '        <td colspan="7"></td>';
 			html += '        <td class="text-left"><button type="button" onclick="addOptionValue(' + option_row + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
 			html += '      </tr>';
 			html += '    </tfoot>';
@@ -1382,6 +1395,21 @@ function addOptionValue(option_row) {
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight]" value="" placeholder="<?php echo $entry_weight; ?>" class="form-control" /></td>';
+  <?php 
+    if (isset($products)) {
+      if (is_array($products)) {
+        $html = '<td><select>';
+        foreach ($products as $product) {
+          $html .= '<option value="'. $product['product_code'] .'">'. $product['product_name'] .'</option>';
+        }
+        $html .= '</select></td>';
+        ?>
+        html += <?= "'" . $html . "'"?>;
+        <?php
+      }
+    }
+  ?>
+  //html += '  <td>test</td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(this).tooltip(\'destroy\');$(\'#option-value-row' + option_value_row + '\').remove();" data-toggle="tooltip" rel="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
 

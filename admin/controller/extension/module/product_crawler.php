@@ -64,10 +64,10 @@
 			$this->data['editLink'] = $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'], true);
 
 			//Delete update link
-			$this->data['deleteUpdateLink'] = $this->url->link('extension/module/product_crawler/deleteUpdate');
+			$this->data['deleteUpdateLink'] = $this->url->link('extension/module/product_crawler/deleteUpdate', 'token=' . $this->session->data['token'], true);
 
 			//Delete all link
-			$this->data['deleteAllLink'] = $this->url->link('extension/module/product_crawler/deleteAll');
+			$this->data['deleteAllLink'] = $this->url->link('extension/module/product_crawler/deleteAll', 'token=' . $this->session->data['token'], true);
 		}
 
 		public function index()

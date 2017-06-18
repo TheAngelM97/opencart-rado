@@ -39,3 +39,13 @@ a.delete-all-link:hover {
 	color: white;
 	padding: 13px;
 }
+ul.products {
+	list-style-type: none;
+}
+ul.products li {
+	display: inline;
+	padding: 5px 15px;
+	background: purple;
+	color: white;
+	font-size: 14px;
+}

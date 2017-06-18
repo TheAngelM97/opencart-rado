@@ -152,7 +152,7 @@
 					</ul>
 				</div>
 				<div class="col-md-4 upload-many" style="display: none;">
-					<a href="<?= $upload_form ?>&upload-many=1" class="upload-many-link">Качи всички избрани</a>
+					<a href="<?= $upload_form ?>&upload-many=1" class="upload-many-link">Качи всички избрани като един</a>
 				</div>
 			</div>
 
