@@ -416,20 +416,9 @@
 							}
 
 							if (trim($product['price']) != $price || trim($product['quantity']) != $quantity) {
-								//Check if product is waiting for update
-								$waitingProduct = $this->model_extension_module_crawled_product->checkForUpdates($uploaded_product['product_id']);
-
-								if (!count($waitingProduct)) {
-									//Insert in updates table
-									if ($this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'])) {
-										$countProductsForUpdates++;
-									}
-								}
-								else {
-									//Update updates table
-									if ($this->model_extension_module_crawled_product->updateUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'])) {
-										$countProductsForUpdates++;
-									}
+								//Update 
+								if ($this->model_extension_module_crawled_product->updateUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'])) {
+									$countProductsForUpdates++;
 								}
 							}
 						}
