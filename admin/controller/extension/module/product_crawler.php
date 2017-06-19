@@ -109,6 +109,7 @@
 
 				$crawler = new Crawler($html);
 
+				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
 					$productInfo = $crawler->filter('table[width=140]');
 

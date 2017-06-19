@@ -81,6 +81,15 @@ class ControllerCatalogProduct extends Controller {
 				unset($_SESSION['crawled_product']);
 			}
 
+			//Delete multiple products from waiting table
+			if (isset($this->request->post['products'])) {
+				$product_ids = explode('-', $this->request->post['products']);
+
+				foreach ($product_ids as $product_id) {
+					$this->model_extension_module_crawled_product->delete($product_id);
+				}
+			}
+
 			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
