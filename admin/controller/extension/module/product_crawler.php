@@ -374,6 +374,8 @@
 					});
 				}
 
+				$this->load->model('extension/module/uploaded_code');
+
 				//No new products for now 
 				$countNewProducts = 0; 
 
@@ -381,19 +383,26 @@
 
 				foreach ($this->products as $product) { 
 					//Check if product code already exists in database
-					$queryCheck = $this->model_extension_module_crawled_product->getProductByCode($product['code'], $product['store']);
+					// $queryCheck = $this->model_extension_module_crawled_product->getProductByCode($product['code'], $product['store']);
 
-					//Check uploaded products
-					$queryCheckUploaded = $this->model_extension_module_crawled_product->getProductByAdminCode($product['code'], $product['store']);
+					//Check if code is uploaded
+					$queryCheckUploaded = $this->model_extension_module_uploaded_code->getByCode($product['code'], $product['store']);
 
 					//If it not exists insert it
-					if (!count($queryCheck) && !count($queryCheckUploaded)) {
+					if (!count($queryCheckUploaded)) {
 						$this->model_extension_module_crawled_product->upload($product['name'], $product['code'], $product['price'], $product['quantity'], $product['store'], $product['manufacturer']);
 
 						$countNewProducts++;
 					}
 					else {
-						if (count($queryCheckUploaded)) {
+						//Checks if it's in color connection
+						$colorConnection = $this->model_extension_module_uploaded_code->colorConnection($product['code']);
+
+						if (count($colorConnection) > 0) {
+							
+						}
+						//It's not in color connection
+						else {
 							//Save in updates table
 							$uploaded_product = $queryCheckUploaded;
 

@@ -81,6 +81,17 @@ class ControllerCatalogProduct extends Controller {
 				unset($_SESSION['crawled_product']);
 			}
 
+			//Upload in uploaded codes table
+			$this->load->model('extension/module/uploaded_code');
+
+			if (isset($this->request->post['product-codes']) && isset($this->request->post['cralwed-product-store']) && isset($this->request->post['last-product-id'])) {
+				$product_codes = explode('-', $this->request->post['product-codes']);
+
+				foreach ($product_codes as $product_code) {
+					$this->model_extension_module_uploaded_code->add((int)$this->request->post['last-product-id'], $product_code, $this->request->post['crawled-product-store']);
+				}
+			}
+
 			//Delete multiple products from waiting table
 			if (isset($this->request->post['products'])) {
 				$product_ids = explode('-', $this->request->post['products']);
@@ -1407,6 +1418,8 @@ class ControllerCatalogProduct extends Controller {
 				}
 			}
 		}
+
+		$data['lastProductId'] = $this->model_catalog_product->getLastProductId()['product_id'];
 
 		$this->response->setOutput($this->load->view('catalog/product_form', $data));
 	}

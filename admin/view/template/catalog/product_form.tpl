@@ -3,11 +3,18 @@
 <!-- Crawled -->
 <?php 
   $product_code = '';
+  $crawled_product_store = '';
   if (isset($product)) {
     $name = $product['product_name'];
     $price = $product['product_price'];
     $product_quantity = $product['product_quantity'];
     $product_code = $product['product_code'];
+    $crawled_product_store = $product['store'];
+  }
+  else {
+    if (isset($products)) {
+      $crawled_product_store = $products[0]['store'];
+    }
   }
 
   if (isset($product_manufacturer)) {
@@ -66,17 +73,24 @@
           <?php 
             if (isset($products)) {
               if (is_array($products)) { 
+                  $string_product_codes = array();
                   $string_products = array();
                   foreach ($products as $product) {
+                    $string_product_codes[] = $product['product_code'];
                     $string_products[] = $product['id'];
                   }
               ?>
                 <input type="hidden" name="products" value="<?= implode('-', $string_products) ?>">
+                <input type="hidden" name="product-codes" value="<?= implode('-', $string_product_codes) ?>">
         <?php  }
             }
           ?>
 
           <input type="hidden" name="product-secret-code" value="<?= $product_code ?>">
+
+          <input type="hidden" name="crawled-product-store" value="<?= $crawled_product_store ?>">
+
+          <input type="hidden" name="last-product-id" value="<?= $lastProductId + 1 ?>">
 
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
