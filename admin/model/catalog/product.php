@@ -749,8 +749,9 @@ class ModelCatalogProduct extends Model {
 		return $this->db->query($sql);	
 	}
 
-	// public function updateQuantity($product_id, $quantity)
-	// {
-		
-	// }
+	public function updateQuantity($product_id, $quantity)
+	{
+		$sql = 'UPDATE ' . DB_PREFIX . 'product SET quantity = ' . $this->db->escape($quantity) . ' WHERE product_id = ' . $this->db->escape($product_id);
+		return $this->db->query($sql);
+	}
 }

@@ -23,5 +23,24 @@ class ModelExtensionModuleUploadedCode extends Model
         $query = $this->db->query($sql);
         return $query->row;
     }
+
+    public function getProductByCodeAndStore($code, $store)
+    {
+        $sql = 'SELECT * FROM color_connection INNER JOIN ' . DB_PREFIX . 'product ON color_connection.product_id = ' . DB_PREFIX . 'product.product_id AND color_connection.product_code = '. $this->db->escape($code) .' AND ' . DB_PREFIX . 'product.admin_store = "'. $this->db->escape($store) .'"';
+    }
+
+    public function updateColorQuantity($product_option_value_id, $color_quantity)
+    {
+        $sql = 'UPDATE ' . DB_PREFIX . 'product_option_value SET quantity = ' . $this->db->escape($color_quantity) . ' WHERE product_option_value_id = ' . $this->db->escape($product_option_value_id);
+
+        return $this->db->query($sql);
+    }
+
+    public function getColorQuantity($product_option_value_id)
+    {
+        $sql = 'SELECT quantity FROM ' . DB_PREFIX . 'product_option_value WHERE product_option_value_id = ' . $this->db->escape($product_option_value_id);
+        $query = $this->db->query($sql);
+        return $query->row;
+    }
 }
 ?>

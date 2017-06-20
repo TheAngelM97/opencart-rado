@@ -111,6 +111,12 @@
 
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
+					//$html = file_get_contents('C:\Users\123\Desktop\dims.html');
+					//$crawler = new Crawler($html);
+
+					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter('table[width=140]');
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -383,7 +389,6 @@
 
 				foreach ($this->products as $product) { 
 					//Check if product code already exists in database
-					// $queryCheck = $this->model_extension_module_crawled_product->getProductByCode($product['code'], $product['store']);
 
 					//Check if code is uploaded
 					$queryCheckUploaded = $this->model_extension_module_uploaded_code->getByCode($product['code'], $product['store']);
@@ -394,33 +399,55 @@
 
 						$countNewProducts++;
 					}
+					//If product exists
 					else {
+						$updated_prices = 0;
+
+						$this->load->model('catalog/product');
+
+						//update
+						$uploaded_product = $queryCheckUploaded;
+
+						$price = $uploaded_product['price'];
+
+						if ($uploaded_product['quantity'] > 0) {
+							$quantity = 'Да';
+						}
+						else {
+							$quantity = 'Не';
+						}
+
+						//Find product id by store and code
+						$uploaded_code = $this->model_extension_module_uploaded_code->getByCode($product['code'], $product['store']);
+						$product_id = $uploaded_code['product_id'];
+
+						//update price
+						$this->model_catalog_product->updatePrice($product_id, $product['price']);
+
+						$updated_prices++;
+
 						//Checks if it's in color connection
 						$colorConnection = $this->model_extension_module_uploaded_code->colorConnection($product['code']);
 
 						if (count($colorConnection) > 0) {
-							
-						}
-						//It's not in color connection
-						else {
-							//Save in updates table
-							$uploaded_product = $queryCheckUploaded;
+							//Get product that is connected
+							$connectedProduct = $this->model_extension_module_uploaded_code->getProductByCodeAndStore($code, $store);
 
-							$price = $uploaded_product['price'];
+							$currentColorQuantity = $this->model_extension_module_uploaded_code->getColorQuantity($connectedProduct['product_option_value_id'])['quantity'];
 
-							if ($uploaded_product['quantity'] > 0) {
-								$quantity = 'Да';
+							if ($product['quantity'] == 'Да') {
+								$color_quantity = 1000;
 							}
 							else {
-								$quantity = 'Не';
+								$color_quantity = 0;
 							}
 
-							if (trim($product['price']) != $price || trim($product['quantity']) != $quantity) {
-								//Update 
-								if ($this->model_extension_module_crawled_product->updateUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'])) {
-									$countProductsForUpdates++;
-								}
-							}
+							//Update color quantity
+							$this->model_extension_module_uploaded_code->updateColorQuantity($product_option_value_id, $color_quantity);
+						}
+						else {
+							//update quantity
+							$this->model_catalog_product->updateQuantity($product_id, $product['quantity']);
 						}
 					}
 				}
@@ -436,18 +463,12 @@
 				}
 
 				//Updated products
-				if ($countProductsForUpdates > 1) {
-					$productsUpdatedMessage = 'Бяха намерени промени в ' . $countProductsForUpdates . ' продукта';
-				}
-				elseif ($countProductsForUpdates == 1) {
-					$productsUpdatedMessage = 'Беше намерена промяна в 1 продукт';
-				}
-				else {
-					$productsUpdatedMessage = 'Не бяха намерени промени в проудкти';
+				if ($updated_prices > 0) {
+					$updated_prices_message = 'Бяха променени цените на ' . $updated_prices . ' продукта';
 				}
 
 				$_SESSION['newProducts'] = $productsMessage;
-				$_SESSION['updateProducts'] = $productsUpdatedMessage;
+				$_SESSION['updateProducts'] = $updated_prices_message;
 				if ($countNewProducts > 0) {
 					$_SESSION['uploaded'] = 'Продукти от ' . htmlspecialchars($_POST['site']) . ' бяха качени успешно';
 				}

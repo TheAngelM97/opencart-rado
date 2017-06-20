@@ -47,8 +47,15 @@
             <div class="col-md-12">
               <ul class="products">
               <?php 
-                foreach ($products as $product) { ?>
-                  <li><?= $product['product_name'] ?></li>
+                foreach ($products as $product) { 
+                    if ($product['product_quantity'] == 'Да') { ?>
+                        <li><?= $product['product_name'] ?> - Наличен</li>
+              <?php  }
+                    else { ?>
+                        <li style="background-color: red;"><?= $product['product_name'] ?> - Няма наличност</li>
+              <?php  }
+                ?>
+                  
           <?php  }
               ?>
               </ul>

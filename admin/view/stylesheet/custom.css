@@ -43,8 +43,9 @@ ul.products {
 	list-style-type: none;
 }
 ul.products li {
-	display: inline;
+	display: inline-block;
 	padding: 5px 15px;
+	margin: 5px 0;
 	background: purple;
 	color: white;
 	font-size: 14px;
