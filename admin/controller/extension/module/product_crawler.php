@@ -111,25 +111,26 @@
 
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
-					//$html = file_get_contents('C:\Users\123\Desktop\dims.html');
-					//$crawler = new Crawler($html);
-
-					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					$html = file_get_contents('C:\Users\123\Desktop\dims.html');
 					$crawler = new Crawler($html);
+					$productInfo = $crawler->filter('table[width=140]');
+
+					// $html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					// $crawler = new Crawler($html);
 
 					//Cycle through pages
-					$pages = $crawler->filter('table[width="170px"]');
+					//$pages = $crawler->filter('table[width="170px"]');
 
-					$pages->each(function (Crawler $node, $i) {
-						$link = $node->filter('a')->first();
+					//$pages->each(function (Crawler $node, $i) {
+						//$link = $node->filter('a')->first();
 						
-						$link = $link->attr('href');
+						//$link = $link->attr('href');
 
-						if (strpos($link, 'dims-92.com')) {
+						//if (strpos($link, 'dims-92.com')) {
 							//Single page crawler
-							$singlePage = new Crawler(file_get_contents($link));
+							//$singlePage = new Crawler(file_get_contents($link));
 
-							$productInfo = $singlePage->filter('table[width=140]');
+							//$productInfo = $singlePage->filter('table[width=140]');
 
 							$productInfo->each(function (Crawler $node, $i) {
 								$product = array();
@@ -168,8 +169,8 @@
 
 								$this->products[] = $product;
 							});
-						}
-					});
+						//}
+					//});
 				}
 
 				else if ($_POST['site'] == 'sky-r') {
@@ -402,6 +403,8 @@
 
 				$countProductsForUpdates = 0;
 
+				$updated_prices = 0;
+
 				foreach ($this->products as $product) { 
 					//Check if product code already exists in database
 
@@ -416,8 +419,6 @@
 					}
 					//If product exists
 					else {
-						$updated_prices = 0;
-
 						$this->load->model('catalog/product');
 
 						//update
@@ -433,13 +434,14 @@
 						}
 
 						//Find product id by store and code
-						$uploaded_code = $this->model_extension_module_uploaded_code->getByCode($product['code'], $product['store']);
-						$product_id = $uploaded_code['product_id'];
+						$product_id = $uploaded_product['product_id'];
 
 						//update price
-						$this->model_catalog_product->updatePrice($product_id, $product['price']);
-
-						$updated_prices++;
+						//$this->model_catalog_product->updatePrice($product_id, $product['price']);
+						if ($product['price'] != $price) {
+							$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
+							$updated_prices++;
+						}	
 
 						//Checks if it's in color connection
 						$colorConnection = $this->model_extension_module_uploaded_code->colorConnection($product['code']);
@@ -487,7 +489,7 @@
 
 				//Updated products
 				if ($updated_prices > 0) {
-					$updated_prices_message = 'Бяха променени цените на ' . $updated_prices . ' продукта';
+					$updated_prices_message = 'Бяха намерени промени в цените на ' . $updated_prices . ' продукта';
 				}
 
 				$_SESSION['newProducts'] = $productsMessage;
@@ -540,7 +542,7 @@
 				}
 			}
 
-			$this->response->redirect($this->url->link('extension/module/crawler_updates', 'token=' . $this->session->data['token'], true));
+			$this->response->redirect($this->url->link('extension/module/product_crawler/showUpdates', 'token=' . $this->session->data['token'], true));
 		}
 
 		public function deleteAll()

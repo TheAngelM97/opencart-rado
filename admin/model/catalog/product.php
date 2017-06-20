@@ -55,18 +55,14 @@ class ModelCatalogProduct extends Model {
 						foreach ($product_option['product_option_value'] as $key => $product_option_value) {
 							$this->db->query("INSERT INTO " . DB_PREFIX . "product_option_value SET product_option_id = '" . (int)$product_option_id . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', price = '" . (float)$product_option_value['price'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "', weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "'");
 
-							$product_option_value_id = $this->db->getLastId();
+							if (isset($data['color-connection'])) {
+								$product_option_value_id = $this->db->getLastId();
 							
-							$product_code = $data['color-connection'][$key];
+								$product_code = $data['color-connection'][$key];
 
-							$sql = 'INSERT INTO color_connection (product_option_value_id, product_code) VALUES ('. $product_option_value_id .', "'. $product_code .'")';
-							$this->db->query($sql);
-
-							// if (isset($data['crawled-product-store'])) {
-							// 	$sql = 'INSERT INTO uploaded_codes (product_id, admin_code, store) VALUES ('. $this->db->escape($product_id) .', "'. $this->db->escape($product_code) .'", "'. $this->db->escape($data['crawled-product-store']) .'")';
-
-							// 	$this->db->query($sql);
-							// }
+								$sql = 'INSERT INTO color_connection (product_option_value_id, product_code) VALUES ('. $product_option_value_id .', "'. $product_code .'")';
+								$this->db->query($sql);
+								}
 						}
 					}
 				} else {
