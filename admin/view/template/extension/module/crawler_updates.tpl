@@ -9,7 +9,7 @@
 <div id="content">
 	<div class="page-header">
 		<div class="container-fluid">
-			<a href="#" class="link spider">Към паяците</a>
+			<a href="<?= $crawler_link ?>" class="link spider">Към паяците</a>
 			<div class="clearfix"></div>
 			<div class="col-md-4">
 		<?php

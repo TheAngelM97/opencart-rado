@@ -111,26 +111,22 @@
 
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
-					$html = file_get_contents('C:\Users\123\Desktop\dims.html');
+					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
 					$crawler = new Crawler($html);
-					$productInfo = $crawler->filter('table[width=140]');
-
-					// $html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
-					// $crawler = new Crawler($html);
 
 					//Cycle through pages
-					//$pages = $crawler->filter('table[width="170px"]');
+					$pages = $crawler->filter('table[width="170px"]');
 
-					//$pages->each(function (Crawler $node, $i) {
-						//$link = $node->filter('a')->first();
+					$pages->each(function (Crawler $node, $i) {
+						$link = $node->filter('a')->first();
 						
-						//$link = $link->attr('href');
+						$link = $link->attr('href');
 
-						//if (strpos($link, 'dims-92.com')) {
+						if (strpos($link, 'dims-92.com')) {
 							//Single page crawler
-							//$singlePage = new Crawler(file_get_contents($link));
+							$singlePage = new Crawler(file_get_contents($link));
 
-							//$productInfo = $singlePage->filter('table[width=140]');
+							$productInfo = $singlePage->filter('table[width=140]');
 
 							$productInfo->each(function (Crawler $node, $i) {
 								$product = array();
@@ -169,8 +165,8 @@
 
 								$this->products[] = $product;
 							});
-						//}
-					//});
+						}
+					});
 				}
 
 				else if ($_POST['site'] == 'sky-r') {
@@ -436,13 +432,6 @@
 						//Find product id by store and code
 						$product_id = $uploaded_product['product_id'];
 
-						//update price
-						//$this->model_catalog_product->updatePrice($product_id, $product['price']);
-						if ($product['price'] != $price) {
-							$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
-							$updated_prices++;
-						}	
-
 						//Checks if it's in color connection
 						$colorConnection = $this->model_extension_module_uploaded_code->colorConnection($product['code']);
 
@@ -460,10 +449,28 @@
 								$color_quantity = 0;
 							}
 
+							//update color price
+							//$this->model_catalog_product->updatePrice($product_id, $product['price']);
+
+							//Check if price is different
+							var_dump($this->model_catalog_product);
+							exit;
+							if ($product['price'] != $price) {
+								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
+								$updated_prices++;
+							}
+
 							//Update color quantity
 							$this->model_extension_module_uploaded_code->updateColorQuantity($connectedProduct['product_option_value_id'], $color_quantity);
 						}
 						else {
+							//update price
+							//$this->model_catalog_product->updatePrice($product_id, $product['price']);
+							if ($product['price'] != $price) {
+								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
+								$updated_prices++;
+							}	
+
 							//update quantity
 							if ($product['quantity'] == 'Да') {
 								$quantityToUpdateWith = 1000;
