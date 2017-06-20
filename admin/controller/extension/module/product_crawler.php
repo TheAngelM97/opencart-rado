@@ -117,44 +117,58 @@
 					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
 					$crawler = new Crawler($html);
 
-					$productInfo = $crawler->filter('table[width=140]');
+					//Cycle through pages
+					$pages = $crawler->filter('table[width="170px"]');
 
-					$productInfo->each(function (Crawler $node, $i) {
-						$product = array();
+					$pages->each(function (Crawler $node, $i) {
+						$link = $node->filter('a')->first();
+						
+						$link = $link->attr('href');
 
-						//Names
-						$product['name'] = $node->filter('td .productName')->first()->text();
+						if (strpos($link, 'dims-92.com')) {
+							//Single page crawler
+							$singlePage = new Crawler(file_get_contents($link));
 
-						//Prices
-						$productTR = $node->filter('tr');
-						if ($productTR->count() == 7 || $productTR->count() == 6) {
-							$price = $node->filter('tr:nth-child(4)')->first()->text();
+							$productInfo = $singlePage->filter('table[width=140]');
+
+							$productInfo->each(function (Crawler $node, $i) {
+								$product = array();
+
+								//Names
+								$product['name'] = $node->filter('td .productName')->first()->text();
+
+								//Prices
+								$productTR = $node->filter('tr');
+								if ($productTR->count() == 7 || $productTR->count() == 6) {
+									$price = $node->filter('tr:nth-child(4)')->first()->text();
+								}
+								else {
+									$price = $node->filter('tr:nth-child(5)')->first()->text();
+								}
+								$price = str_replace('Цена: ', '', $price);
+								$price = str_replace(' лв.', '', $price);
+								$product['price'] = $price;
+
+								//Codes
+								$productCode = $node->filter('tr:nth-child(3)')->first()->text();
+								$product['code'] = str_replace('Код: ', '', $productCode);
+								$product['manufacturer'] = '';
+
+								//Quantity
+								$quantity = $node->filter('tr:nth-last-child(2)')->first()->text();
+
+								if (strpos($quantity, 'В наличност:') !== false) {
+									$product['quantity'] = 'Не';
+								}
+								else {
+									$product['quantity'] = 'Да';
+								}
+
+								$product['store'] = 'dims92';
+
+								$this->products[] = $product;
+							});
 						}
-						else {
-							$price = $node->filter('tr:nth-child(5)')->first()->text();
-						}
-						$price = str_replace('Цена: ', '', $price);
-						$price = str_replace(' лв.', '', $price);
-						$product['price'] = $price;
-
-						//Codes
-						$productCode = $node->filter('tr:nth-child(3)')->first()->text();
-						$product['code'] = str_replace('Код: ', '', $productCode);
-						$product['manufacturer'] = '';
-
-						//Quantity
-						$quantity = $node->filter('tr:nth-last-child(2)')->first()->text();
-
-						if (strpos($quantity, 'В наличност:') !== false) {
-							$product['quantity'] = 'Не';
-						}
-						else {
-							$product['quantity'] = 'Да';
-						}
-
-						$product['store'] = 'dims92';
-
-						$this->products[] = $product;
 					});
 				}
 
@@ -381,6 +395,7 @@
 				}
 
 				$this->load->model('extension/module/uploaded_code');
+				$this->load->model('catalog/product');
 
 				//No new products for now 
 				$countNewProducts = 0; 
@@ -406,7 +421,7 @@
 						$this->load->model('catalog/product');
 
 						//update
-						$uploaded_product = $queryCheckUploaded;
+						$uploaded_product = $this->model_catalog_product->getProduct($queryCheckUploaded['product_id']);
 
 						$price = $uploaded_product['price'];
 
@@ -431,9 +446,10 @@
 
 						if (count($colorConnection) > 0) {
 							//Get product that is connected
-							$connectedProduct = $this->model_extension_module_uploaded_code->getProductByCodeAndStore($code, $store);
+							$connectedProduct = $this->model_extension_module_uploaded_code->getProductByCodeAndStore($product['code'], $product['store']);
 
-							$currentColorQuantity = $this->model_extension_module_uploaded_code->getColorQuantity($connectedProduct['product_option_value_id'])['quantity'];
+							$currentColorQuantity = $this->model_extension_module_uploaded_code->getColorQuantity($connectedProduct['product_option_value_id']);
+							$currentColorQuantity = $currentColorQuantity['quantity'];
 
 							if ($product['quantity'] == 'Да') {
 								$color_quantity = 1000;
@@ -443,11 +459,18 @@
 							}
 
 							//Update color quantity
-							$this->model_extension_module_uploaded_code->updateColorQuantity($product_option_value_id, $color_quantity);
+							$this->model_extension_module_uploaded_code->updateColorQuantity($connectedProduct['product_option_value_id'], $color_quantity);
 						}
 						else {
 							//update quantity
-							$this->model_catalog_product->updateQuantity($product_id, $product['quantity']);
+							if ($product['quantity'] == 'Да') {
+								$quantityToUpdateWith = 1000;
+							}
+							else {
+								$quantityToUpdateWith = 0;
+							}
+
+							$this->model_catalog_product->updateQuantity($product_id, $quantityToUpdateWith);
 						}
 					}
 				}

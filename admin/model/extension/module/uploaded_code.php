@@ -26,7 +26,9 @@ class ModelExtensionModuleUploadedCode extends Model
 
     public function getProductByCodeAndStore($code, $store)
     {
-        $sql = 'SELECT * FROM color_connection INNER JOIN ' . DB_PREFIX . 'product ON color_connection.product_id = ' . DB_PREFIX . 'product.product_id AND color_connection.product_code = '. $this->db->escape($code) .' AND ' . DB_PREFIX . 'product.admin_store = "'. $this->db->escape($store) .'"';
+        $sql = 'SELECT * FROM color_connection INNER JOIN ' . DB_PREFIX . 'product_option_value ON color_connection.product_option_value_id = ' . DB_PREFIX . 'product_option_value.product_option_value_id INNER JOIN '. DB_PREFIX .'product ON '. DB_PREFIX .'product_option_value.product_id = '. DB_PREFIX .'product.product_id WHERE color_connection.product_code = "'. $this->db->escape($code) .'" AND ' . DB_PREFIX . 'product.admin_store = "'. $this->db->escape($store) .'"';
+        $query = $this->db->query($sql);
+        return $query->row;
     }
 
     public function updateColorQuantity($product_option_value_id, $color_quantity)
