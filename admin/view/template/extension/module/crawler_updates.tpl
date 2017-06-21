@@ -43,7 +43,7 @@
 						foreach ($updateProducts as $product) { ?>
 								<tr>
 									<td><?= $product['product_name'] ?></td>
-									<td><?= number_format(round($product['price'], 2), 2) ?></td>
+									<td><?= number_format(round($product['product_price'], 2), 2) ?></td>
 									<td><?= number_format(round($product['new_price'], 2), 2) ?></td>
 									<td>
 										<?php 
