@@ -33,6 +33,7 @@
 									<th>Нова цена</th>
 									<th>Сегашна наличност</th>
 									<th>Нова наличност</th>
+									<th>Цвят</th>
 									<th>Промени</th>
 									<th>Изтрий</th>
 								</tr>
@@ -41,7 +42,7 @@
 				<?php
 						foreach ($updateProducts as $product) { ?>
 								<tr>
-									<td><?= $product['name'] ?></td>
+									<td><?= $product['product_name'] ?></td>
 									<td><?= number_format(round($product['price'], 2), 2) ?></td>
 									<td><?= number_format(round($product['new_price'], 2), 2) ?></td>
 									<td>
@@ -56,7 +57,21 @@
 									</td>
 									<td><?= $product['new_quantity'] ?></td>
 									<td>
-										<a href="<?= $editLink . '&product_id=' . $product['product_id'] . '&crawler_change=1' ?>">Промени</a>
+										<?php 
+											if (isset($product['name'])) { 
+												echo $product['name'];
+											}
+										?>
+									</td>
+									<td>
+										<?php 
+											if (isset($product['name'])) { ?>
+												<a href="<?= $editLink . '&product_id=' . $product['product_id'] . '&crawler_change=1&product_option_value_id=' . $product['product_option_value_id'] ?>">Промени</a>
+									<?php	}
+											else { ?>
+												<a href="<?= $editLink . '&product_id=' . $product['product_id'] . '&crawler_change=1' ?>">Промени</a>
+									<?php	}
+										?>
 									</td>
 									<td>
 										<a href="<?= $deleteUpdateLink . '&id=' . $product['update_id'] ?>">x</a>

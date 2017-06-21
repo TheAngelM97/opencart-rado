@@ -99,32 +99,29 @@
 		{
 			$this->load->model('extension/module/crawled_product');
 
-			if (count($this->model_extension_module_crawled_product->getAllProducts())) {
+			if (count($this->model_extension_module_crawled_product->getAllProducts()) || count($this->model_extension_module_crawled_product->getAllUpdates())) {
 				$_SESSION['error'] = 'Качете или изтрийте всички чакащи продукти за да пуснете нов паяк';
 				$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
 			}
 
 			if (isset($_POST['site-url']) && isset($_POST['site'])) {
-				$html = file_get_contents($_POST['site-url']);
-
-				$crawler = new Crawler($html);
-
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
-					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					//$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					$html = file_get_contents('C:\Users\123\Desktop\dims.html');
 					$crawler = new Crawler($html);
 
 					//Cycle through pages
-					$pages = $crawler->filter('table[width="170px"]');
+					// $pages = $crawler->filter('table[width="170px"]');
 
-					$pages->each(function (Crawler $node, $i) {
-						$link = $node->filter('a')->first();
+					// $pages->each(function (Crawler $node, $i) {
+					// 	$link = $node->filter('a')->first();
 						
-						$link = $link->attr('href');
+					// 	$link = $link->attr('href');
 
-						if (strpos($link, 'dims-92.com')) {
+					// 	if (strpos($link, 'dims-92.com')) {
 							//Single page crawler
-							$singlePage = new Crawler(file_get_contents($link));
+							$singlePage = new Crawler($html);
 
 							$productInfo = $singlePage->filter('table[width=140]');
 
@@ -165,11 +162,15 @@
 
 								$this->products[] = $product;
 							});
-						}
-					});
+					// 	}
+					// });
 				}
 
 				else if ($_POST['site'] == 'sky-r') {
+					$html = file_get_contents($_POST['site-url']);
+
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter("#productList div.product");
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -206,6 +207,10 @@
 				}
 
 				else if ($_POST['site'] == 'vip-giftshop') {
+					$html = file_get_contents($_POST['site-url']);
+
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter('.item');
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -244,6 +249,10 @@
 				}
 
 				else if ($_POST['site'] == 'art93') {
+					$html = file_get_contents($_POST['site-url']);
+
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter('.col-lg-3');
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -285,6 +294,10 @@
 				}
 
 				else if ($_POST['site'] == 'wenger') {
+					$html = file_get_contents($_POST['site-url']);
+
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter('.ty-column4');
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -327,6 +340,10 @@
 				}
 
 				else if ($_POST['site'] == 'max-pen') {
+					$html = file_get_contents($_POST['site-url']);
+
+					$crawler = new Crawler($html);
+
 					$productInfo = $crawler->filter('.grupi select option');
 
 					$productInfo->each(function (Crawler $node, $i) {
@@ -453,10 +470,8 @@
 							//$this->model_catalog_product->updatePrice($product_id, $product['price']);
 
 							//Check if price is different
-							var_dump($this->model_catalog_product);
-							exit;
 							if ($product['price'] != $price) {
-								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
+								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'], $colorConnection['product_option_value_id']);
 								$updated_prices++;
 							}
 
@@ -496,7 +511,12 @@
 
 				//Updated products
 				if ($updated_prices > 0) {
-					$updated_prices_message = 'Бяха намерени промени в цените на ' . $updated_prices . ' продукта';
+					if ($updated_prices == 1) {
+						$updated_prices_message = 'Бяха намерени промени в цените на ' . $updated_prices . ' продукт';
+					}
+					else {
+						$updated_prices_message = 'Бяха намерени промени в цените на ' . $updated_prices . ' продукта';
+					}
 				}
 
 				$_SESSION['newProducts'] = $productsMessage;

@@ -232,6 +232,8 @@
                   <?php 
                     if (isset($updateProduct)) { ?>
                         <input type="hidden" name="update_id" value="<?= $updateProduct['update_id'] ?>">
+              <?php  }
+                    if (isset($updateProduct) && !isset($colorUpdate)) { ?>
                         <input type="text" value="<?php echo $price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" disabled />
                         <input type="text" name="price" value="<?php echo $updateProduct['new_price']; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
               <?php  } 
@@ -260,7 +262,7 @@
                 <label class="col-sm-2 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
                 <div class="col-sm-10">
                   <?php 
-                    if (isset($updateProduct)) { ?>
+                    if (isset($updateProduct) && !isset($colorUpdate)) { ?>
                         <input type="text" value="<?php
                                       if (isset($product_quantity)) {
                                         if ($product_quantity == 'Да') {
@@ -691,7 +693,93 @@
                           </thead>
                           <tbody>
                             <?php foreach ($product_option['product_option_value'] as $product_option_value) { ?>
-                            <tr id="option-value-row<?php echo $option_value_row; ?>">
+                            <?php 
+                              if (isset($colorUpdate)) { ?>
+                                <tr id="option-value-row<?php echo $option_value_row; ?>">
+                              <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" class="form-control">
+                                  <?php if (isset($option_values[$product_option['option_id']])) { ?>
+                                  <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
+                                  <?php if ($option_value['option_value_id'] == $product_option_value['option_value_id']) { ?>
+                                  <option value="<?php echo $option_value['option_value_id']; ?>" selected="selected"><?php echo $option_value['name']; ?></option>
+                                  <?php } else { ?>
+                                  <option value="<?php echo $option_value['option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                                  <?php } ?>
+                                  <?php } ?>
+                                  <?php } ?>
+                                </select>
+                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" /></td>
+                              <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
+                              <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
+                                  <?php if ($product_option_value['subtract']) { ?>
+                                  <option value="1" selected="selected"><?php echo $text_yes; ?></option>
+                                  <option value="0"><?php echo $text_no; ?></option>
+                                  <?php } else { ?>
+                                  <option value="1"><?php echo $text_yes; ?></option>
+                                  <option value="0" selected="selected"><?php echo $text_no; ?></option>
+                                  <?php } ?>
+                                </select></td>
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+                                  <?php if ($updateProduct['new_price'] > $price) { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <option value="-">-</option>
+                                  <?php } else { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                </select>
+                                <?php 
+                                  if ($product_option_value['product_option_value_id'] == $updateProduct['product_option_value_id']) { ?>
+                                      <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo abs($price - $updateProduct['new_price']) ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                            <?php  }
+                                  else { ?>
+                                    <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
+                            <?php  }
+                                ?>
+                                
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
+                                  <?php if ($product_option_value['points_prefix'] == '+') { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <?php } else { ?>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                  <?php if ($product_option_value['points_prefix'] == '-') { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <?php } else { ?>
+                                  <option value="-">-</option>
+                                  <?php } ?>
+                                </select>
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points]" value="<?php echo $product_option_value['points']; ?>" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>
+                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
+                                  <?php if ($product_option_value['weight_prefix'] == '+') { ?>
+                                  <option value="+" selected="selected">+</option>
+                                  <?php } else { ?>
+                                  <option value="+">+</option>
+                                  <?php } ?>
+                                  <?php if ($product_option_value['weight_prefix'] == '-') { ?>
+                                  <option value="-" selected="selected">-</option>
+                                  <?php } else { ?>
+                                  <option value="-">-</option>
+                                  <?php } ?>
+                                </select>
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight]" value="<?php echo $product_option_value['weight']; ?>" placeholder="<?php echo $entry_weight; ?>" class="form-control" /></td>
+                                <?php 
+                                  if (isset($products)) { ?>
+                                    <td>
+                                      <select>
+                                        <?php 
+                                          foreach ($products as $product) { ?>
+                                              <option value="<?= $product['product_code'] ?>"><?= $product['product_name'] ?></option>
+                                    <?php  }
+                                        ?>
+                                      </select>
+                                    </td>
+                              <?php  }
+                                ?>
+                              <td class="text-left"><button type="button" onclick="$(this).tooltip('destroy');$('#option-value-row<?php echo $option_value_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                            </tr>
+                        <?php  }
+                              else { ?>
+                                  <tr id="option-value-row<?php echo $option_value_row; ?>">
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" class="form-control">
                                   <?php if (isset($option_values[$product_option['option_id']])) { ?>
                                   <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
@@ -768,6 +856,8 @@
                                 ?>
                               <td class="text-left"><button type="button" onclick="$(this).tooltip('destroy');$('#option-value-row<?php echo $option_value_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                             </tr>
+                          <?php  }
+                            ?>
                             <?php $option_value_row++; ?>
                             <?php } ?>
                           </tbody>
