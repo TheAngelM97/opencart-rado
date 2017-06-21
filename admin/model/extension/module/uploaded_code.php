@@ -44,5 +44,12 @@ class ModelExtensionModuleUploadedCode extends Model
         $query = $this->db->query($sql);
         return $query->row;
     }
+
+    public function getColorPrice($product_option_value_id)
+    {
+        $sql = 'SELECT * FROM ' . DB_PREFIX . 'product_option_value WHERE product_option_value_id = ' . $this->db->escape($product_option_value_id);
+        $query = $this->db->query($sql);
+        return $query->row;
+    }
 }
 ?>

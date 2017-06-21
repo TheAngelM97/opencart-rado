@@ -107,21 +107,21 @@
 			if (isset($_POST['site-url']) && isset($_POST['site'])) {
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
-					//$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
-					$html = file_get_contents('C:\Users\123\Desktop\dims.html');
+					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
+					// $html = file_get_contents('C:\Users\123\Desktop\dims.html');
 					$crawler = new Crawler($html);
 
 					//Cycle through pages
-					// $pages = $crawler->filter('table[width="170px"]');
+					$pages = $crawler->filter('table[width="170px"]');
 
-					// $pages->each(function (Crawler $node, $i) {
-					// 	$link = $node->filter('a')->first();
+					$pages->each(function (Crawler $node, $i) {
+						$link = $node->filter('a')->first();
 						
-					// 	$link = $link->attr('href');
+						$link = $link->attr('href');
 
-					// 	if (strpos($link, 'dims-92.com')) {
+						if (strpos($link, 'dims-92.com')) {
 							//Single page crawler
-							$singlePage = new Crawler($html);
+							$singlePage = new Crawler(file_get_contents($link));
 
 							$productInfo = $singlePage->filter('table[width=140]');
 
@@ -162,8 +162,8 @@
 
 								$this->products[] = $product;
 							});
-					// 	}
-					// });
+						}
+					});
 				}
 
 				else if ($_POST['site'] == 'sky-r') {
@@ -466,8 +466,17 @@
 								$color_quantity = 0;
 							}
 
-							//update color price
-							//$this->model_catalog_product->updatePrice($product_id, $product['price']);
+							//Get the price of the color plus the pride of the product
+							//Get the product option info (containing the price)
+							$colorInfo = $this->model_extension_module_uploaded_code->getColorPrice($connectedProduct['product_option_value_id']);
+							$price = $colorInfo['price'];
+
+							if ($colorInfo['price_prefix'] == '+') {
+								$price += $uploaded_product['price'];
+							}
+							else {
+								$price -= $uploaded_product['price'];
+							}
 
 							//Check if price is different
 							if ($product['price'] != $price) {
@@ -480,7 +489,6 @@
 						}
 						else {
 							//update price
-							//$this->model_catalog_product->updatePrice($product_id, $product['price']);
 							if ($product['price'] != $price) {
 								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
 								$updated_prices++;

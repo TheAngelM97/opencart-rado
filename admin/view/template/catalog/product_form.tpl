@@ -722,10 +722,13 @@
                                   <?php if ($updateProduct['new_price'] > $price) { ?>
                                   <option value="+" selected="selected">+</option>
                                   <option value="-">-</option>
-                                  <?php } else { ?>
+                                  <?php } elseif($updateProduct['new_price'] < $price) { ?>
                                   <option value="-" selected="selected">-</option>
                                   <option value="+">+</option>
-                                  <?php } ?>
+                                  <?php } else { ?>
+                                          <option value="+" selected="selected">+</option>
+                                          <option value="-">-</option>
+                                  <?php  } ?>
                                 </select>
                                 <?php 
                                   if ($product_option_value['product_option_value_id'] == $updateProduct['product_option_value_id']) { ?>
