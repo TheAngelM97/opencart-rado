@@ -62,7 +62,7 @@ class ModelCatalogProduct extends Model {
 
 								$sql = 'INSERT INTO color_connection (product_option_value_id, product_code) VALUES ('. $product_option_value_id .', "'. $product_code .'")';
 								$this->db->query($sql);
-								}
+							}
 						}
 					}
 				} else {

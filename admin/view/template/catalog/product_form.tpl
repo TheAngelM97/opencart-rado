@@ -14,6 +14,7 @@
   else {
     if (isset($products)) {
       $crawled_product_store = $products[0]['store'];
+      $price = $products[0]['product_price'];
     }
   }
 
@@ -48,11 +49,11 @@
               <ul class="products">
               <?php 
                 foreach ($products as $product) { 
-                    if ($product['product_quantity'] == 'Да') { ?>
-                        <li><?= $product['product_name'] ?> - Наличен</li>
+                    if ($product['product_quantity'] > 0) { ?>
+                        <li><?= $product['product_name'] ?> - <?= $product['product_quantity'] ?></li>
               <?php  }
                     else { ?>
-                        <li style="background-color: red;"><?= $product['product_name'] ?> - Няма наличност</li>
+                        <li style="background-color: red;"><?= $product['product_name'] ?> - <?= $product['product_quantity'] ?></li>
               <?php  }
                 ?>
                   
@@ -265,12 +266,7 @@
                     if (isset($updateProduct) && !isset($colorUpdate)) { ?>
                         <input type="text" value="<?php
                                       if (isset($product_quantity)) {
-                                        if ($product_quantity == 'Да') {
-                                          echo 1000;
-                                        }
-                                        else {
-                                          echo 0;
-                                        }
+                                        echo $product_quantity;
                                       }
                                       else {
                                         echo $quantity;
@@ -282,12 +278,7 @@
                     else { ?>
                         <input type="text" name="quantity" value="<?php
                                       if (isset($product_quantity)) {
-                                        if ($product_quantity == 'Да') {
-                                          echo 1000;
-                                        }
-                                        else {
-                                          echo 0;
-                                        }
+                                        echo $product_quantity;
                                       }
                                       else {
                                         echo $quantity;
@@ -709,6 +700,7 @@
                                 </select>
                                 <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" /></td>
                               <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
+                              <?php //var_dump($option_info) ?>
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                   <?php if ($product_option_value['subtract']) { ?>
                                   <option value="1" selected="selected"><?php echo $text_yes; ?></option>

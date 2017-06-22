@@ -123,6 +123,13 @@ class ModelExtensionModuleCrawledProduct extends Model
 		return $query->row['product_quantity'];
 	}
 
+	public function getOptionValueInfo($product_option_value_id)
+	{
+		$sql = 'SELECT * FROM ' . DB_PREFIX . 'product_option_value WHERE product_option_value_id = ' . $this->db->escape($product_option_value_id);
+		$query = $this->db->query($sql);
+		return $query->row;
+	}
+
 	public function delete($id)
 	{
 		$sql = 'DELETE FROM oc_crawled_products WHERE id = ' . $id;

@@ -340,7 +340,7 @@
 				}
 
 				else if ($_POST['site'] == 'max-pen') {
-					$html = file_get_contents($_POST['site-url']);
+					$html = file_get_contents('http://max-pen.no-ip.info/Default.aspx');
 
 					$crawler = new Crawler($html);
 
@@ -385,17 +385,22 @@
 									//Codes
 									$product['code'] = $innerNode->filter('.info div:first-child strong')->text();
 
+									//Color
+									$color = $innerNode->filter('.info div:nth-child(3)')->text();
+									$color = str_replace('Цвят: ', '', $color);
+									
+									$product['name'] .= '_' . $color;
+									$product['code'] .= '_' . $color;
+
+									$product['name'] = str_replace('-', '_', $product['name']);
+									$product['code'] = str_replace('-', '_', $product['code']);
+
 									//Quantity
 									$quantity = $innerNode->filter('.price div')->first()->text();
 
 									preg_match_all('!\d+!', $quantity, $matches);
 
-									if (trim($matches[0][0]) > 0) {
-										$product['quantity'] = 'Да';
-									}
-									else {
-										$product['quantity'] = 'Не';
-									}
+									$product['quantity'] = trim($matches[0][0]);
 
 									$product['manufacturer'] = '';
 
@@ -426,6 +431,13 @@
 
 					//If it not exists insert it
 					if (!count($queryCheckUploaded)) {
+						if (mb_strtolower($product['quantity'], 'UTF-8') == 'да') {
+							$product['quantity'] = 1000;
+						}
+						elseif(mb_strtolower($product['quantity'], 'UTF-8') == 'не') {
+							$product['quantity'] = 0;
+						}
+
 						$this->model_extension_module_crawled_product->upload($product['name'], $product['code'], $product['price'], $product['quantity'], $product['store'], $product['manufacturer']);
 
 						$countNewProducts++;
@@ -439,12 +451,7 @@
 
 						$price = $uploaded_product['price'];
 
-						if ($uploaded_product['quantity'] > 0) {
-							$quantity = 'Да';
-						}
-						else {
-							$quantity = 'Не';
-						}
+						$quantity = $uploaded_product['quantity'];
 
 						//Find product id by store and code
 						$product_id = $uploaded_product['product_id'];
@@ -459,12 +466,7 @@
 							$currentColorQuantity = $this->model_extension_module_uploaded_code->getColorQuantity($connectedProduct['product_option_value_id']);
 							$currentColorQuantity = $currentColorQuantity['quantity'];
 
-							if ($product['quantity'] == 'Да') {
-								$color_quantity = 1000;
-							}
-							else {
-								$color_quantity = 0;
-							}
+							$color_quantity = $product['quantity'];
 
 							//Get the price of the color plus the pride of the product
 							//Get the product option info (containing the price)

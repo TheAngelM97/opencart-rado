@@ -1401,11 +1401,13 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		//Update
 		if (isset($this->request->get['crawler_change']) && isset($this->request->get['product_id'])) {
 			if ($this->request->get['crawler_change'] == 1) {
 				$data['updateProduct'] = $this->model_extension_module_crawled_product->getUpdateProduct($this->request->get['product_id']);
 				if (isset($this->request->get['product_option_value_id'])) {
 					$data['colorUpdate'] = true;
+					//$data['option_info'] = $this->model_extension_module_crawled_product->getOptionValueInfo($this->request->get['product_option_value_id']); 
 				}
 			}
 		}
