@@ -747,7 +747,7 @@
                                       <select>
                                         <?php 
                                           foreach ($products as $product) { ?>
-                                              <option value="<?= $product['product_code'] ?>"><?= $product['product_name'] ?></option>
+                                              <option value="<?= $product['product_code'] ?>" data-color-quantity = "<?= $product['product_quantity'] ?>"><?= $product['product_name'] ?></option>
                                     <?php  }
                                         ?>
                                       </select>
@@ -1135,6 +1135,8 @@
     </div>
   </div>
 
+  <?php $addedOption = false; ?>
+
   <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
   <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
@@ -1488,6 +1490,19 @@ $('input[name=\'option\']').autocomplete({
 	}
 });
 //--></script>
+  <?php 
+    function activateScript($addedOption) {
+      if ($addedOption) { ?>
+       <script>
+         $(document).ready(function() {
+           let color_quantity = $('select.color-quantity').find(':selected').data('color-quantity');
+           console.log(color_quantity);
+         });
+       </script>
+<?php  }
+    }
+  ?>
+
   <script type="text/javascript"><!--
 var option_value_row = <?php echo $option_value_row; ?>;
 
@@ -1522,7 +1537,7 @@ function addOptionValue(option_row, option_name) {
       if (is_array($products)) {
         $options = '';
         foreach ($products as $product) {
-          $options .= '<option value="'. $product['product_code'] .'">'. $product['product_name'] .'</option>';
+          $options .= '<option value="'. $product['product_code'] .'" data-color-quantity="' . $product['product_quantity'] .'">'. $product['product_name'] .'</option>';
         }
       }
     }
@@ -1531,7 +1546,7 @@ function addOptionValue(option_row, option_name) {
   <?php 
     if (isset($options)) { ?>
         if (option_name == 'Цвят') {
-          html += '<td><select name="color-connection['+ option_value_row +']" class="form-control">';
+          html += '<td><select name="color-connection['+ option_value_row +']" class="form-control color-quantity">';
           html += <?= "'" . $options . "'"?>;
           html += '</select></td>';
         }
@@ -1545,6 +1560,11 @@ function addOptionValue(option_row, option_name) {
 	$('[rel=tooltip]').tooltip();
 
 	option_value_row++;
+
+  if (option_name == 'Цвят') {
+    let color_quantity = $('.color-quantity').find(':selected').data('color-quantity');
+    $('.color-quantity').parents('tr:last-child').find('input[placeholder="Количество"]').val(color_quantity);
+  }
 }
 //--></script>
   <script type="text/javascript"><!--
@@ -1662,4 +1682,11 @@ $('.datetime').datetimepicker({
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
 //--></script></div>
+
+<script>
+    $('body').on('change', '.color-quantity', function(event) {
+      let color_quantity = $(this).find(':selected').data('color-quantity');
+      $(this).parents('tr').find('input[placeholder="Количество"]').val(color_quantity);
+    });
+</script>
 <?php echo $footer; ?>
