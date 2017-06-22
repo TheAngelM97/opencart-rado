@@ -26,10 +26,10 @@ class ModelExtensionModuleCrawledProduct extends Model
 	public function getUpdateProducts($start = null, $limit = null)
 	{
 		if ($start !== null && $limit != null) {
-			$sql = 'SELECT *, '. DB_PREFIX .'product_description.name AS product_name, '.DB_PREFIX.'product.price AS product_price, '.DB_PREFIX.'product.quantity AS product_quantity FROM crawled_updates INNER JOIN '.DB_PREFIX.'product_description ON crawled_updates.update_product_id = '.DB_PREFIX.'product_description.product_id INNER JOIN '.DB_PREFIX.'product ON crawled_updates.update_product_id = '.DB_PREFIX.'product.product_id INNER JOIN '. DB_PREFIX .'product_option_value ON '. DB_PREFIX .'product_option_value.product_option_value_id = crawled_updates.product_option_value_id INNER JOIN '. DB_PREFIX .'option_value_description ON '. DB_PREFIX .'product_option_value.option_value_id = '. DB_PREFIX .'option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT ' . $start . ', ' . $limit . '';
+			$sql = 'SELECT *, '. DB_PREFIX .'product_description.name AS product_name, '.DB_PREFIX.'product.price AS product_price, '.DB_PREFIX.'product.quantity AS product_quantity, '.DB_PREFIX.'product.product_id AS product_id FROM crawled_updates INNER JOIN '.DB_PREFIX.'product_description ON crawled_updates.update_product_id = '.DB_PREFIX.'product_description.product_id INNER JOIN '.DB_PREFIX.'product ON crawled_updates.update_product_id = '.DB_PREFIX.'product.product_id LEFT JOIN '. DB_PREFIX .'product_option_value ON '. DB_PREFIX .'product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN '. DB_PREFIX .'option_value_description ON '. DB_PREFIX .'product_option_value.option_value_id = '. DB_PREFIX .'option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT ' . $start . ', ' . $limit . '';
 		}
 		else {
-			$sql = 'SELECT * FROM crawled_updates INNER JOIN '.DB_PREFIX.'product_description ON crawled_updates.update_product_id = '.DB_PREFIX.'product_description.product_id INNER JOIN '.DB_PREFIX.'product ON crawled_updates.update_product_id = '.DB_PREFIX.'product.product_id ORDER BY crawled_updates.update_product_id DESC';
+			$sql = 'SELECT *, '. DB_PREFIX .'product_description.name AS product_name, '.DB_PREFIX.'product.price AS product_price, '.DB_PREFIX.'product.quantity AS product_quantity, '.DB_PREFIX.'product.product_id AS product_id FROM crawled_updates INNER JOIN '.DB_PREFIX.'product_description ON crawled_updates.update_product_id = '.DB_PREFIX.'product_description.product_id INNER JOIN '.DB_PREFIX.'product ON crawled_updates.update_product_id = '.DB_PREFIX.'product.product_id LEFT JOIN '. DB_PREFIX .'product_option_value ON '. DB_PREFIX .'product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN '. DB_PREFIX .'option_value_description ON '. DB_PREFIX .'product_option_value.option_value_id = '. DB_PREFIX .'option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC';
 		}
 
 		$query = $this->db->query($sql);
@@ -68,9 +68,9 @@ class ModelExtensionModuleCrawledProduct extends Model
 		return false;
 	}
 
-	public function uploadInUpdates($product_id, $price, $quantity, $product_option_value_id = NULL)
+	public function uploadInUpdates($product_id, $price, $product_option_value_id = '0')
 	{
-		$sql = 'INSERT INTO crawled_updates (update_product_id, new_price, new_quantity, product_option_value_id) VALUES ('.$this->db->escape(trim($product_id)).', '.$this->db->escape(trim($price)).', "'.$this->db->escape(trim($quantity)).'", '. $this->db->escape($product_option_value_id) .')';
+		$sql = 'INSERT INTO crawled_updates (update_product_id, new_price, product_option_value_id) VALUES ('.$this->db->escape(trim($product_id)).', '.$this->db->escape(trim($price)).', '. $this->db->escape($product_option_value_id) .')';
 		
 		return $this->db->query($sql);
 	}
@@ -121,13 +121,6 @@ class ModelExtensionModuleCrawledProduct extends Model
 		$sql = 'SELECT * FROM oc_crawled_products WHERE product_code = "'.$this->db->escape(trim($code)).'" AND store = "'.$this->db->escape(trim($store)).'"';
 		$query = $this->db->query($sql);
 		return $query->row['product_quantity'];
-	}
-
-	public function getOptionValueInfo($product_option_value_id)
-	{
-		$sql = 'SELECT * FROM ' . DB_PREFIX . 'product_option_value WHERE product_option_value_id = ' . $this->db->escape($product_option_value_id);
-		$query = $this->db->query($sql);
-		return $query->row;
 	}
 
 	public function delete($id)

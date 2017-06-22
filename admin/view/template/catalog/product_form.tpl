@@ -262,21 +262,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
                 <div class="col-sm-10">
-                  <?php 
-                    if (isset($updateProduct) && !isset($colorUpdate)) { ?>
-                        <input type="text" value="<?php
-                                      if (isset($product_quantity)) {
-                                        echo $product_quantity;
-                                      }
-                                      else {
-                                        echo $quantity;
-                                      }
-                                      ?>" 
-                    placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" disabled />
-                        <input type="text" name="quantity" value="<?php if($updateProduct['new_quantity'] == 'Да') { echo 1000; } else { echo 0; } ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control">
-              <?php  }
-                    else { ?>
-                        <input type="text" name="quantity" value="<?php
+                  <input type="text" name="quantity" value="<?php
                                       if (isset($product_quantity)) {
                                         echo $product_quantity;
                                       }
@@ -285,8 +271,6 @@
                                       }
                                       ?>" 
                                     placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
-              <?php  }
-                  ?>
                 </div>
               </div>
               <div class="form-group">

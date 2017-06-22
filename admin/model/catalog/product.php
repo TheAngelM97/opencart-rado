@@ -5,6 +5,13 @@ class ModelCatalogProduct extends Model {
 
 		$product_id = $this->db->getLastId();
 
+		if (isset($data['product-secret-code']) && isset($data['crawled-product-store'])) {
+			$product_code = $data['product-secret-code'];
+
+			$sql = 'INSERT INTO uploaded_codes (product_id, admin_code, store) VALUES ('. $product_id .', "'. $this->db->escape($product_code) .'", "'. $this->db->escape($data['crawled-product-store']) .'")';
+			$this->db->query($sql);
+		}
+
 		if (isset($data['product-codes']) && isset($data['crawled-product-store'])) {
 			$product_codes = explode('-', $data['product-codes']);
 

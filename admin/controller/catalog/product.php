@@ -82,15 +82,15 @@ class ControllerCatalogProduct extends Controller {
 			}
 
 			//Upload in uploaded codes table
-			$this->load->model('extension/module/uploaded_code');
+			//$this->load->model('extension/module/uploaded_code');
 
-			if (isset($this->request->post['product-codes']) && isset($this->request->post['cralwed-product-store']) && isset($this->request->post['last-product-id'])) {
-				$product_codes = explode('-', $this->request->post['product-codes']);
+			// if (isset($this->request->post['product-codes']) && isset($this->request->post['crawled-product-store']) && isset($this->request->post['last-product-id'])) {
+			// 	$product_codes = explode('-', $this->request->post['product-codes']);
 
-				foreach ($product_codes as $product_code) {
-					$this->model_extension_module_uploaded_code->add((int)$this->request->post['last-product-id'], $product_code, $this->request->post['crawled-product-store']);
-				}
-			}
+			// 	foreach ($product_codes as $product_code) {
+			// 		$this->model_extension_module_uploaded_code->add((int)$this->request->post['last-product-id'], $product_code, $this->request->post['crawled-product-store']);
+			// 	}
+			// }
 
 			//Delete multiple products from waiting table
 			if (isset($this->request->post['products'])) {
@@ -1407,7 +1407,6 @@ class ControllerCatalogProduct extends Controller {
 				$data['updateProduct'] = $this->model_extension_module_crawled_product->getUpdateProduct($this->request->get['product_id']);
 				if (isset($this->request->get['product_option_value_id'])) {
 					$data['colorUpdate'] = true;
-					//$data['option_info'] = $this->model_extension_module_crawled_product->getOptionValueInfo($this->request->get['product_option_value_id']); 
 				}
 			}
 		}

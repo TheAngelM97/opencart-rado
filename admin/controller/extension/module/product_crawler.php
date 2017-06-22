@@ -152,10 +152,10 @@
 								$quantity = $node->filter('tr:nth-last-child(2)')->first()->text();
 
 								if (strpos($quantity, 'В наличност:') !== false) {
-									$product['quantity'] = 'Не';
+									$product['quantity'] = 0;
 								}
 								else {
-									$product['quantity'] = 'Да';
+									$product['quantity'] = 1000;
 								}
 
 								$product['store'] = 'dims92';
@@ -482,7 +482,7 @@
 
 							//Check if price is different
 							if ($product['price'] != $price) {
-								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity'], $colorConnection['product_option_value_id']);
+								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'],$colorConnection['product_option_value_id']);
 								$updated_prices++;
 							}
 
@@ -492,17 +492,12 @@
 						else {
 							//update price
 							if ($product['price'] != $price) {
-								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price'], $product['quantity']);
+								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price']);
 								$updated_prices++;
 							}	
 
 							//update quantity
-							if ($product['quantity'] == 'Да') {
-								$quantityToUpdateWith = 1000;
-							}
-							else {
-								$quantityToUpdateWith = 0;
-							}
+							$quantityToUpdateWith = $product['quantity'];
 
 							$this->model_catalog_product->updateQuantity($product_id, $quantityToUpdateWith);
 						}
