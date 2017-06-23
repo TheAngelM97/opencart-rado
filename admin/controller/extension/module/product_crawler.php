@@ -538,7 +538,32 @@
 		{
 			$this->setData();
 
+			$this->data['updateAllLink'] = $this->url->link('extension/module/product_crawler/updateAll', 'token=' . $this->session->data['token'], true);
+
 			$this->response->setOutput($this->load->view('extension/module/crawler_updates', $this->data));
+		}
+
+		public function updateAll()
+		{	
+			$this->setData();
+
+			$this->load->model('extension/module/crawled_update');
+
+			$updates = $this->model_extension_module_crawled_update->getAll();
+
+			foreach ($updates as $update) {
+				$this->model_extension_module_crawled_update->update($update);
+				$this->model_extension_module_crawled_update->delete($update['update_id']);
+			}
+
+			if (count($updates) == 1) {
+				$_SESSION['success'] = 'Беше качена 1 промяна';
+			}
+			else {
+				$_SESSION['success'] = 'Бяха качени ' . count($updates) . ' промени';
+			}
+
+			$this->response->redirect($this->url->link('extension/module/product_crawler/showUpdates', 'token=' . $this->session->data['token'], true));
 		}
 
 		public function delete()
@@ -552,7 +577,7 @@
 					$_SESSION['deleted'] = 'Продуктът беше изтрит';
 				}
 				else {
-					$_SESSION['deleted'] = 'Изинка проблем с изтриването на продукта';
+					$_SESSION['deleted'] = 'Изникна проблем с изтриването на продукта';
 				}
 			}
 

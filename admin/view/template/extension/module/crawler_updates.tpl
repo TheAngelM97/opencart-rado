@@ -19,11 +19,23 @@
 					</div>
 		<?php		unset($_SESSION['deleted']);
 				}
+				if (isset($_SESSION['success'])) { ?>
+					<div class="alert alert-success">
+						<strong><?= $_SESSION['success'] ?></strong>
+					</div>
+		<?php	
+					unset($_SESSION['success']);
+				}
 		?>
 			</div>
-			<div class="col-md-8 col-md-offset-2 text-center">
+			<div class="col-md-8 col-md-offset-2" style="position: relative;">
 				<?php 
 					if (count($updateProducts)) { ?>
+					<div class="col-md-4 col-md-offset-8" style="margin-bottom: 40px;">
+						<a href="<?= $updateAllLink ?>" class="link update-all">Изпълни всички</a>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover">
 							<thead>
@@ -41,7 +53,16 @@
 						foreach ($updateProducts as $product) { ?>
 								<tr>
 									<td><?= $product['product_name'] ?></td>
-									<td><?= number_format(round($product['product_price'] + $product['price'], 2), 2) ?></td>
+									<td>
+										<?php 
+											if ($product['product_price'] < $product['price']) {
+												echo number_format(round($product['product_price'] + $product['price'], 2), 2);
+											}
+											else {
+												echo number_format(round($product['product_price'] - $product['price'], 2), 2);
+											}
+										?>
+									</td>
 									<td><?= number_format(round($product['new_price'], 2), 2) ?></td>
 									<td>
 										<?php 
