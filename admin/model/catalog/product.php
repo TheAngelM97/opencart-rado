@@ -357,6 +357,21 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_product WHERE product_id = '" . (int)$product_id . "'");
 
+		//Delete product crawled connections
+		//Color connection
+		$sql = 'SELECT * FROM ' . DB_PREFIX . 'product_option_value INNER JOIN color_connection ON ' . DB_PREFIX . 'product_option_value.product_option_value_id = color_connection.product_option_value_id WHERE product_option_value.product_id = ' . $product_id;
+		$query = $this->db->query($sql);
+		$product_option_value = $query->row;
+		$sql = 'DELETE FROM color_connection WHERE product_option_value_id ' . $product_option_value['product_option_value_id'];
+		$this->db->query($sql);
+
+		//Crawled updates
+		$sql = 'DELETE FROM crawled_updates WHERE update_product_id = ' . $product_id;
+		$this->db->query($sql);
+
+		//Uploaded codes
+		$sql = 'DELETE FROM uploaded_codes WHERE product_id = ' . $product_id;
+
 		$this->cache->delete('product');
 	}
 
