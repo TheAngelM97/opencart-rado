@@ -1,0 +1,14 @@
+.add {
+	color: purple;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.add:hover {
+	color: black;
+}
+.add-icon {
+	font-size: 45px;
+}
+.add-product {
+	font-size: 35px;
+}
