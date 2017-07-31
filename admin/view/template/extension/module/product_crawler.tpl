@@ -6,13 +6,75 @@
 ?>
 <?php echo $header; ?>
 <?php echo $column_left; ?>
+<!-- <div class="loading" id="loading" style="display: none;">
+	<div class="loading-holder">
+		<div class="sk-folding-cube">
+		  <div class="sk-cube1 sk-cube"></div>
+		  <div class="sk-cube2 sk-cube"></div>
+		  <div class="sk-cube4 sk-cube"></div>
+		  <div class="sk-cube3 sk-cube"></div>
+		</div>
+	</div>
+</div> -->
 <div id="content">
 	<div class="page-header">
 		<div class="container-fluid">
+			<?php 
+				if (isset($_SESSION['success'])) { ?>
+					<div class="alert alert-success">
+						<?= $_SESSION['success'] ?>
+					</div>
+		<?php	
+					unset($_SESSION['success']);
+				}
+			?>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<div class="col-md-7 form">
-						<form method="POST" action="<?php echo $action ?>">
+						<form class="form-inline" method="POST" action="<?= $updatePercentLink ?>">
+							<div class="form-group">
+								<label>Надценка (в проценти %)</label>
+								<input type="number" step="0.01" name="price-percent" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Магазин</label>
+								<select class="form-control" name="store">
+									<option value="0" selected="selected">--Моля изберете--</option>
+									<?php 
+										foreach ($stores as $store) { ?>
+											<option value="<?= $store['store'] ?>"><?= $store['store'] ?></option>
+								<?php	}
+									?>
+								</select>
+							</div>
+
+							<button class="btn btn-primary price-submit"><i class="material-icons">add</i></button>
+						</form>
+					</div>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Магазин</th>
+								<th>% надценка</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+								foreach ($stores as $store) { ?>
+									<tr>
+										<td><?= $store['store'] ?></td>
+										<td><?= $store['percent'] ?></td>
+									</tr>
+						<?php	}
+							?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-7 form">
+						<form method="POST" action="<?php echo $action ?>" id="crawler-form">
 							<div class="form-group">
 								<label>URL</label>
 								<input type="text" name="site-url" class="form-control">
@@ -102,6 +164,57 @@
 			</div>
 		</div>
 		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="product-counter all">
+						<strong>Чакащи продукти: <?= $count_all->rows[0]['COUNT(id)'] ?></strong>
+					</div>
+					<div class="product-counter in">
+						<strong>В наличност: <?= $count_in_stock->rows[0]['COUNT(id)'] ?></strong>
+					</div>
+					<div class="product-counter out">
+						<strong>Извън наличност: <?= $count_out_of_stock->rows[0]['COUNT(id)'] ?></strong>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<form method="GET" action="<?= $crawler_link ?>">
+						<input type="hidden" name="route" value="<?= $_GET['route'] ?>">
+						<input type="hidden" name="token" value="<?= $_GET['token'] ?>">
+						<div class="form-group">
+							<label>Виж продукти само от</label>
+							<select name="site" class="form-control">
+								<option value="" selected>--Моля избери--</option>
+								<?php 
+									foreach ($stores as $store) { ?>
+										<option value="<?= $store['store'] ?>"><?= $store['store'] ?></option>
+							<?php	}
+								?>
+							</select>
+						</div>
+						<div class="form-group">
+							<a href="#" class="link">Покажи всички</a>
+						</div>
+						<button type="submit" class="btn btn-primary">Покажи</button>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<form method="POST" action="<?= $delete_from_store ?>">
+						<div class="form-group">
+							<label>Изтрий само от</label>
+							<select name="site" class="form-control">
+								<option value="" selected>--Моля избери--</option>
+								<?php 
+									foreach ($stores as $store) { ?>
+										<option value="<?= $store['store'] ?>"><?= $store['store'] ?></option>
+							<?php	}
+								?>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary">Изтрий</button>
+					</form>
+				</div>
+			</div>
 			<div class="table-responsive">
 				<table class="table table-bordered table-hover">
 					<thead>
@@ -109,13 +222,63 @@
 							<th>Избери</th>
 							<th>Магазин</th>
 							<th>Име</th>
+							<th>Код</th>
 							<th>Цена</th>
-							<th>Наличност</th>
+							<th>
+								<?php 
+									$link = $product_crawler_link;
+									if ($sort) {
+										if ($order == 'DESC') { 
+											$link .= '&order=ASC&sort=product_manufacturer';
+										}
+										elseif ($order == 'ASC') {
+											$link .= '&order=DESC&sort=product_manufacturer';
+										}
+									}
+									else { 
+										$link .= '&order=DESC&sort=product_manufacturer';
+									}
+
+									if (isset($_GET['page'])) {
+										$link .= '&page=' . intval($_GET['page']);
+									} 
+
+									if (isset($_GET['site'])) {
+										$link .= '&site=' . $_GET['site'];
+									}
+								?>
+								<a href="<?= $link ?>">Производител <i class="fa fa-fw fa-sort"></i></a>
+							</th>
+							<th>
+								<?php 
+									$link = $product_crawler_link;
+									if ($sort) {
+										if ($order == 'DESC') { 
+											$link .= '&order=ASC&sort=product_quantity';
+										}
+										elseif ($order == 'ASC') {
+											$link .= '&order=DESC&sort=product_quantity';
+										}
+									}
+									else { 
+										$link .= '&order=DESC&sort=product_quantity';
+									}
+
+									if (isset($_GET['page'])) {
+										$link .= '&page=' . intval($_GET['page']);
+									}
+
+									if (isset($_GET['site'])) {
+										$link .= '&site=' . $_GET['site'];
+									}
+								?>
+								<a href="<?= $link ?>">Наличност <i class="fa fa-fw fa-sort"></i></a>
+							</th>
 							<th>Качи</th>
 							<th>Изтрий</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="tbody">
 						<?php 
 							if (isset($allProducts)) {
 								foreach ($allProducts as $row) { ?>
@@ -125,7 +288,18 @@
 										</td>
 										<td><?= $row['store'] ?></td>
 										<td><?= $row['product_name'] ?></td>
+										<td><?= $row['product_code'] ?></td>
 										<td><?= $row['product_price'] ?></td>
+										<td>
+											<?php 
+												if ($row['product_manufacturer']) {
+													echo $row['product_manufacturer'];
+												}
+												else {
+													echo "Няма";
+												}
+											?>
+										</td>
 										<td><?= $row['product_quantity'] ?></td>
 										<td>
 											<a href="<?= $upload_form ?>&crawled-id=<?= $row['id'] ?>">Качи</a>
@@ -146,7 +320,23 @@
 					<ul class="pagination">
 						<?php 
 							for ($i=1; $i <= $pages; $i++) { ?>
-								<li><a href="<?= $crawler_link . '&page=' . $i ?>"><?= $i ?></a></li>
+								<?php 
+									$link = $crawler_link;
+									if (isset($_GET['sort']) && isset($_GET['order'])) {
+										$sort = $_GET['sort'];
+										$order = $_GET['order'];
+
+										$link .= '&sort=' . $sort . '&order=' . $order . '&page=' . $i;
+									}
+									else { 
+										$link .= '&page=' . $i;
+									}
+
+									if (isset($_GET['site'])) {
+										$link .= '&site=' . $_GET['site'];
+									}
+								?>
+								<li><a href="<?= $link ?>"><?= $i ?></a></li>
 					<?php	}
 						?>
 					</ul>
@@ -210,4 +400,12 @@
 		$('.upload-many-link').attr('href', newLink);
 	});
 </script>
+
+<!-- <script>
+	$(document).ready(function() {
+		$('#crawler-form').submit(function(event) {
+			$('#loading').show();
+		});
+	});
+</script> -->
 <?php echo $footer; ?>

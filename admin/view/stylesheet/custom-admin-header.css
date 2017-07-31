@@ -1,0 +1,81 @@
+/*
+** Red  : #ef2809;
+** Blue : #013567;
+*/
+
+/*
+#menu{
+    display: inline;
+}
+
+#menu > li{
+    display: inline-block;
+}
+
+#column-left.active {
+    width: 100%;
+}
+
+#column-left{
+    position: relative;
+    padding-top:20px;
+}
+
+#column-left.active #profile{
+    display: inline;
+}
+
+#profile div {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#stats{
+    display: none !important;
+}
+
+#menu li li a.parent:after, #column-left.active #menu > li a.parent:after {
+    font-family: FontAwesome;
+    content: "\f107";
+}
+
+#content {
+    margin-left: 0 !important;
+}
+*/
+
+.custom-nav{
+    width: 100%;
+    height: auto;
+    float: left;
+    background-color: #595959;
+}
+
+.custom-nav ul{
+    float:left;
+    margin-bottom: 0 !important;
+}
+
+.custom-nav ul li{
+    float: left;
+    list-style-type: none;
+    padding: 15px;
+}
+
+.custom-nav ul li a{
+    padding: 15px;
+    color: #EEEEEE;
+}
+
+.custom-nav ul li a:hover{
+    background-color: #EEEEEE;
+    transition: 0.5s;
+    color: #595959;
+}
+
+
+/*HIDE MENU BUTTON*/
+
+#button-menu{
+    display: none !important;
+}

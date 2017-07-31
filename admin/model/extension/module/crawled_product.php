@@ -2,18 +2,50 @@
 
 class ModelExtensionModuleCrawledProduct extends Model
 {
-	public function getAllProducts($start = null, $limit = null)
+	public function getAllProducts($store = null, $start = null, $limit = null, $sort = null, $order = 'DESC')
 	{
-		if ($start !== null && $limit != null) {
-			$sql = 'SELECT * FROM oc_crawled_products ORDER BY id DESC LIMIT ' . $start . ', ' . $limit . '';
+		$sql = 'SELECT * FROM oc_crawled_products';
+
+		if ($store !== null) {
+			$sql .= ' WHERE store = "'.$this->db->escape(trim($store)).'"';
 		}
-		else {
-			$sql = 'SELECT * FROM oc_crawled_products';
+
+		if ($start !== null && $limit != null) {
+			if ($sort !== null) {
+				$sql .= ' ORDER BY '.$sort.' '.$order.' LIMIT ' . $start . ', ' . $limit;
+			}
+			else {
+				$sql .= ' ORDER BY id DESC LIMIT ' . $start . ', ' . $limit;
+			}
 		}
 
 		$query = $this->db->query($sql);
 
 		return $query->rows;
+	}
+
+	public function getByStore($store)
+	{
+		$sql = 'SELECT * FROM oc_crawled_products WHERE store = "' . $this->db->escape($store) . '"';
+		$query = $this->db->query($sql);
+		return $query->rows;
+	}
+
+	public function countProducts()
+	{
+		$sql = 'SELECT COUNT(id) FROM oc_crawled_products';
+		return $this->db->query($sql);
+	}
+
+	public function countInStock()
+	{
+		$sql = 'SELECT COUNT(id) FROM oc_crawled_products WHERE product_quantity > 0';
+		return $this->db->query($sql);
+	}
+	public function countOutOfStock()
+	{
+		$sql = 'SELECT COUNT(id) FROM oc_crawled_products WHERE product_quantity = 0';
+		return $this->db->query($sql);
 	}
 
 	public function getUpdateProduct($product_id)
@@ -46,7 +78,7 @@ class ModelExtensionModuleCrawledProduct extends Model
 
 	public function getProductByCode($code, $store)
 	{
-		$sql = 'SELECT * FROM oc_crawled_products WHERE product_code = "'.trim($code).'" AND store = "'.$this->db->escape(trim($store)).'"';
+		$sql = 'SELECT * FROM oc_crawled_products WHERE product_code = "'.$this->db->escape(trim($code)).'" AND store = "'.$this->db->escape(trim($store)).'"';
 		$query = $this->db->query($sql);
 		return $query->row;
 	}
@@ -109,6 +141,12 @@ class ModelExtensionModuleCrawledProduct extends Model
 		return false;
 	}
 
+	public function updateQuantity($id, $quantity)
+	{
+		$sql = 'UPDATE oc_crawled_products SET product_quantity = ' . $this->db->escape(trim($quantity)) . ' WHERE id = ' . $id;
+		return $this->db->query($sql);
+	}
+
 	public function getPrice($code, $store)
 	{
 		$sql = 'SELECT product_price FROM oc_crawled_products WHERE product_code = "'.$this->db->escape(trim($code)).'" AND store = "'.$this->db->escape(trim($store)).'"';
@@ -123,26 +161,44 @@ class ModelExtensionModuleCrawledProduct extends Model
 		return $query->row['product_quantity'];
 	}
 
+	public function getStores()
+	{
+		$sql = 'SELECT * FROM crawler_stores';
+		$query = $this->db->query($sql);
+		return $query->rows;
+	}
+
+	public function getStorePercent($store)
+	{
+		$sql = 'SELECT percent FROM crawler_stores WHERE store = "' . $this->db->escape(trim($store)) . '"';
+		$query = $this->db->query($sql);
+		return $query->row;
+	}
+
+	public function updatePricePercent($store, $price_percent)
+	{
+		$sql = 'UPDATE crawler_stores SET percent = ' . $this->db->escape(trim($price_percent)) . ' WHERE store = "'.$this->db->escape(trim($store)).'"';
+		return $this->db->query($sql);
+	}
+
 	public function delete($id)
 	{
 		$sql = 'DELETE FROM oc_crawled_products WHERE id = ' . $id;
 
-		if ($this->db->query($sql)) {
-			return true;
-		}
+		return $this->db->query($sql);
+	}
 
-		return false;
+	public function deleteFromStore($store)
+	{
+		$sql = 'DELETE FROM oc_crawled_products WHERE store = "' .$this->db->escape($store) . '"';
+		return $this->db->query($sql);
 	}
 
 	public function deleteUpdate($id)
 	{
 		$sql = 'DELETE FROM crawled_updates WHERE update_id = ' . $this->db->escape(trim($id));
 
-		if ($this->db->query($sql)) {
-			return true;
-		}
-
-		return false;
+		return $this->db->query($sql);
 	}
 
 	public function deleteAll()

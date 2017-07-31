@@ -56,3 +56,25 @@ ul.products li {
 	position: absolute;
 		right: 0;
 }
+.price-submit {
+	background: purple;
+    padding: 5px 6px 1px 6px;
+    transition: 0.25s;
+}
+.price-submit:hover {
+	background: #ff5e62;
+}
+.product-counter {
+	margin-bottom: 10px;
+	padding: 10px;
+	color: white;
+}
+.product-counter.all {
+	background: purple;
+}
+.product-counter.in {
+	background: #71B118;
+}
+.product-counter.out {
+	background: #C90000;
+}

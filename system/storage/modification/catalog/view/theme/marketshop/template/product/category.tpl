@@ -243,8 +243,7 @@ $( window ).resize(function() {
             <div class="btn-group">
               <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
               <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
-            </div>
-            <a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a> </div>
+            </div> </div>
              <div class="col-md-4 col-xs-6">
           <div class="form-group input-group input-group-sm">
             <label class="input-group-addon" for="input-sort"><?php echo $text_sort; ?></label>
@@ -304,10 +303,10 @@ $( window ).resize(function() {
               <div class="button-group">
                 <button class="btn-primary" type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');">
                 <span><?php echo $button_cart; ?></span></button>
-                <div class="add-to-links">
+<!--                 <div class="add-to-links">
                   <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i> <span><?php echo $button_wishlist; ?></span></button>
                   <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i> <span><?php echo $button_compare; ?></span></button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

@@ -879,7 +879,48 @@ class ControllerCommonColumnLeft extends Controller {
 			} else {
 				$data['other_status'] = 0;
 			}
+
+			//Custom links
+
+			//Crawler
+			$data['productCrawlerLink'] = $this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true);
+
+			//Products
+			$data['productsLink'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'], true);
+
+			//Categories
+			$data['categoriesLink'] = $this->url->link('catalog/category', 'token=' . $this->session->data['token'], true);
+
+			//Manufacturers
+			$data['manufacturersLink'] = $this->url->link('catalog/manufacturer', 'token=' . $this->session->data['token'], true);
+
+			//Options
+			$data['optionsLink'] = $this->url->link('catalog/option', 'token=' . $this->session->data['token'], true);
 			
+			//Filters
+			$data['filtersLink'] = $this->url->link('catalog/filter', 'token=' . $this->session->data['token'], true);
+
+			//Modifications
+			$data['modificationsLink'] = $this->url->link('extension/modification', 'token=' . $this->session->data['token'], true);
+
+			//Sales
+			$data['ordersLink'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], true);
+
+			//Vehicles
+			$data['vehiclesLink'] = $this->url->link('extension/module/vehicles', 'token=' . $this->session->data['token'], true);
+
+			//Installer
+			$data['installerLink'] = $this->url->link('extension/installer', 'token='.$this->session->data['token'], true);
+
+			//Modules
+			$data['modulesLink'] = $this->url->link('extension/extension', 'token='.$this->session->data['token'], true);
+
+			//Clients
+			$data['clientsLink'] = $this->url->link('customer/customer', 'token='.$this->session->data['token'], true);
+
+			//Склад
+			$data['skladLink'] = $this->url->link('catalog/product', 'token='.$this->session->data['token'] . '&showFrom=', true);
+
 			return $this->load->view('common/column_left', $data);
 		}
 	}

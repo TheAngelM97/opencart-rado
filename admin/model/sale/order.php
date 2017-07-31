@@ -276,6 +276,13 @@ class ModelSaleOrder extends Model {
 		return $query->rows;
 	}
 
+	public function getOrderShipping($order_id)
+	{
+		$sql = 'SELECT * FROM ' . DB_PREFIX . 'order_total WHERE order_id = ' . (int)$order_id . ' AND code = "shipping"';
+		$query = $this->db->query($sql);
+		return $query->row;
+	}
+
 	public function getTotalOrders($data = array()) {
 		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order`";
 
@@ -446,5 +453,31 @@ class ModelSaleOrder extends Model {
 		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0'");
 
 		return $query->row['email'];
+	}
+
+	public function updateShippingPrice($order_id, $order_total_id, $price)
+	{
+		$sql = 'SELECT value FROM ' . DB_PREFIX . 'order_total WHERE order_total_id = ' . (int)$order_total_id;
+		$query = $this->db->query($sql);
+		$row = $query->row;
+		$value = $row['value'];
+
+		$newValue = abs((float)$price - (float)$value);
+
+		if ($price > $value) {
+			$sql2 = 'UPDATE ' . DB_PREFIX . 'order_total SET value = value + ' . (float)$newValue . ' WHERE order_id = ' . (int)$order_id . ' AND code = "total"';
+			$sql3 = 'UPDATE ' . DB_PREFIX . 'order SET total = total + ' . (float)$newValue . ' WHERE order_id = ' . (int)$order_id;
+		}
+		else {
+			$sql2 = 'UPDATE ' . DB_PREFIX . 'order_total SET value = value - ' . (float)$newValue . ' WHERE order_id = ' . (int)$order_id . ' AND code = "total"';
+			$sql3 = 'UPDATE ' . DB_PREFIX . 'order SET total = total - ' . (float)$newValue . ' WHERE order_id = ' . (int)$order_id;
+		}
+
+		$sql = 'UPDATE ' . DB_PREFIX . 'order_total SET value = ' . (float)$price . ' WHERE order_total_id = ' . (int)$order_total_id;
+		
+		$this->db->query($sql);
+		$this->db->query($sql2);
+		$this->db->query($sql3);
+		return $sql2;
 	}
 }

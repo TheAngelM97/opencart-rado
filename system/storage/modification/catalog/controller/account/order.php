@@ -1,4 +1,9 @@
 <?php
+
+				use Dompdf\Dompdf;
+				use Dompdf\Options;
+				require_once DIR_SYSTEM.'library/dompdf/autoload.inc.php';
+			
 class ControllerAccountOrder extends Controller {
 
 public function return_loading() {
@@ -213,6 +218,14 @@ private function parcelImport($data) {
 
 		$order_total = $this->model_account_order->getTotalOrders();
 
+
+				$data['invoice_manager_download_invoice_customer_status'] = $this->config->get('invoice_manager_download_invoice_customer_status');
+				if($this->config->get('invoice_manager_complete_status')){
+					$data['invoice_manager_complete_status'] = $this->config->get('invoice_manager_complete_status');
+				}else{
+					$data['invoice_manager_complete_status'] = array();
+				}
+			
 		$results = $this->model_account_order->getOrders(($page - 1) * 10, 10);
 
 		foreach ($results as $result) {
@@ -221,6 +234,8 @@ private function parcelImport($data) {
 
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
+'order_status_id' => $result['order_status_id'],
+			'download'   => $this->url->link('account/order/pdfinvoice', '&type=pdf&order_id=' . $result['order_id'], 'SSL'),
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
@@ -252,6 +267,604 @@ private function parcelImport($data) {
 		$this->response->setOutput($this->load->view('account/order_list', $data));
 	}
 
+
+				public function pdfinvoice() {
+		$this->load->language('account/order');
+
+		$data['title'] = $this->language->get('text_invoice');
+
+		if ($this->request->server['HTTPS']) {
+			$data['base'] = HTTPS_SERVER;
+		} else {
+			$data['base'] = HTTP_SERVER;
+		}
+		
+		if ($this->request->server['HTTPS']){
+			$server = HTTPS_SERVER;
+		} else {
+			$server = HTTP_SERVER;
+		}
+
+		$data['direction'] = $this->language->get('direction');
+		$data['lang'] = $this->language->get('code');
+
+		$data['text_invoice'] = $this->language->get('text_invoice');
+		$data['text_order_detail'] = $this->language->get('text_order_detail');
+		$data['text_order_id'] = $this->language->get('text_order_id');
+		$data['text_invoice_no'] = $this->language->get('text_invoice_no');
+		$data['text_invoice_date'] = $this->language->get('text_invoice_date');
+		$data['text_date_added'] = $this->language->get('text_date_added');
+		$data['text_telephone'] = $this->language->get('text_telephone');
+		$data['text_fax'] = $this->language->get('text_fax');
+		$data['text_email'] = $this->language->get('text_email');
+		$data['text_website'] = $this->language->get('text_website');
+		$data['text_payment_address'] = $this->language->get('text_payment_address');
+		$data['text_shipping_address'] = $this->language->get('text_shipping_address');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_comment'] = $this->language->get('text_comment');
+
+		$data['column_product'] = $this->language->get('column_product');
+		$data['column_model'] = $this->language->get('column_model');
+		$data['column_quantity'] = $this->language->get('column_quantity');
+		$data['column_price'] = $this->language->get('column_price');
+		$data['column_total'] = $this->language->get('column_total');
+
+		$this->load->model('account/order');
+
+		$this->load->model('setting/setting');
+		
+		$this->load->model('tool/image');
+		
+		$this->load->model('tool/upload');
+		
+		$this->load->model('catalog/product');
+				
+		$data['orders'] = array();
+
+		$orders = array();
+
+		if (isset($this->request->post['selected'])) {
+			$orders = $this->request->post['selected'];
+		} elseif (isset($this->request->get['order_id'])) {
+			$orders[] = $this->request->get['order_id'];
+		}elseif(isset($this->request->post['bulkmail'])){
+		  $orders = explode(',',$this->request->post['bulkmail']);
+		}
+		
+		
+		if(isset($this->request->get['mail_status'])){
+			$mail_status = $this->request->get['mail_status'];
+		}else{
+			$mail_status = false;
+		}
+		
+		if(!empty($this->request->get['type'])){
+		 $format_type = 'pdf';
+		}else{
+		 $format_type = 'html';
+		}
+
+		foreach ($orders as $order_id){
+			
+			$order_info = $this->model_account_order->getOrder($order_id);
+			
+			
+			if ($order_info){
+				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);
+
+				if ($store_info){
+					$store_address = $store_info['config_address'];
+					$store_email = $store_info['config_email'];
+					$store_telephone = $store_info['config_telephone'];
+					$store_fax = $store_info['config_fax'];
+				} else {
+					$store_address = $this->config->get('config_address');
+					$store_email = $this->config->get('config_email');
+					$store_telephone = $this->config->get('config_telephone');
+					$store_fax = $this->config->get('config_fax');
+				}
+				
+				if ($order_info['invoice_no']) {
+					$invoice_no = $order_info['invoice_prefix'] . $order_info['invoice_no'];
+				} else {
+					$invoice_no = '';
+				}
+				
+				$invoice_info = $this->model_setting_setting->getSetting('invoice_manager', $order_info['store_id']);
+				
+				if (!empty($invoice_info['invoice_manager_payment_address_format'])) {
+					$format = $invoice_info['invoice_manager_payment_address_format'];
+				} else {
+					$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
+				}
+
+				$find = array(
+					'{firstname}',
+					'{lastname}',
+					'{company}',
+					'{address_1}',
+					'{address_2}',
+					'{city}',
+					'{postcode}',
+					'{zone}',
+					'{zone_code}',
+					'{country}'
+				);
+
+				$replace = array(
+					'firstname' => $order_info['payment_firstname'],
+					'lastname'  => $order_info['payment_lastname'],
+					'company'   => $order_info['payment_company'],
+					'address_1' => $order_info['payment_address_1'],
+					'address_2' => $order_info['payment_address_2'],
+					'city'      => $order_info['payment_city'],
+					'postcode'  => $order_info['payment_postcode'],
+					'zone'      => $order_info['payment_zone'],
+					'zone_code' => $order_info['payment_zone_code'],
+					'country'   => $order_info['payment_country']
+				);
+
+				$payment_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+
+				if (!empty($invoice_info['invoice_manager_shipping_address_format'])) {
+					$format = $invoice_info['invoice_manager_shipping_address_format'];
+				} else {
+					$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
+				}
+
+				$find = array(
+					'{firstname}',
+					'{lastname}',
+					'{company}',
+					'{address_1}',
+					'{address_2}',
+					'{city}',
+					'{postcode}',
+					'{zone}',
+					'{zone_code}',
+					'{country}'
+				);
+
+				$replace = array(
+					'firstname' => $order_info['shipping_firstname'],
+					'lastname'  => $order_info['shipping_lastname'],
+					'company'   => $order_info['shipping_company'],
+					'address_1' => $order_info['shipping_address_1'],
+					'address_2' => $order_info['shipping_address_2'],
+					'city'      => $order_info['shipping_city'],
+					'postcode'  => $order_info['shipping_postcode'],
+					'zone'      => $order_info['shipping_zone'],
+					'zone_code' => $order_info['shipping_zone_code'],
+					'country'   => $order_info['shipping_country']
+				);
+
+				$shipping_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+				
+				
+				//Hide/Show option
+				if(!empty($invoice_info['invoice_manager_invoice_heading_status'])){
+					$invoice_manager_invoice_heading_status  = $invoice_info['invoice_manager_invoice_heading_status'];
+				}else{
+					$invoice_manager_invoice_heading_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_orderdetails_status'])){
+					$invoice_manager_orderdetails_status  = $invoice_info['invoice_manager_orderdetails_status'];
+				}else{
+					$invoice_manager_orderdetails_status = false;
+				}
+				
+				$tdwidtharray=array();
+				if(!empty($invoice_info['invoice_manager_shipping_address_status'])){
+					$invoice_manager_shipping_address_status  = $invoice_info['invoice_manager_shipping_address_status'];
+					$tdwidtharray[]=true;
+				}else{
+					$invoice_manager_shipping_address_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_payment_address_status'])){
+					$invoice_manager_payment_address_status  = $invoice_info['invoice_manager_payment_address_status'];
+					$tdwidtharray[]=true;
+				}else{
+					$invoice_manager_payment_address_status = false;
+				}
+				
+				if(count($tdwidtharray > 1)){
+					$tdwidth=50;
+				}else{
+					$tdwidth=100;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_image_status'])){
+					$invoice_manager_product_image_status  = $invoice_info['invoice_manager_product_image_status'];
+				}else{
+					$invoice_manager_product_image_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_name_status'])){
+					$invoice_manager_product_name_status  = $invoice_info['invoice_manager_product_name_status'];
+				}else{
+					$invoice_manager_product_name_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_model_status'])){
+					$invoice_manager_product_model_status  = $invoice_info['invoice_manager_product_model_status'];
+				}else{
+					$invoice_manager_product_model_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_sku_status'])){
+					$invoice_manager_product_sku_status  = $invoice_info['invoice_manager_product_sku_status'];
+				}else{
+					$invoice_manager_product_sku_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_qty_status'])){
+					$invoice_manager_product_qty_status  = $invoice_info['invoice_manager_product_qty_status'];
+				}else{
+					$invoice_manager_product_qty_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_unit_price_status'])){
+					$invoice_manager_product_unit_price_status  = $invoice_info['invoice_manager_product_unit_price_status'];
+				}else{
+					$invoice_manager_product_unit_price_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_total_status'])){
+					$invoice_manager_product_total_status  = $invoice_info['invoice_manager_product_total_status'];
+				}else{
+					$invoice_manager_product_total_status = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_logo'])){
+					$invoice_manager_logo  = str_replace(' ', '%20', $invoice_info['invoice_manager_logo']);
+				}else{
+					$invoice_manager_logo = false;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_pdf_stream'])){
+					$invoice_manager_pdf_stream  = $invoice_info['invoice_manager_pdf_stream'];
+				}else{
+					$invoice_manager_pdf_stream = false;
+				}
+				
+				$ifind = array(
+					'{logo}',
+					'{store}',
+					'{address}',
+					'{email}',
+					'{telephone}',
+					'{fax}',
+					'{website}',
+					'{order_date}',
+					'{order}',
+					'{invoice}',
+					'{payment}',
+					'{shipping}',
+					'{payment_address}',
+					'{shipping_address}',
+					'{customer}',
+					'{customer_email}',
+					'{customer_telephone}',
+				);
+				$ireplace = array(
+					'logo'				=> '<img class="img-responsive" src='.$server.'image/'.$invoice_manager_logo.'>',
+					'store_name'        => $order_info['store_name'],
+					'store_address'  	=> nl2br($store_address),
+					'store_email'  		=> $store_email,
+					'store_telephone'  	=> $store_telephone,
+					'store_fax'  		=> $store_fax,
+					'store_url'         => rtrim($order_info['store_url'], '/'),
+					'date_added'        => date($this->language->get('date_format_short'), strtotime($order_info['date_added'])),
+					'order_id'				=> $order_id,
+					'invoice'			=> $invoice_no,
+					'payment_method'	=> $order_info['payment_method'],
+					'shipping_method'	=> $order_info['shipping_method'],
+					'payment_address'	=> $payment_address,
+					'shipping_address'	=> $shipping_address,
+					'customer'			=> $order_info['firstname'].' '.$order_info['lastname'],
+					'email'				=> $order_info['email'],
+					'telephone'			=> $order_info['telephone'],
+				);
+				
+				if(!empty($invoice_info['invoice_manager_header'. $order_info['language_id']])){
+					$invoice_manager_header = $invoice_info['invoice_manager_header'. $order_info['language_id']];
+				}else{
+					$invoice_manager_header = '';
+				}
+				
+				if($invoice_manager_header){
+					$invoice_manager_header = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($ifind, $ireplace, $invoice_manager_header))));
+				}
+				
+				if(!empty($invoice_info['invoice_manager_footer'. $order_info['language_id']])){
+					$invoice_manager_footer = $invoice_info['invoice_manager_footer'. $order_info['language_id']];
+				}else{
+					$invoice_manager_footer = '';
+				}
+				
+				if($invoice_manager_footer){
+					$invoice_manager_footer = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($ifind, $ireplace, $invoice_manager_footer))));
+				}
+				
+				if(!empty($invoice_info['invoice_manager_invoice_heading'. $order_info['language_id']])){
+					$invoice_manager_invoice_heading = $invoice_info['invoice_manager_invoice_heading'. $order_info['language_id']];
+				}else{
+					$invoice_manager_invoice_heading = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_order_details_heading'. $order_info['language_id']])){
+					$invoice_manager_order_details_heading = $invoice_info['invoice_manager_order_details_heading'. $order_info['language_id']];
+				}else{
+					$invoice_manager_order_details_heading = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_payment_address_heading'. $order_info['language_id']])){
+					$invoice_manager_payment_address_heading = $invoice_info['invoice_manager_payment_address_heading'. $order_info['language_id']];
+				}else{
+					$invoice_manager_payment_address_heading = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_shipping_address_heading'. $order_info['language_id']])){
+					$invoice_manager_shipping_address_heading = $invoice_info['invoice_manager_shipping_address_heading'. $order_info['language_id']];
+				}else{
+					$invoice_manager_shipping_address_heading = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_image_title'. $order_info['language_id']])){
+					$invoice_manager_image_title = $invoice_info['invoice_manager_image_title'. $order_info['language_id']];
+				}else{
+					$invoice_manager_image_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_product_title'. $order_info['language_id']])){
+					$invoice_manager_product_title = $invoice_info['invoice_manager_product_title'. $order_info['language_id']];
+				}else{
+					$invoice_manager_product_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_model_title'.$order_info['language_id']])){
+					$invoice_manager_model_title = $invoice_info['invoice_manager_model_title'. $order_info['language_id']];
+				}else{
+					$invoice_manager_model_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_sku_title'.$order_info['language_id']])){
+					$invoice_manager_sku_title = $invoice_info['invoice_manager_sku_title'.$order_info['language_id']];
+				}else{
+					$invoice_manager_sku_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_qty_title'.$order_info['language_id']])){
+					$invoice_manager_qty_title = $invoice_info['invoice_manager_qty_title'.$order_info['language_id']];
+				}else{
+					$invoice_manager_qty_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_unit_title'.$order_info['language_id']])){
+					$invoice_manager_unit_title = $invoice_info['invoice_manager_unit_title'.$order_info['language_id']];
+				}else{
+					$invoice_manager_unit_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_total_title'.$order_info['language_id']])){
+					$invoice_manager_total_title = $invoice_info['invoice_manager_total_title'.$order_info['language_id']];
+				}else{
+					$invoice_manager_total_title = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_width'])){
+					$invoice_manager_width = $invoice_info['invoice_manager_width'];
+				}else{
+					$invoice_manager_width = 50;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_height'])){
+					$invoice_manager_height = $invoice_info['invoice_manager_height'];
+				}else{
+					$invoice_manager_height = 50;
+				}
+				
+				if(!empty($invoice_info['invoice_manager_title_backgound'])){
+					$invoice_manager_title_backgound = $invoice_info['invoice_manager_title_backgound'];
+				}else{
+					$invoice_manager_title_backgound = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_title_color'])){
+					$invoice_manager_title_color = $invoice_info['invoice_manager_title_color'];
+				}else{
+					$invoice_manager_title_color = '';
+				}
+				
+				if(!empty($invoice_info['invoice_manager_total_title'.$order_info['language_id']])){
+					$invoice_manager_total_title = $invoice_info['invoice_manager_total_title'.$order_info['language_id']];
+				}else{
+					$invoice_manager_total_title = '';
+				}
+				
+				
+				if(!empty($invoice_info['invoice_manager_subject'.$order_info['language_id']])){
+					$invoice_manager_subject = $invoice_info['invoice_manager_subject'.$order_info['language_id']];
+				}else{
+					$invoice_manager_subject = '';
+				}
+				
+				
+				if(!empty($invoice_info['invoice_manager_message'.$order_info['language_id']])){
+					$invoice_manager_message = $invoice_info['invoice_manager_message'.$order_info['language_id']];
+				}else{
+					$invoice_manager_message = '';
+				}
+				
+				
+				$product_data = array();
+
+				$products = $this->model_account_order->getOrderProducts($order_id);
+
+				foreach ($products as $product){
+					$option_data = array();
+					$product_info = $this->model_catalog_product->getProduct($product['product_id']);
+					if(isset($product_info['sku'])){
+					 $sku = $product_info['sku'];
+					}else{
+					 $sku = '';
+					}
+					
+					if (is_file(DIR_IMAGE . $product_info['image'])) {
+						$image = $this->model_tool_image->resize($product_info['image'], $invoice_manager_width, $invoice_manager_height);
+					} else {
+						$image = $this->model_tool_image->resize('no_image.png', $invoice_manager_width, $invoice_manager_height);
+					}
+
+					$options = $this->model_account_order->getOrderOptions($order_id, $product['order_product_id']);
+
+					foreach ($options as $option) {
+						if ($option['type'] != 'file') {
+							$value = $option['value'];
+						} else {
+							$upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
+
+							if ($upload_info) {
+								$value = $upload_info['name'];
+							} else {
+								$value = '';
+							}
+						}
+
+						$option_data[] = array(
+							'name'  => $option['name'],
+							'value' => $value
+						);
+					}
+
+					$product_data[] = array(
+						'name'     => $product['name'],
+						'model'    => $product['model'],
+						'sku'      => $sku,
+						'image'	   => str_replace(' ', '%20', $image),
+						'option'   => $option_data,
+						'quantity' => $product['quantity'],
+						'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
+						'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value'])
+					);
+				}
+
+				$voucher_data = array();
+
+				$vouchers = $this->model_account_order->getOrderVouchers($order_id);
+
+				foreach ($vouchers as $voucher) {
+					$voucher_data[] = array(
+						'description' => $voucher['description'],
+						'amount'      => $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value'])
+					);
+				}
+
+				$total_data = array();
+
+				$totals = $this->model_account_order->getOrderTotals($order_id);
+
+				foreach ($totals as $total) {
+					$total_data[] = array(
+						'title' => $total['title'],
+						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value'])
+					);
+				}
+
+				$data['orders'][] = array(
+					'invoice_manager_invoice_heading_status'	=> $invoice_manager_invoice_heading_status,
+					'invoice_manager_orderdetails_status'		=> $invoice_manager_orderdetails_status,
+					'invoice_manager_shipping_address_status'	=> $invoice_manager_shipping_address_status,
+					'invoice_manager_payment_address_status'	=> $invoice_manager_payment_address_status,
+					'invoice_manager_product_image_status'		=> $invoice_manager_product_image_status,
+					'invoice_manager_product_name_status'		=> $invoice_manager_product_name_status,
+					'invoice_manager_product_model_status'		=> $invoice_manager_product_model_status,
+					'invoice_manager_product_sku_status'		=> $invoice_manager_product_sku_status,
+					'invoice_manager_product_qty_status'		=> $invoice_manager_product_qty_status,
+					'invoice_manager_product_unit_price_status'	=> $invoice_manager_product_unit_price_status,
+					'invoice_manager_product_total_status'		=> $invoice_manager_product_total_status,
+					'invoice_manager_shipping_address_heading'	=> $invoice_manager_shipping_address_heading,
+					'invoice_manager_payment_address_heading'	=> $invoice_manager_payment_address_heading,
+					'invoice_manager_order_details_heading'		=> $invoice_manager_order_details_heading,
+					'invoice_manager_invoice_heading'			=> $invoice_manager_invoice_heading,
+					'invoice_manager_total_title'				=> $invoice_manager_total_title,
+					'invoice_manager_unit_title'				=> $invoice_manager_unit_title,
+					'invoice_manager_qty_title'					=> $invoice_manager_qty_title,
+					'invoice_manager_sku_title'					=> $invoice_manager_sku_title,
+					'invoice_manager_model_title'				=> $invoice_manager_model_title,
+					'invoice_manager_product_title'				=> $invoice_manager_product_title,
+					'invoice_manager_image_title'				=> $invoice_manager_image_title,
+					'invoice_manager_title_backgound'			=> $invoice_manager_title_backgound,
+					'invoice_manager_title_color'				=> $invoice_manager_title_color,
+					'tdwidth'	       							=> $tdwidth,
+					'order_id'	      							=> $order_id,
+					'invoice_no'       							=> $invoice_no,
+					'date_added'       							=> date($this->language->get('date_format_short'), strtotime($order_info['date_added'])),
+					'store_name'       							=> $order_info['store_name'],
+					'store_url'        							=> rtrim($order_info['store_url'], '/'),
+					'store_address'    							=> nl2br($store_address),
+					'store_email'     							=> $store_email,
+					'store_telephone'  							=> $store_telephone,
+					'store_fax'        							=> $store_fax,
+					'email'            							=> $order_info['email'],
+					'telephone'        							=> $order_info['telephone'],
+					'shipping_address' 							=> $shipping_address,
+					'shipping_method'  							=> $order_info['shipping_method'],
+					'payment_address'  						 	=> $payment_address,
+					'payment_method'   							=> $order_info['payment_method'],
+					'product'          							=> $product_data,
+					'voucher'          							=> $voucher_data,
+					'total'            							=> $total_data,
+					'comment'          							=> nl2br($order_info['comment']),
+					'invoice_manager_header'          			=> html_entity_decode($invoice_manager_header, ENT_QUOTES, 'UTF-8'),
+					'invoice_manager_footer'          			=> html_entity_decode($invoice_manager_footer, ENT_QUOTES, 'UTF-8'),
+				);
+			
+				$filename="invoice-".$order_id;
+			}
+		}
+		if(!$mail_status){
+			if($format_type=='pdf'){
+			  $html = $this->load->view('account/order_pdfinvoice', $data,true);
+			  $this->pdf_create($html, $filename, $invoice_manager_pdf_stream, $orientation='portrait');
+			}else{
+			  $this->response->setOutput($this->load->view('account/order_pdfinvoice', $data));
+			}
+		}
+	}
+	
+	public function pdf_create($html, $filename, $stream=false, $orientation="portrait",$download_status=false){
+					$options = new Options();
+					$options->set('isRemoteEnabled', TRUE);
+					$dompdf = new Dompdf($options);
+					$dompdf->loadHtml($html);
+					$dompdf->setPaper("A4", $orientation);
+					$dompdf->render();
+					$savepath = DIR_DOWNLOAD.$filename.'.pdf';
+					if($stream){
+						$dompdf->stream($filename . ".pdf",array("Attachment" => false));
+					} else { // save to file only, your going to load the file helper for this one
+						file_put_contents($savepath, $dompdf->output());
+						if($download_status){
+							header("Content-Type: application/octet-stream");
+							header("Content-Disposition: attachment; filename=" . urlencode($filename.'.pdf'));
+							header("Content-Type: application/octet-stream");
+							header("Content-Type: application/download");
+							header("Content-Description: File Transfer");            
+							header('Content-Length: ' . filesize($savepath));
+							header('Accept-Ranges: bytes');
+							readfile($savepath);
+							exit;
+						}else{
+							return true;
+						}
+					}
+				}
+				
+			
 	public function info() {
 		$this->load->language('account/order');
 

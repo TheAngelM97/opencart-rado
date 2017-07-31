@@ -9,7 +9,7 @@
 <link type="text/css" href="view/javascript/jquery/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
 <script type="text/javascript" src="view/javascript/jquery/jqvmap/jquery.vmap.js"></script> 
 <script type="text/javascript" src="view/javascript/jquery/jqvmap/maps/jquery.vmap.world.js"></script> 
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $(document).ready(function() {
 	$.ajax({
 		url: 'index.php?route=extension/dashboard/map/map&token=<?php echo $token; ?>',
@@ -44,4 +44,4 @@ $(document).ready(function() {
         }
 	});			
 });
-//--></script> 
+</script> 

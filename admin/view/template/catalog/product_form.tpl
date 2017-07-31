@@ -13,8 +13,15 @@
   }
   else {
     if (isset($products)) {
+      $name = $products[0]['product_name'];
       $crawled_product_store = $products[0]['store'];
       $price = $products[0]['product_price'];
+      $products_quantities = array();
+      foreach ($products as $product) {
+        $products_quantities[] = $product['product_quantity'];
+      }
+
+      $product_quantity = max($products_quantities);
     }
   }
 
@@ -50,10 +57,10 @@
               <?php 
                 foreach ($products as $product) { 
                     if ($product['product_quantity'] > 0) { ?>
-                        <li><?= $product['product_name'] ?> - <?= $product['product_quantity'] ?></li>
+                        <li><?= $product['product_code'] ?> - <?= $product['product_quantity'] ?></li>
               <?php  }
                     else { ?>
-                        <li style="background-color: red;"><?= $product['product_name'] ?> - <?= $product['product_quantity'] ?></li>
+                        <li style="background-color: red;"><?= $product['product_code'] ?> - <?= $product['product_quantity'] ?></li>
               <?php  }
                 ?>
                   
@@ -92,9 +99,10 @@
                 <input type="hidden" name="product-codes" value="<?= implode('-', $string_product_codes) ?>">
         <?php  }
             }
+            else { ?>
+                <input type="hidden" name="product-secret-code" value="<?= $product_code ?>">
+        <?php  }
           ?>
-
-          <input type="hidden" name="product-secret-code" value="<?= $product_code ?>">
 
           <input type="hidden" name="crawled-product-store" value="<?= $crawled_product_store ?>">
 
@@ -165,7 +173,7 @@
                       <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" style="display: none;">
                     <label class="col-sm-2 control-label" for="input-tag<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" title="<?php echo $help_tag; ?>"><?php echo $entry_tag; ?></span></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
@@ -197,31 +205,31 @@
                   <input type="text" name="upc" value="<?php echo $upc; ?><?php if(isset($productModel)) { echo $productModel; } ?>" placeholder="<?php echo $entry_upc; ?>" id="input-upc" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-ean"><span data-toggle="tooltip" title="<?php echo $help_ean; ?>"><?php echo $entry_ean; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="ean" value="<?php echo $ean; ?>" placeholder="<?php echo $entry_ean; ?>" id="input-ean" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="<?php echo $help_jan; ?>"><?php echo $entry_jan; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="jan" value="<?php echo $jan; ?>" placeholder="<?php echo $entry_jan; ?>" id="input-jan" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="<?php echo $help_isbn; ?>"><?php echo $entry_isbn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="isbn" value="<?php echo $isbn; ?>" placeholder="<?php echo $entry_isbn; ?>" id="input-isbn" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-mpn"><span data-toggle="tooltip" title="<?php echo $help_mpn; ?>"><?php echo $entry_mpn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="mpn" value="<?php echo $mpn; ?>" placeholder="<?php echo $entry_mpn; ?>" id="input-mpn" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
@@ -244,7 +252,7 @@
                   ?>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-tax-class"><?php echo $entry_tax_class; ?></label>
                 <div class="col-sm-10">
                   <select name="tax_class_id" id="input-tax-class" class="form-control">
@@ -339,7 +347,7 @@
                   <?php } ?>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
                 <div class="col-sm-3">
                   <div class="input-group date">
@@ -349,7 +357,7 @@
                     </span></div>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-length"><?php echo $entry_dimension; ?></label>
                 <div class="col-sm-10">
                   <div class="row">
@@ -365,7 +373,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-length-class"><?php echo $entry_length_class; ?></label>
                 <div class="col-sm-10">
                   <select name="length_class_id" id="input-length-class" class="form-control">
@@ -413,7 +421,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
@@ -462,7 +470,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
                   <div class="well well-sm" style="height: 150px; overflow: auto;">
@@ -493,7 +501,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-download"><span data-toggle="tooltip" title="<?php echo $help_download; ?>"><?php echo $entry_download; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="download" value="" placeholder="<?php echo $entry_download; ?>" id="input-download" class="form-control" />
@@ -506,7 +514,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: none;">
                 <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
@@ -521,7 +529,7 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-attribute">
-              <div class="table-responsive">
+              <div class="table-responsive" style="display: none;">
                 <table id="attribute" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -1421,7 +1429,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
 			html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
-			html += '        <td class="text-right"><?php echo $entry_option_points; ?></td>';
+			html += '        <td class="text-right" style="display:none;"><?php echo $entry_option_points; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_weight; ?></td>';
 
       <?php 
@@ -1440,12 +1448,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '    </tbody>';
 			html += '    <tfoot>';
 			html += '      <tr>';
-      if (item['label'] == 'Цвят') {
-        html += '        <td colspan="7"></td>';
-      }
-      else {
-        html += '        <td colspan="6"></td>';
-      }
+      html += '        <td colspan="6"></td>';
 			html += '        <td class="text-left"><button type="button" onclick="addOptionValue(' + option_row + ', ' + '\''  + item['label'] + '\'' + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
 			html += '      </tr>';
 			html += '    </tfoot>';
@@ -1521,7 +1524,7 @@ function addOptionValue(option_row, option_name) {
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
+	html += '  <td class="text-right" style="display:none;"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
@@ -1537,7 +1540,12 @@ function addOptionValue(option_row, option_name) {
       if (is_array($products)) {
         $options = '';
         foreach ($products as $product) {
-          $options .= '<option value="'. $product['product_code'] .'" data-color-quantity="' . $product['product_quantity'] .'">'. $product['product_name'] .'</option>';
+          if ($product['store'] == 'max-pen') {
+            $options .= '<option value="'. $product['product_code'] .'" data-color-quantity="' . $product['product_quantity'] .'">'. $product['product_code'] .'</option>';
+          }
+          else {
+            $options .= '<option value="'. $product['product_code'] .'" data-color-quantity="' . $product['product_quantity'] .'">'. $product['product_name'] .'</option>';
+          }
         }
       }
     }

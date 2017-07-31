@@ -15,6 +15,19 @@
 		private $data = array();
 		private $db;
 
+		private $store = null;
+
+		//Pagination
+		private $start;
+		private $limit = 30;
+
+		private $sky_r = 'http://www.sky-r.com';
+		private $sky_r_manifacturers = array();
+		private $sky_r_pages = array();
+
+		private $max_pen_option;
+		private $max_pen_pages = array();
+
 		private $products = array();
 
 		private function setData() 
@@ -29,8 +42,8 @@
 			//Link to upload form
 			$this->data['upload_form'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'], true);
 
-			//pagination link
-			$this->data['crawler_link'] = $this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token']);
+			//clean link
+			$this->data['product_crawler_link'] = $this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token']);
 
 			//updates link
 			$this->data['updates_link'] = $this->url->link('extension/module/product_crawler/showUpdates', 'token=' . $this->session->data['token']);
@@ -43,22 +56,39 @@
 				$page = 1;
 			}
 
-			$itemsPerPage = 30;
+			$this->data['sort'] = null;
+			if (isset($this->request->get['sort'])) {
+				$this->data['sort'] = $this->request->get['sort'];
+			}
+			$this->data['order'] = 'DESC';
+			if (isset($this->request->get['order'])) {
+				$this->data['order'] = $this->request->get['order'];
+			}
 
-			$start = $itemsPerPage * ($page - 1);
+			if (isset($this->request->get['site'])) {
+				$this->store = $this->request->get['site'];
+			}
+
+			$this->start = $this->limit * ($page - 1);
 
 			//get all pages
 			$this->load->model('extension/module/crawled_product');
 
-			$allProducts = $this->model_extension_module_crawled_product->getAllProducts();
+			//uploaded codes
+			$this->load->model('extension/module/uploaded_code');
 
-			$this->data['pages'] = ceil(count($allProducts) / $itemsPerPage);
+			$allProducts = $this->model_extension_module_crawled_product->getAllProducts($this->store);
+
+			$this->data['pages'] = ceil(count($allProducts) / $this->limit);
 
 			//All products
-			$this->data['allProducts'] = $this->model_extension_module_crawled_product->getAllProducts($start, $itemsPerPage);
+			$this->data['allProducts'] = $this->model_extension_module_crawled_product->getAllProducts($this->store, $this->start, $this->limit, $this->data['sort'], $this->data['order']);
+
+			//pagination link
+			$this->data['crawler_link'] = $this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true);
 
 			//Products waiting for update
-			$this->data['updateProducts'] = $this->model_extension_module_crawled_product->getUpdateProducts($start, $itemsPerPage);
+			$this->data['updateProducts'] = $this->model_extension_module_crawled_product->getUpdateProducts($this->start, $this->limit);
 
 			//Edit product link
 			$this->data['editLink'] = $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'], true);
@@ -68,10 +98,31 @@
 
 			//Delete all link
 			$this->data['deleteAllLink'] = $this->url->link('extension/module/product_crawler/deleteAll', 'token=' . $this->session->data['token'], true);
+
+			//All stores
+			$this->data['stores'] = $this->model_extension_module_crawled_product->getStores();
+
+			//Update percent link
+			$this->data['updatePercentLink'] = $this->url->link('extension/module/product_crawler/updatePercent', 'token=' . $this->session->data['token'], true);
+
+			//count products
+			$this->data['count_all'] = $this->model_extension_module_crawled_product->countProducts();
+
+			//instock count
+			$this->data['count_in_stock'] = $this->model_extension_module_crawled_product->countInStock();
+
+			//out of stock count
+			$this->data['count_out_of_stock'] = $this->model_extension_module_crawled_product->countOutOfStock();
+
+			//delete from store
+			$this->data['delete_from_store'] = $this->url->link('extension/module/product_crawler/deleteFromStore', 'token=' . $this->session->data['token'], true);
+
+			//All
+			$this->data['all'] = $this->model_extension_module_uploaded_code->getAll();
 		}
 
 		public function index()
-		{
+		{	
 			$this->setData();
 
 			$this->response->setOutput($this->load->view('extension/module/product_crawler', $this->data));
@@ -95,20 +146,115 @@
 			mysqli_query($db, $sql);
 		}
 
+		private function crawlMaxPenProductsPage($finalProducts) {
+			if ($finalProducts->filter('.item')->count()) {
+				$finalProducts = $finalProducts->filter('.item');
+
+				$finalProducts->each(function (Crawler $innerNode, $k) {
+					//Names
+					$product['name'] = $innerNode->filter('.info div:first-child strong')->text();
+
+					//Prices
+					$price = str_replace(' $', '', $innerNode->filter('.price .num')->first()->text());
+					$product['price'] = round($price, 2);
+
+					//Codes
+					$product['code'] = $innerNode->filter('.info div:first-child strong')->text();
+
+					//Color
+					$color = $innerNode->filter('.info div:nth-child(3)')->text();
+					$color = str_replace('Цвят: ', '', $color);
+					
+					$product['code'] .= '_' . $color;
+
+					$product['name'] = str_replace('-', '_', $product['name']);
+					$product['code'] = str_replace('-', '_', $product['code']);
+
+					//Quantity
+					$quantity = $innerNode->filter('.price div')->first()->text();
+
+					preg_match_all('!\d+!', $quantity, $matches);
+
+					$product['quantity'] = trim($matches[0][0]);
+
+					$product['manufacturer'] = '';
+
+					$product['store'] = 'max-pen';
+
+					$this->products[] = $product;
+				});
+			}
+		}
+
+		private function setCurlParametersMaxPen($option, $i = "") {
+			$ch = curl_init();
+			curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+			$params = array(
+				"__EVENTTARGET"=>"lnkPgr",
+				"__EVENTARGUMENT"=>$i,
+				"ddlstthis->sorting"=>"1",
+				"chkOnlyAvailable"=>"on",
+			    "ddlstGroups"=> $option,
+			    "ddlstColor" => "0",
+			    "txtSearchProduct" => "",
+			);
+			curl_setopt($ch,CURLOPT_URL,"http://max-pen.no-ip.info/Default.aspx");
+			curl_setopt($ch,CURLOPT_POST,true);
+			curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($params));
+			$result = curl_exec($ch);
+			return $result;
+		}
+
 		public function upload()
-		{
+		{		
 			$this->load->model('extension/module/crawled_product');
 
-			if (count($this->model_extension_module_crawled_product->getAllProducts()) || count($this->model_extension_module_crawled_product->getAllUpdates())) {
-				$_SESSION['error'] = 'Качете или изтрийте всички чакащи продукти за да пуснете нов паяк';
-				$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
-			}
+			// if (count($this->model_extension_module_crawled_product->getAllProducts()) || count($this->model_extension_module_crawled_product->getAllUpdates())) {
+			// 	$_SESSION['error'] = 'Качете или изтрийте всички чакащи продукти за да пуснете нов паяк';
+			// 	$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
+			// }
 
-			if (isset($_POST['site-url']) && isset($_POST['site'])) {
+			//try {
+				if (isset($_POST['site-url']) && isset($_POST['site'])) {
 				//Dims crawler
 				if ($_POST['site'] == 'dims-92') {
-					$html = file_get_contents('http://dims-92.com/AnonymousProductCatalogPage');
-					// $html = file_get_contents('C:\Users\123\Desktop\dims.html');
+					//Upload a blank cookie.txt to the same directory as this file with a CHMOD/Permission to 777
+					function login($url,$data){
+					    $fp = fopen("cookie.txt", "w");
+					    fclose($fp);
+					    $login = curl_init();
+					    curl_setopt($login, CURLOPT_COOKIEJAR, "cookie.txt");
+					    curl_setopt($login, CURLOPT_COOKIEFILE, "cookie.txt");
+					    curl_setopt($login, CURLOPT_TIMEOUT, 40000);
+					    curl_setopt($login, CURLOPT_RETURNTRANSFER, TRUE);
+					    curl_setopt($login, CURLOPT_URL, $url);
+					    curl_setopt($login, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+					    curl_setopt($login, CURLOPT_FOLLOWLOCATION, TRUE);
+					    curl_setopt($login, CURLOPT_POST, TRUE);
+					    curl_setopt($login, CURLOPT_POSTFIELDS, $data);
+					    ob_start();
+					    return curl_exec ($login);
+					    ob_end_clean();
+					    curl_close ($login);
+					    unset($login);    
+					} 
+
+					function grab_page($site){
+					    $ch = curl_init();
+					    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+					    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+					    curl_setopt($ch, CURLOPT_TIMEOUT, 40);
+					    curl_setopt($ch, CURLOPT_COOKIEFILE, "cookie.txt");
+					    curl_setopt($ch, CURLOPT_URL, $site);
+					    ob_start();
+					    return curl_exec ($ch);
+					    ob_end_clean();
+					    curl_close ($ch);
+					}
+
+					login("http://dims-92.com/AnonymousLogInPage", "SubmitControlId=Auto_CAuthenticate_LogIn_LogIn_Standart&ParameterInfo=41757468656e7469636174653a&FC_CEShop_SearchControl_SearchInput=&FC_CAuthenticate_LogIn_UsernameInput=972&FC_CAuthenticate_LogIn_PasswordInput=bggift");
+
+					$html = grab_page("http://dims-92.com/AnonymousProductCatalogPage");
 					$crawler = new Crawler($html);
 
 					//Cycle through pages
@@ -121,7 +267,9 @@
 
 						if (strpos($link, 'dims-92.com')) {
 							//Single page crawler
-							$singlePage = new Crawler(file_get_contents($link));
+							$singlePage = new Crawler(grab_page($link));
+							//$html = file_get_contents("http://weband.bg/ecommerce/dev/tempSites/dims.html");
+							//$singlePage = new Crawler($html);
 
 							$productInfo = $singlePage->filter('table[width=140]');
 
@@ -167,42 +315,329 @@
 				}
 
 				else if ($_POST['site'] == 'sky-r') {
-					$html = file_get_contents($_POST['site-url']);
+					$html = file_get_contents('http://www.sky-r.com/view/home.htm');
 
 					$crawler = new Crawler($html);
 
-					$productInfo = $crawler->filter("#productList div.product");
+					$categories = $crawler->filter('#nav li.btn a:first-child');
 
-					$productInfo->each(function (Crawler $node, $i) {
-						$product = array();
+					$categories->each(function (Crawler $linkNode, $i) {
+						$link = $this->sky_r . $linkNode->attr('href');
 
-						//Names
-						$product['name'] = $node->filter('.descr .pTitle')->first()->text();
+						if (str_replace('  ', ' ', mb_strtolower(trim($linkNode->text()), 'UTF-8')) != 'изчерпани артикули') {
+							$categoryPage = new Crawler(file_get_contents($link));
 
-						//Prices
-						$price = $node->filter('.descr .price')->first()->text();
-						$price = str_replace('Цена: ', '', $price);
-						$price = str_replace(' лв', '', $price);
-						$product['price'] = $price;
+							$manifacturerLinks = $categoryPage->filter('#manifacturerList .manifacturer a:first-child');
 
-						//Codes
-						$productCodeArray = explode(' - ', $node->filter('.descr .pCatNumber')->first()->text());
-						$product['code'] = $productCodeArray[0];
-						$product['manufacturer'] = $productCodeArray[1];
+							if ($manifacturerLinks->count()) {
+								$manifacturerLinks->each(function (Crawler $manifacturerLinkNode, $j) {
+									$manifacturerPageLink = $this->sky_r . $manifacturerLinkNode->attr('href');
 
-						//Quantity
-						$quantity = $node->filter('a #text')->first();
+									$this->sky_r_pages = array();
 
-						if ($quantity->count()) {
-							$product['quantity'] = 'Не';
+									$manifacturerText = explode('/', $manifacturerLinkNode->attr('href'));
+									$manifacturerText = explode('.', end($manifacturerText));
+									if (!in_array(trim($manifacturerText[0]), $this->sky_r_manifacturers)) {
+										$this->sky_r_manifacturers[] = trim($manifacturerText[0]);
+									}
+
+									$manifacturerPage = new Crawler(file_get_contents(str_replace(' ', '%20', $manifacturerPageLink)));
+
+									$productPages = $manifacturerPage->filter('#productPaging a');
+
+									if ($productPages->count()) {
+										$productPages->each(function (Crawler $pageNode, $k) {
+											if (strlen($pageNode->attr('href')) && trim($pageNode->attr('href'))) {
+												if (!in_array(trim($pageNode->attr('href')), $this->sky_r_pages) && trim($pageNode->attr('href') != '#')) {
+													$this->sky_r_pages[] = trim($pageNode->attr('href'));
+												}
+											}
+										});
+									}
+
+									$productInfo = $manifacturerPage->filter("#productList div.product");
+
+									$productInfo->each(function (Crawler $node, $i) {
+										$product = array();
+
+										//Names
+										$product['name'] = $node->filter('.descr .pTitle')->first()->text();
+
+										//Prices
+										//Determine whether you have to be logged or not for the price
+										$lock = $node->filter('.descr .price a');
+										$lock_2 = $node->filter('.descr .promoprice a');
+
+										$price = $node->filter('.descr .price')->first();
+										if (!$price->count()) {
+											$price = $node->filter('.descr .promoprice')->first()->text();
+											preg_match_all('!\d+!', $price, $matches);
+											$price = floatval($matches[0][0] . '.' . $matches[0][1]);
+										}
+										else {
+											$price = $price->text();
+											$price = str_replace('Цена: ', '', $price);
+											$price = str_replace(' лв', '', $price);
+											$price = str_replace(' РА', '', $price);
+											$price = str_replace(',', '', $price);
+										}
+										
+										$product['price'] = $price;
+
+										//Codes
+										$productCodeArray = explode(' - ', $node->filter('.descr .pCatNumber')->first()->text());
+										$code = $productCodeArray[0];
+										if (in_array(trim($code), $this->sky_r_manifacturers)) {
+											$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+											$product['manufacturer'] = trim($code);
+										}
+										else {
+											if (strlen(trim($code))) {
+												$product['code'] = trim($code);
+												$product['manufacturer'] = trim($productCodeArray[1]);
+											}
+											else {
+												$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+												$product['manufacturer'] = '';
+											}
+										}
+
+										//Quantity
+										$quantity = $node->filter('a #text')->first();
+
+										if ($quantity->count()) {
+											$product['quantity'] = '0';
+										}
+										else {
+											$product['quantity'] = '1000';
+										}
+
+										$product['store'] = 'sky-r';
+
+										if (!$lock->count() && !$lock_2->count()) {
+											$this->products[] = $product;
+										}
+									});
+
+									if (count($this->sky_r_pages)) {
+										foreach ($this->sky_r_pages as $productPage) {
+											$pageProducts = new Crawler(file_get_contents(str_replace(' ', '%20', $this->sky_r . $productPage)));
+
+											$productInfo = $pageProducts->filter("#productList div.product");
+
+											$productInfo->each(function (Crawler $node, $i) {
+												$product = array();
+
+												//Names
+												$product['name'] = $node->filter('.descr .pTitle')->first()->text();
+
+												//Prices
+												//Determine whether you have to be logged or not for the price
+												$lock = $node->filter('.descr .price a');
+												$lock_2 = $node->filter('.descr .promoprice a');
+
+												$price = $node->filter('.descr .price')->first();
+												if (!$price->count()) {
+													$price = $node->filter('.descr .promoprice')->first()->text();
+													preg_match_all('!\d+!', $price, $matches);
+													$price = floatval($matches[0][0] . '.' . $matches[0][1]);
+												}
+												else {
+													$price = $price->text();
+													$price = str_replace('Цена: ', '', $price);
+													$price = str_replace(' лв', '', $price);
+													$price = str_replace(' РА', '', $price);
+													$price = str_replace(',', '', $price);
+												}
+												
+												$product['price'] = $price;
+
+												//Codes
+												$productCodeArray = explode(' - ', $node->filter('.descr .pCatNumber')->first()->text());
+												$code = $productCodeArray[0];
+												if (in_array(trim($code), $this->sky_r_manifacturers)) {
+													$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+													$product['manufacturer'] = trim($code);
+												}
+												else {
+													if (strlen(trim($code))) {
+														$product['code'] = trim($code);
+														$product['manufacturer'] = trim($productCodeArray[1]);
+													}
+													else {
+														$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+														$product['manufacturer'] = '';
+													}
+												}
+
+												//Quantity
+												$quantity = $node->filter('a #text')->first();
+
+												if ($quantity->count()) {
+													$product['quantity'] = '0';
+												}
+												else {
+													$product['quantity'] = '1000';
+												}
+
+												$product['store'] = 'sky-r';
+
+												if (!$lock->count() && !$lock_2->count()) {
+													$this->products[] = $product;
+												}
+											});
+										}
+									}
+								});
+							}
+							else {
+								$productPages = $categoryPage->filter('#productPaging a');
+
+								if ($productPages->count()) {
+									$productPages->each(function (Crawler $pageNode, $k) {
+										if (strlen($pageNode->attr('href')) && trim($pageNode->attr('href'))) {
+											if (!in_array(trim($pageNode->attr('href')), $this->sky_r_pages) && trim($pageNode->attr('href') != '#')) {
+												$this->sky_r_pages[] = trim($pageNode->attr('href'));
+											}
+										}
+									});
+								}
+
+								$productInfo = $categoryPage->filter("#productList div.product");
+
+								$productInfo->each(function (Crawler $node, $i) {
+									$product = array();
+
+									//Names
+									$product['name'] = $node->filter('.descr .pTitle')->first()->text();
+
+									//Prices
+									//Determine whether you have to be logged or not for the price
+									$lock = $node->filter('.descr .price a');
+									$lock_2 = $node->filter('.descr .promoprice a');
+
+									$price = $node->filter('.descr .price')->first();
+									if (!$price->count()) {
+										$price = $node->filter('.descr .promoprice')->first()->text();
+										preg_match_all('!\d+!', $price, $matches);
+										$price = floatval($matches[0][0] . '.' . $matches[0][1]);
+									}
+									else {
+										$price = $price->text();
+										$price = str_replace('Цена: ', '', $price);
+										$price = str_replace(' лв', '', $price);
+										$price = str_replace(' РА', '', $price);
+										$price = str_replace(',', '', $price);
+									}
+									
+									$product['price'] = $price;
+
+									//Codes
+									$productCodeArray = explode(' - ', $node->filter('.descr .pCatNumber')->first()->text());
+									$code = $productCodeArray[0];
+									if (in_array(trim($code), $this->sky_r_manifacturers)) {
+										$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+										$product['manufacturer'] = trim($code);
+									}
+									else {
+										if (strlen(trim($code))) {
+											$product['code'] = trim($code);
+											$product['manufacturer'] = trim($productCodeArray[1]);
+										}
+										else {
+											$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+											$product['manufacturer'] = '';
+										}
+									}
+
+									//Quantity
+									$quantity = $node->filter('a #text')->first();
+
+									if ($quantity->count()) {
+										$product['quantity'] = '0';
+									}
+									else {
+										$product['quantity'] = '1000';
+									}
+
+									$product['store'] = 'sky-r';
+
+									if (!$lock->count() && !$lock_2->count()) {
+										$this->products[] = $product;
+									}
+								});
+
+								if (count($this->sky_r_pages)) {
+									foreach ($this->sky_r_pages as $productPage) {
+										$pageProducts = new Crawler(file_get_contents(str_replace(' ', '%20', $this->sky_r . $productPage)));
+
+										$productInfo = $pageProducts->filter("#productList div.product");
+
+										$productInfo->each(function (Crawler $node, $i) {
+											$product = array();
+
+											//Names
+											$product['name'] = $node->filter('.descr .pTitle')->first()->text();
+
+											//Prices
+											//Determine whether you have to be logged or not for the price
+											$lock = $node->filter('.descr .price a');
+											$lock_2 = $node->filter('.descr .promoprice a');
+
+											$price = $node->filter('.descr .price')->first();
+											if (!$price->count()) {
+												$price = $node->filter('.descr .promoprice')->first()->text();
+												preg_match_all('!\d+!', $price, $matches);
+												$price = floatval($matches[0][0] . '.' . $matches[0][1]);
+											}
+											else {
+												$price = $price->text();
+												$price = str_replace('Цена: ', '', $price);
+												$price = str_replace(' лв', '', $price);
+												$price = str_replace(' РА', '', $price);
+												$price = str_replace(',', '', $price);
+											}
+											
+											$product['price'] = $price;
+
+											//Codes
+											$productCodeArray = explode(' - ', $node->filter('.descr .pCatNumber')->first()->text());
+											$code = $productCodeArray[0];
+											if (in_array(trim($code), $this->sky_r_manifacturers)) {
+												$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+												$product['manufacturer'] = trim($code);
+											}
+											else {
+												if (strlen(trim($code))) {
+													$product['code'] = trim($code);
+													$product['manufacturer'] = trim($productCodeArray[1]);
+												}
+												else {
+													$product['code'] = $node->filter('.descr .pTitle')->first()->text();
+													$product['manufacturer'] = '';
+												}
+											}
+
+											//Quantity
+											$quantity = $node->filter('a #text')->first();
+
+											if ($quantity->count()) {
+												$product['quantity'] = '0';
+											}
+											else {
+												$product['quantity'] = '1000';
+											}
+
+											$product['store'] = 'sky-r';
+
+											if (!$lock->count() && !$lock_2->count()) {
+												$this->products[] = $product;
+											}
+										});
+									}
+								}
+							}
 						}
-						else {
-							$product['quantity'] = 'Да';
-						}
-
-						$product['store'] == 'sky-r';
-
-						$this->products[] = $product;
 					});
 				}
 
@@ -349,65 +784,55 @@
 					$productInfo->each(function (Crawler $node, $i) {
 						$product = array();
 
-						$option = $node->attr('value');
+						$this->max_pen_pages = array();
+
+						$this->option = $node->attr('value');
 						
 						//CURL
-						if ($option != 0) {
-							$ch = curl_init();
-							curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-							$params = array(
-								"__EVENTTARGET"=>"",
-								"__EVENTARGUMENT"=>"",
-								"ddlstSorting"=>"1",
-								"chkOnlyAvailable"=>"on",
-							    "ddlstGroups"=> $option,
-							    "ddlstColor" => "0",
-							    "txtSearchProduct" => "",
-							);
-							curl_setopt($ch,CURLOPT_URL,"http://max-pen.no-ip.info/Default.aspx");
-							curl_setopt($ch,CURLOPT_POST,true);
-							curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($params));
-							$result = curl_exec($ch);
+						if ($this->option != 0) {
+							$result = $this->setCurlParametersMaxPen($this->option);
 
 							$finalProducts = new Crawler($result);
 
-							if ($finalProducts->filter('.item')->count()) {
-								$finalProducts = $finalProducts->filter('.item');
+							$this->crawlMaxPenProductsPage($finalProducts);
 
-								$finalProducts->each(function (Crawler $innerNode, $k) {
-									//Names
-									$product['name'] = $innerNode->filter('.info div:first-child strong')->text();
+							//Pages
+							$pages = new Crawler($result);
+							$pages = $pages->filter('div.pages ul li a');
 
-									//Prices
-									$price = str_replace(' $', '', $innerNode->filter('.price .num')->first()->text());
-									$product['price'] = round($price, 2);
-
-									//Codes
-									$product['code'] = $innerNode->filter('.info div:first-child strong')->text();
-
-									//Color
-									$color = $innerNode->filter('.info div:nth-child(3)')->text();
-									$color = str_replace('Цвят: ', '', $color);
-									
-									$product['name'] .= '_' . $color;
-									$product['code'] .= '_' . $color;
-
-									$product['name'] = str_replace('-', '_', $product['name']);
-									$product['code'] = str_replace('-', '_', $product['code']);
-
-									//Quantity
-									$quantity = $innerNode->filter('.price div')->first()->text();
-
-									preg_match_all('!\d+!', $quantity, $matches);
-
-									$product['quantity'] = trim($matches[0][0]);
-
-									$product['manufacturer'] = '';
-
-									$product['store'] = 'max-pen';
-
-									$this->products[] = $product;
+							if ($pages->count()) {
+								$pages->each(function (Crawler $pageNode, $j) {
+									if (intval($pageNode->text())) {
+										if (strpos($pageNode->text(), '-') !== false) {
+											$this->max_pen_pages[] = $pageNode->text();
+										}
+									}
 								});
+
+								if (count($this->max_pen_pages)) {
+									$max_page = max($this->max_pen_pages);
+									$max_page = explode(' - ', $max_page);
+									$max_page = max($max_page);
+
+									for ($i=2; $i <= $max_page; $i++) { 
+										$result_2 = $this->setCurlParametersMaxPen($this->option, $i);
+
+										$finalProducts_2 = new Crawler($result_2);
+
+										$this->crawlMaxPenProductsPage($finalProducts_2);
+									}
+								}
+								else {
+									$pages->each(function (Crawler $innerPageNode, $l) {
+										if (intval($innerPageNode->text())) {
+											$result_3 = $this->setCurlParametersMaxPen($this->option, trim($innerPageNode->text()));
+
+											$finalProducts_3 = new Crawler($result_3);
+
+											$this->crawlMaxPenProductsPage($finalProducts_3);
+										}
+									});
+								}
 							}
 						}
 					});
@@ -426,8 +851,19 @@
 				foreach ($this->products as $product) { 
 					//Check if product code already exists in database
 
+					//Update the price
+					$percent = $this->model_extension_module_crawled_product->getStorePercent($product['store']);
+					$product['price'] += ($percent['percent'] / 100) * $product['price']; 
+
 					//Check if code is uploaded
 					$queryCheckUploaded = $this->model_extension_module_uploaded_code->getByCode($product['code'], $product['store']);
+
+					//Check if exists in the temp table
+					$queryCheckUploadedCrawled = $this->model_extension_module_crawled_product->getProductByCode($product['code'], $product['store']);
+
+					if (count($queryCheckUploadedCrawled)) {
+						continue;
+					}
 
 					//If it not exists insert it
 					if (!count($queryCheckUploaded)) {
@@ -491,7 +927,7 @@
 						}
 						else {
 							//update price
-							if ($product['price'] != $price) {
+							if (strval(floatval($product['price'])) != strval(floatval($price))) {
 								$this->model_extension_module_crawled_product->uploadInUpdates($uploaded_product['product_id'], $product['price']);
 								$updated_prices++;
 							}	
@@ -502,6 +938,62 @@
 							$this->model_catalog_product->updateQuantity($product_id, $quantityToUpdateWith);
 						}
 					}
+				}
+
+				//Reverse search for products
+
+				//Get all uploaded codes
+				$allUploadedCodes = $this->model_extension_module_uploaded_code->getByStore($this->products[0]['store']);
+
+				$uploadedToUpdate = array();
+
+				$uploaded = true;
+
+				foreach ($allUploadedCodes as $uploadedCode) {
+					$found = false;
+					//Check if it exists in the currently crawled products
+					foreach ($this->products as $crawledProduct) {
+						if ($uploadedCode['admin_code'] == $crawledProduct['code']) {
+							$found = true;
+							break;
+						}
+					}
+
+					if (!$found) {
+						$uploadedToUpdate[] = $uploadedCode;
+					}
+				}
+
+				//Get all temp codes
+				$allTempCodes = $this->model_extension_module_crawled_product->getByStore($this->products[0]['store']);
+
+				$tempToUpdate = array();
+
+				foreach ($allTempCodes as $tempCode) {
+					$found = false;
+					//Check if it exists in the currently crawled products
+					foreach ($this->products as $crawledProduct) {
+						if ($tempCode['product_code'] == $crawledProduct['code']) {
+							$found = true;
+							break;
+						}
+					}
+
+					if (!$found) {
+						$tempToUpdate[] = $tempCode;
+					}
+				}
+
+				//if it both not exist in the currently crawled products
+
+				foreach ($uploadedToUpdate as $productToUpdate) {
+					//update quantity to 0
+					$this->model_extension_module_uploaded_code->updateQuantity($productToUpdate['product_id'], 0);
+				}
+
+				foreach ($tempToUpdate as $productToUpdate) {
+					//update quantity to 0
+					$this->model_extension_module_crawled_product->updateQuantity($productToUpdate['id'], 0);
 				}
 
 				if ($countNewProducts > 1) {
@@ -522,10 +1014,11 @@
 					else {
 						$updated_prices_message = 'Бяха намерени промени в цените на ' . $updated_prices . ' продукта';
 					}
+					$_SESSION['updateProducts'] = $updated_prices_message;
 				}
 
 				$_SESSION['newProducts'] = $productsMessage;
-				$_SESSION['updateProducts'] = $updated_prices_message;
+				
 				if ($countNewProducts > 0) {
 					$_SESSION['uploaded'] = 'Продукти от ' . htmlspecialchars($_POST['site']) . ' бяха качени успешно';
 				}
@@ -566,6 +1059,22 @@
 			$this->response->redirect($this->url->link('extension/module/product_crawler/showUpdates', 'token=' . $this->session->data['token'], true));
 		}
 
+		public function updatePercent()
+		{
+			if (isset($this->request->post) && $this->request->server['REQUEST_METHOD'] == 'POST') {
+				$price_percent = $this->request->post['price-percent'];
+				$store = $this->request->post['store'];
+
+				$this->load->model('extension/module/crawled_product');
+
+				$this->model_extension_module_crawled_product->updatePricePercent($store, $price_percent);
+
+				$_SESSION['success'] = 'Процента за надценка на ' . $store . ' беше променен успешно';
+			}
+
+			$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
+		}
+
 		public function delete()
 		{
 			$this->load->model('extension/module/crawled_product');
@@ -581,6 +1090,23 @@
 				}
 			}
 
+			$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
+		}
+
+		public function deleteFromStore()
+		{
+			$this->load->model('extension/module/crawled_product');
+
+			if (isset($this->request->post) && $this->request->server['REQUEST_METHOD'] == 'POST') {
+				$site = $this->request->post['site'];
+
+				//Delete from site with model
+				$this->model_extension_module_crawled_product->deleteFromStore($site);
+
+				$_SESSION['success'] = 'Продуктите от ' . htmlentities($site) . ' бяха изтрити';
+			}
+
+			//redirect
 			$this->response->redirect($this->url->link('extension/module/product_crawler', 'token=' . $this->session->data['token'], true));
 		}
 

@@ -32,7 +32,8 @@
       <div class="panel-body">
         <div class="well">
           <div class="row">
-            <div class="col-sm-4">
+            <form id="filter-form">
+              <div class="col-sm-4">
               <div class="form-group">
                 <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
                 <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
@@ -85,10 +86,12 @@
                   <?php } ?>
                 </select>
               </div>
-              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
+              <button type="submit" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
+            </form>
           </div>
         </div>
+
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-product">
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -174,7 +177,8 @@
     </div>
   </div>
   <script type="text/javascript"><!--
-$('#button-filter').on('click', function() {
+$('#button-filter').on('click', function(event) {
+  event.preventDefault();
 	var url = 'index.php?route=catalog/product&token=<?php echo $token; ?>';
 
 	var filter_name = $('input[name=\'filter_name\']').val();
@@ -216,6 +220,50 @@ $('#button-filter').on('click', function() {
 	location = url;
 });
 //--></script>
+<script>
+  $('#filter-form').submit(function(event) {
+    event.preventDefault();
+    var url = 'index.php?route=catalog/product&token=<?php echo $token; ?>';
+
+  var filter_name = $('input[name=\'filter_name\']').val();
+
+  if (filter_name) {
+    url += '&filter_name=' + encodeURIComponent(filter_name);
+  }
+
+  var filter_model = $('input[name=\'filter_model\']').val();
+
+  if (filter_model) {
+    url += '&filter_model=' + encodeURIComponent(filter_model);
+  }
+
+  var filter_price = $('input[name=\'filter_price\']').val();
+
+  if (filter_price) {
+    url += '&filter_price=' + encodeURIComponent(filter_price);
+  }
+
+  var filter_quantity = $('input[name=\'filter_quantity\']').val();
+
+  if (filter_quantity) {
+    url += '&filter_quantity=' + encodeURIComponent(filter_quantity);
+  }
+
+  var filter_status = $('select[name=\'filter_status\']').val();
+
+  if (filter_status != '*') {
+    url += '&filter_status=' + encodeURIComponent(filter_status);
+  }
+
+  var filter_image = $('select[name=\'filter_image\']').val();
+
+  if (filter_image != '*') {
+    url += '&filter_image=' + encodeURIComponent(filter_image);
+  }
+
+  location = url;
+  });
+</script>
   <script type="text/javascript"><!--
 $('input[name=\'filter_name\']').autocomplete({
 	'source': function(request, response) {

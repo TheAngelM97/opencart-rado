@@ -367,6 +367,14 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
+		//sklad
+		if (isset($this->request->get['showFrom'])) {
+			$showFrom = $this->request->get['showFrom'];
+		}
+		else {
+			$showFrom = null;
+		}
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -392,6 +400,7 @@ class ControllerCatalogProduct extends Controller {
 			'filter_quantity' => $filter_quantity,
 			'filter_status'   => $filter_status,
 			'filter_image'    => $filter_image,
+			'show_from'		  => $showFrom,
 			'sort'            => $sort,
 			'order'           => $order,
 			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),

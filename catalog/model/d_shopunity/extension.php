@@ -1,6 +1,7 @@
 <?php
 /*
  *  location: admin/model
+  DEPRECTED - WILL BE REMOVED IN v3.2.0
  */
 
 class ModelDShopunityExtension extends Model {
@@ -54,9 +55,9 @@ class ModelDShopunityExtension extends Model {
 
         //Return mbooth files.
         $codenames = array();
-        $this->load->model('d_shopunity/mbooth');
+        $this->load->model('extension/d_shopunity/mbooth');
 
-        $installed_extensions = $this->model_d_shopunity_mbooth->getExtensions();
+        $installed_extensions = $this->model_extension_d_shopunity_mbooth->getExtensions();
         foreach($installed_extensions as $extension){
             $codenames[] = $extension['codename'];
         }
@@ -80,9 +81,9 @@ class ModelDShopunityExtension extends Model {
     public function getUnregisteredExtensions(){
         $codenames = array();
         $unregistered_extensions = array();
-        $this->load->model('d_shopunity/mbooth');
+        $this->load->model('extension/d_shopunity/mbooth');
 
-        $installed_extensions = $this->model_d_shopunity_mbooth->getExtensions();
+        $installed_extensions = $this->model_extension_d_shopunity_mbooth->getExtensions();
         foreach($installed_extensions as $extension){
             $codenames[] = $extension['codename'];
             $unregistered_extensions[$extension['codename']] = $extension;
@@ -220,9 +221,9 @@ class ModelDShopunityExtension extends Model {
 
         $extension = $this->getExtension($extension_id);
 
-        $this->load->model('d_shopunity/mbooth');
+        $this->load->model('extension/d_shopunity/mbooth');
 
-        $data = $this->model_d_shopunity_mbooth->getExtension($extension['codename']);
+        $data = $this->model_extension_d_shopunity_mbooth->getExtension($extension['codename']);
 
         $data['store_version'] = VERSION;
 
@@ -264,7 +265,7 @@ class ModelDShopunityExtension extends Model {
             $result['current_version'] = $result['version'];
 
             if($result['installed']){
-                $mbooth = $this->model_d_shopunity_mbooth->getExtension($data['codename']);
+                $mbooth = $this->model_extension_d_shopunity_mbooth->getExtension($data['codename']);
 
                 try{
                     $semver = new Semver;

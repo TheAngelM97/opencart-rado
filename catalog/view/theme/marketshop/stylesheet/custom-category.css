@@ -1,0 +1,20 @@
+.product-grid:hover{
+	border-color: #ef2809 !important;
+}
+
+.mr-left{
+	margin-left: 2px;
+}
+
+#menu .nav>li.sub:hover>a:after{
+	display: none !important;
+}
+
+a.active{
+	background: #eee !important;
+	color: #3e7cb4 !important;
+}
+
+#container > div > div.alert{
+	margin-left: 295px;
+}

@@ -1,6 +1,7 @@
 <?php
 /*
  *  location: admin/model
+  DEPRECTED - WILL BE REMOVED IN v3.2.0
  */
 
 class ModelDShopunityVqmod extends Model {

@@ -34,7 +34,8 @@
       <div class="panel-body">
         <div class="well">
           <div class="row">
-            <div class="col-sm-4">
+            <form id="filter-form">
+              <div class="col-sm-4">
               <div class="form-group">
                 <label class="control-label" for="input-order-id"><?php echo $entry_order_id; ?></label>
                 <input type="text" name="filter_order_id" value="<?php echo $filter_order_id; ?>" placeholder="<?php echo $entry_order_id; ?>" id="input-order-id" class="form-control" />
@@ -85,8 +86,9 @@
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                   </span></div>
               </div>
-              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
+              <button type="submit" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
+            </form>
           </div>
         </div>
         <form method="post" action="" enctype="multipart/form-data" id="form-order">
@@ -131,7 +133,7 @@
               <tbody>
                 <?php if ($orders) { ?>
                 <?php foreach ($orders as $order) { ?>
-                <tr>
+                <tr <?php if ($order['order_status'] == 'Canceled') { echo 'style="background: rgba(175, 30, 30, 0.2)"'; } elseif ($order['order_status'] == 'Complete') {echo 'style="background: rgba(23, 220, 36, 0.2)"';} elseif ($order['order_status'] == 'New') {echo 'style="background: rgba(32, 104, 212, 0.2)"';} ?>>
                   <td class="text-center"><?php if (in_array($order['order_id'], $selected)) { ?>
                     <input type="checkbox" name="selected[]" value="<?php echo $order['order_id']; ?>" checked="checked" />
                     <?php } else { ?>
@@ -206,6 +208,51 @@ $('#button-filter').on('click', function() {
 	location = url;
 });
 //--></script> 
+<script>
+  $('#filter-form').submit(function(event) {
+    event.preventDefault();
+    url = 'index.php?route=sale/order&token=<?php echo $token; ?>';
+
+  var filter_order_id = $('input[name=\'filter_order_id\']').val();
+
+  if (filter_order_id) {
+    url += '&filter_order_id=' + encodeURIComponent(filter_order_id);
+  }
+
+  var filter_customer = $('input[name=\'filter_customer\']').val();
+
+  if (filter_customer) {
+    url += '&filter_customer=' + encodeURIComponent(filter_customer);
+  }
+
+  var filter_order_status = $('select[name=\'filter_order_status\']').val();
+
+  if (filter_order_status != '*') {
+    url += '&filter_order_status=' + encodeURIComponent(filter_order_status);
+  }
+
+  var filter_total = $('input[name=\'filter_total\']').val();
+
+  if (filter_total) {
+    url += '&filter_total=' + encodeURIComponent(filter_total);
+  }
+
+  var filter_date_added = $('input[name=\'filter_date_added\']').val();
+
+  if (filter_date_added) {
+    url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
+  }
+
+  var filter_date_modified = $('input[name=\'filter_date_modified\']').val();
+
+  if (filter_date_modified) {
+    url += '&filter_date_modified=' + encodeURIComponent(filter_date_modified);
+  }
+
+  location = url;
+
+  });
+</script>
   <script type="text/javascript"><!--
 $('input[name=\'filter_customer\']').autocomplete({
 	'source': function(request, response) {

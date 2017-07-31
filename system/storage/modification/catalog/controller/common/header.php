@@ -526,6 +526,9 @@ $children_level2 = $this->model_catalog_category->getCategories($child['category
 			if ($route == 'product/product') {
 				$custom_styles[] = 'custom-product.css';
 			}
+			if ($route == 'product/category') {
+				$custom_styles[] = 'custom-category.css';
+			}
 		}
 		else {
 			$custom_styles[] = 'custom-index.css';

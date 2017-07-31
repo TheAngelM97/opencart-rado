@@ -3,6 +3,11 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
+
+				<?php if($invoice_manager_send_bulk_status){ ?>
+					<a  id="button-pdfinvoice" data-toggle="tooltip" title="send invoice to the customers" class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+				<?php } ?>
+			
         <button type="submit" id="button-shipping" form="form-order" formaction="<?php echo $shipping; ?>" formtarget="_blank" data-toggle="tooltip" title="<?php echo $button_shipping_print; ?>" class="btn btn-info"><i class="fa fa-truck"></i></button>
         <button type="submit" id="button-invoice" form="form-order" formaction="<?php echo $invoice; ?>" formtarget="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></button>
         <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
@@ -34,7 +39,8 @@
       <div class="panel-body">
         <div class="well">
           <div class="row">
-            <div class="col-sm-4">
+            <form id="filter-form">
+              <div class="col-sm-4">
               <div class="form-group">
                 <label class="control-label" for="input-order-id"><?php echo $entry_order_id; ?></label>
                 <input type="text" name="filter_order_id" value="<?php echo $filter_order_id; ?>" placeholder="<?php echo $entry_order_id; ?>" id="input-order-id" class="form-control" />
@@ -85,8 +91,27 @@
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                   </span></div>
               </div>
-              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
+
+				 <div class="form-group">
+                <label class="control-label" for="input-status">Invoice send status</label>
+                <select name="filter_invoicestatus" id="input-status" class="form-control">
+                  <option value="*"></option>
+                  <?php if ($filter_invoicestatus) { ?>
+                  <option value="1" selected="selected">Sent</option>
+                  <?php } else { ?>
+                  <option value="1">Sent</option>
+                  <?php } ?>
+                  <?php if (!$filter_invoicestatus && !is_null($filter_invoicestatus)) { ?>
+                  <option value="0" selected="selected">Pending</option>
+                  <?php } else { ?>
+                  <option value="0">Pending</option>
+                  <?php } ?>
+                </select>
+              </div>
+			
+              <button type="submit" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
             </div>
+            </form>
           </div>
         </div>
         <form method="post" action="" enctype="multipart/form-data" id="form-order">
@@ -128,13 +153,14 @@
 
 <td class="text-right"><?php echo $column_loading; ?></td>
 			
+<td class="text-left"><a>Invoice status</a></td>
                   <td class="text-right"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
               <tbody>
                 <?php if ($orders) { ?>
                 <?php foreach ($orders as $order) { ?>
-                <tr>
+                <tr <?php if ($order['order_status'] == 'Canceled') { echo 'style="background: rgba(175, 30, 30, 0.2)"'; } elseif ($order['order_status'] == 'Complete') {echo 'style="background: rgba(23, 220, 36, 0.2)"';} elseif ($order['order_status'] == 'New') {echo 'style="background: rgba(32, 104, 212, 0.2)"';} ?>>
                   <td class="text-center"><?php if (in_array($order['order_id'], $selected)) { ?>
                     <input type="checkbox" name="selected[]" value="<?php echo $order['order_id']; ?>" checked="checked" />
                     <?php } else { ?>
@@ -147,12 +173,18 @@
                   <td class="text-right"><?php echo $order['total']; ?></td>
                   <td class="text-left"><?php echo $order['date_added']; ?></td>
                   <td class="text-left"><?php echo $order['date_modified']; ?></td>
+<td class="text-left"><?php echo $order['mail_status']; ?></td>
 
 <td class="text-right"><?php foreach ($order['loading'] as $loading) { ?>
   [ <a href="<?php echo $loading['href']; ?>"><?php echo $loading['text']; ?></a> ]
   <?php } ?></td>
 			
-                  <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> <a href="<?php echo $order['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                  <td class="text-right"><?php if($order['invoice_send_status']){ ?>
+				  <a id="sendinvoice" rel="<?php echo $order['order_id']; ?>" data-toggle="tooltip" title="Send Invoice to Customer" class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+				  <?php } ?>
+				  <?php if($order['invoice_download_status']){ ?>
+				  <a href="<?php echo $order['download']; ?>" target="_blank" data-toggle="tooltip" title="Download Invoice into pdf" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+				  <?php } ?><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> <a href="<?php echo $order['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php } ?>
                 <?php } else { ?>
@@ -213,9 +245,70 @@ $('#button-filter').on('click', function() {
 		url += '&filter_date_modified=' + encodeURIComponent(filter_date_modified);
 	}
 
+
+					var filter_invoicestatus = $('select[name=\'filter_invoicestatus\']').val();
+
+					if (filter_invoicestatus != '*') {
+						url += '&filter_invoicestatus=' + encodeURIComponent(filter_invoicestatus);
+					}
+			
+			
 	location = url;
 });
 //--></script> 
+<script>
+  $('#filter-form').submit(function(event) {
+    event.preventDefault();
+    url = 'index.php?route=sale/order&token=<?php echo $token; ?>';
+
+  var filter_order_id = $('input[name=\'filter_order_id\']').val();
+
+  if (filter_order_id) {
+    url += '&filter_order_id=' + encodeURIComponent(filter_order_id);
+  }
+
+  var filter_customer = $('input[name=\'filter_customer\']').val();
+
+  if (filter_customer) {
+    url += '&filter_customer=' + encodeURIComponent(filter_customer);
+  }
+
+  var filter_order_status = $('select[name=\'filter_order_status\']').val();
+
+  if (filter_order_status != '*') {
+    url += '&filter_order_status=' + encodeURIComponent(filter_order_status);
+  }
+
+  var filter_total = $('input[name=\'filter_total\']').val();
+
+  if (filter_total) {
+    url += '&filter_total=' + encodeURIComponent(filter_total);
+  }
+
+  var filter_date_added = $('input[name=\'filter_date_added\']').val();
+
+  if (filter_date_added) {
+    url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
+  }
+
+  var filter_date_modified = $('input[name=\'filter_date_modified\']').val();
+
+  if (filter_date_modified) {
+    url += '&filter_date_modified=' + encodeURIComponent(filter_date_modified);
+  }
+
+
+					var filter_invoicestatus = $('select[name=\'filter_invoicestatus\']').val();
+
+					if (filter_invoicestatus != '*') {
+						url += '&filter_invoicestatus=' + encodeURIComponent(filter_invoicestatus);
+					}
+			
+			
+  location = url;
+
+  });
+</script>
   <script type="text/javascript"><!--
 $('input[name=\'filter_customer\']').autocomplete({
 	'source': function(request, response) {
@@ -282,4 +375,55 @@ $('.date').datetimepicker({
 	pickTime: false
 });
 //--></script></div>
+
+					<script type="text/javascript"><!--
+$('.sendinvoice').on('click',function(){
+	node = this;
+	$.ajax({
+		url: 'index.php?route=sale/order/pdfinvoice&token=<?php echo $token; ?>&mail_status=1&order_id='+this.rel,
+		dataType: 'json',
+		beforeSend: function() {
+			$(node).button('loading');
+		},
+		complete: function() {
+			$(node).button('reset');
+		},
+		success: function(json){
+			if(json['sent']){
+				$('#content .panel-default').before('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['sent'] + '</div>');
+			}
+		}
+	});
+});
+
+$('#button-pdfinvoice').on('click',function(){
+	$('.alert').remove();
+	var checkValues  = $('#content table tbody input[type="checkbox"]:checked').map(function(){return $(this).val();}).get();
+	if(checkValues !=""){
+		 $(':checkbox:checked').each(function(i){
+			 if($(this).val()!='on'){
+				$.ajax({
+					url: 'index.php?route=sale/order/pdfinvoice&token=<?php echo $token; ?>&mail_status=1&order_id='+$(this).val(),
+					dataType: 'json',
+					beforeSend: function() {
+						//$(node).button('loading');
+					},
+					complete: function() {
+						//$(node).button('reset');
+					},
+					success: function(json){
+						$('.alert').remove();
+						if(json['sent']){
+							$('#content .panel-default').before('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['sent'] + '</div>');
+						}
+					}
+				}); 
+			 }
+		});
+	}else{
+		$('#content .panel-default').before('<div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> Warning: Please select the Orders</div>');
+	}
+}); 
+//--></script>
+			
 <?php echo $footer; ?> 

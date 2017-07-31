@@ -8,11 +8,19 @@ d_shopunity_widget = {
     },
 
     loadExtension: function($extension_id){
-        $( this.setting.class ).load( this.setting.http+"index.php?route=d_shopunity/extension/show_thumb&extension_id="+$extension_id+"&token="+this.setting.token );
+        $( this.setting.class ).hide();
+        $( this.setting.class ).load( this.setting.http+"index.php?route=extension/d_shopunity/extension/show_thumb&extension_id="+$extension_id+"&token="+this.setting.token);
+        if($( this.setting.class ).find(" .extension-show-thumb") != 'undefined'){
+            $( this.setting.class ).show();
+        }
     },
 
     loadUpdate: function($extension_id){
-        $( this.setting.class ).load( this.setting.http+"index.php?route=d_shopunity/extension/show_update&extension_id="+$extension_id+"&token="+this.setting.token );
+        $( this.setting.class ).hide();
+        $( this.setting.class ).load( this.setting.http+"index.php?route=extension/d_shopunity/extension/show_update&extension_id="+$extension_id+"&token="+this.setting.token);
+        if($( this.setting.class ).find(" .extension-show-thumb") != 'undefined'){
+            $( this.setting.class ).show();
+        }
     },
 
     init: function(setting){

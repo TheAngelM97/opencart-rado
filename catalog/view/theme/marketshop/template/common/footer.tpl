@@ -580,4 +580,10 @@ $(function(){
 <?php } ?>
 <?php } ?>
 </section>
+
+<!-- Custom JS -->
+<?php foreach ($custom_js as $custom_javascript) { ?>
+      <script src="catalog/view/theme/marketshop/js/<?= $custom_javascript ?>"></script>
+<?php
+    } ?>
 </body></html>

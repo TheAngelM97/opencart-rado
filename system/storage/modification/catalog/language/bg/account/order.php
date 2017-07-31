@@ -10,7 +10,12 @@
 // Heading
 $_['heading_title']         = 'История на поръчките';
 
-// Text
+
+				$_['text_invoice']               = 'Invoice';
+				$_['text_telephone']             = 'Telephone';
+				$_['text_email']                 = 'E-Mail';
+				$_['text_website']               = 'Web Site:';
+			
 $_['text_account']          = 'Профил';
 $_['text_order']            = 'Информация';
 $_['text_order_detail']     = 'Детайли';

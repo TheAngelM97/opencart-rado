@@ -153,11 +153,13 @@ $("#zoom_01").bind("click", function(e) {
                   <?php foreach ($option['product_option_value'] as $option_value) { ?>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($option['name'] == 'Цвят' && $option['type'] == 'radio') { ?> class="color-option" data-colorid="<?= $option_value['option_value_id'] ?>" <?php } ?> />
+                      <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($option['name'] == 'Цвят' && $option['type'] == 'radio') { ?> class="color-option" data-colorid="<?= $option_value['option_value_id'] ?>" <?php if ($option_value['price']) { ?>
+                        data-color-price="<?= $option_value['price_prefix'] . $option_value['price'] ?>"  <?php } else { ?>  data-color-price="+0" <?php } ?> <?php } ?> />
                       <span style="background: url(<?= $option_value['image'] ?>) 100%"></span>
-                      <?php if ($option_value['price']) { ?>
+                      <?php //var_dump($option_value) ?>
+                      <!-- <?php if ($option_value['price']) { ?>
                       (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                      <?php } ?>
+                      <?php } ?> -->
                     </label>
                   </div>
                   <?php } ?>
@@ -279,7 +281,7 @@ $("#zoom_01").bind("click", function(e) {
 	            <li></li>
 	            <?php } ?>
 	            <?php if ($tax) { ?>
-	            <li><?php echo $text_tax; ?> <?php echo $tax; ?></li>
+	            <li><?php echo $text_tax; ?> <span class="tax_price"><?php echo $tax; ?></span></li>
 	            <?php } ?>
 	            <?php if ($points) { ?>
 	            <li><?php echo $text_points; ?> <?php echo $points; ?></li>
@@ -304,11 +306,11 @@ $("#zoom_01").bind("click", function(e) {
                   </div>
                   <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg"><?php echo $button_cart; ?></button>
                 </div>
-                <div>
+<!--                 <div>
                   <button type="button" class="wishlist" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i> <?php echo $button_wishlist; ?></button>
                   <br />
                   <button type="button" class="wishlist" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i> <?php echo $button_compare; ?></button>
-                </div>
+                </div> -->
               </div>
             </div>
             <?php if($marketshop_share_plugin== 1) { ?>
@@ -442,10 +444,10 @@ $("#zoom_01").bind("click", function(e) {
             </div>
             <div class="button-group">
               <button class="btn-primary" type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span><?php echo $button_cart; ?></span></button>
-              <div class="add-to-links">
+              <!-- <div class="add-to-links">
                 <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
                 <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-              </div>
+              </div> -->
             </div>
           </div>
           <?php } ?>
@@ -453,17 +455,42 @@ $("#zoom_01").bind("click", function(e) {
 <!-- Color code JS -->
 <script>
   $(document).ready(function() {
+    let current_price = $('li.price span[itemprop=price]').text();
+
     $('.color-option').change(function() {
       if ($(this).is(':checked')) {
        let color_id = $(this).data('colorid');
 
        let full_product_code = $("[itemprop=mpn]").text().split('-')[0] + '-' + color_id;
        $("[itemprop=mpn]").text(full_product_code);
+
+       // Price
+       let color_price = $(this).attr('data-color-price');
+
+        if (typeof color_price !== typeof undefined && color_price !== false) {
+          color_price = $(this).data('color-price');
+          let prefix = color_price[0];
+          color_price = color_price.substr(1);
+
+          color_price = parseFloat(color_price);
+          current_price = parseFloat(current_price);
+
+          let final_price = current_price;
+
+          if (prefix == '+') {
+            final_price = current_price + color_price;
+          }
+          else {
+            final_price = current_price - color_price;
+          }
+
+          $('li.price span[itemprop=price]').text(final_price.toFixed(2) + 'лв');
+          $('ul.price-box .tax_price').text(final_price.toFixed(2) + 'лв');
+        }
       }
     });
   });
 </script>
-
 
         <script type="text/javascript">
 	$(document).ready(function() {

@@ -32,6 +32,10 @@
 
 <!-- Custom CSS -->
 <link rel="stylesheet" type="text/css" href="view/stylesheet/custom.css">
+<link rel="stylesheet" type="text/css" href="view/stylesheet/custom-admin-header.css">
+<link rel="stylesheet" type="text/css" href="view/stylesheet/custom-admin-loading.css">
+<!-- Material icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <div id="container">

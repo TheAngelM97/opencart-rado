@@ -49,11 +49,9 @@
 foreach ($custom_styles as $custom) {
 	?>
     <link rel="stylesheet" type="text/css" href="catalog/view/theme/marketshop/stylesheet/<?= $custom ?>" />
-
 	<?php
 }
 ?>
-
 
 <script type="text/javascript" src="catalog/view/theme/marketshop/js/common.min.js"></script>
 <script type="text/javascript" src="catalog/view/theme/marketshop/js/custom.min.js"></script>
@@ -1379,7 +1377,7 @@ border-top:<?php echo $marketshop_menu_link_border_bottom_size ?>px <?php echo $
 <?php if($marketshop_header_style == 3) { ?>
 <div id="header" class="style3">
   <?php } ?>
-  <nav class="htop" id="top">
+  <nav class="htop" id="top" style="display: none;">
     <div class="<?php if($marketshop_layout_style == 1) { ?>container<?php } else { ?>container-fluid<?php } ?>">
       <div class="row"> <span class="drop-icon visible-sm visible-xs"><i class="fa fa-align-justify"></i></span>
         <div class="pull-left flip left-top">
@@ -1502,6 +1500,25 @@ border-top:<?php echo $marketshop_menu_link_border_bottom_size ?>px <?php echo $
         <div class="col-table-cell col-lg-3 col-md-3 col-md-pull-0 col-sm-6 col-sm-pull-6 col-xs-12 inner"> <?php echo $cart; ?> </div>
       </div>
       <?php } ?>
+	    <div class="text-center auth-holder">
+	  	<?php 
+	      	if ($logged) { ?>
+	      		<!-- <li id="my_account" class="dropdown"><a href="<?php echo $account; ?>"><?php echo $text_account; ?> <i class="fa fa-caret-down"></i></a>
+	              <ul class="dropdown-menu dropdown-menu-right">
+	                <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+	                <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+	                <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+	                <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+	              </ul>
+	            </li> -->
+	            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+    <?php  	}
+	      	else { ?>
+				<a href="<?= $login ?>"><?= $text_login ?></a>
+				<a href="<?= $register ?>"><?= $text_register ?></a>
+	<?php  	}
+	      ?>
+	  	</div>
     </div>
   </header>
   <?php if($marketshop_main_menu_style == 2) { ?>
@@ -1571,7 +1588,7 @@ border-top:<?php echo $marketshop_menu_link_border_bottom_size ?>px <?php echo $
 	            <li class="categories dropdown">
 	              <?php if($marketshop_status == 1) {
 	 	if((isset($marketshop_menu_categories_title[$lang]) && $marketshop_menu_categories_title[$lang] != '')) { ?>
-	              <a><?php echo $marketshop_menu_categories_title[$lang]; ?></a>
+	              <a class="active"><?php echo $marketshop_menu_categories_title[$lang]; ?></a>
 	              <?php } ?>
 	              <?php } ?>
 	              <div class="dropdown-menu">

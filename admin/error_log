@@ -863,3 +863,819 @@ Stack trace:
 #5 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/engine/front.php(29): Front->execute(Object(Action))
 #6 /home/dlydyv9i/public_html/ecommerce/dev/rado/system/framework.php(103): Front->dispatch(Object in /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/controller/catalog/product.php on line 1376
 [15-Jun-2017 15:25:02 Europe/Sofia] PHP Parse error:  syntax error, unexpected end of file in /home/dlydyv9i/public_html/ecommerce/dev/rado/admin/view/template/user/user_group_form.tpl on line 86
+[23-Jun-2017 14:54:38 Europe/Sofia] PHP Warning:  require_once(C:/xampp/htdocs/Opencart/work/rado/opencart-rado/system/startup.php): failed to open stream: No such file or directory in /home/dlydyv9i/public_html/ecommerce/rado/admin/index.php on line 17
+[23-Jun-2017 14:54:38 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required 'C:/xampp/htdocs/Opencart/work/rado/opencart-rado/system/startup.php' (include_path='.:/usr/local/php7.0/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/admin/index.php on line 17
+[24-Jun-2017 00:02:51 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 3.34, 0)' at line 1<br />Error No: 1064<br />INSERT INTO crawled_updates (update_product_id, new_price, product_option_value_id) VALUES (, 3.34, 0) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(75): DB->query('INSERT INTO cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->uploadInUpdates(NULL, 3.34)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(4 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[24-Jun-2017 11:00:05 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(172): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[24-Jun-2017 11:00:13 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(212): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[24-Jun-2017 11:00:17 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(254): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[24-Jun-2017 11:00:20 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(299): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[24-Jun-2017 12:46:10 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(172): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[24-Jun-2017 12:46:19 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(172): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[26-Jun-2017 14:13:47 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(172): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[26-Jun-2017 14:14:36 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(212): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 14:01:49 Europe/Sofia] PHP Fatal error:  Uncaught Symfony\Component\CssSelector\Exception\ExpressionErrorException: Pseudo-class "fist-child" not supported. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/XPath/Translator.php:256
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/XPath/Extension/NodeExtension.php(160): Symfony\Component\CssSelector\XPath\Translator->addPseudoClass(Object(Symfony\Component\CssSelector\XPath\XPathExpr), 'fist-child')
+#1 [internal function]: Symfony\Component\CssSelector\XPath\Extension\NodeExtension->translatePseudo(Object(Symfony\Component\CssSelector\Node\PseudoNode), Object(Symfony\Component\CssSelector\XPath\Translator))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/XPath/Translator.php(207): call_user_func(Array, Object(Symfony\Component\CssSelector\Node\PseudoNode), Object(Symfony\Component\CssSelector\XPath\Translator))
+#3 /h in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/css-selector/XPath/Translator.php on line 256
+[27-Jun-2017 14:09:07 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(178): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(185): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 14:10:38 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(179): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(186): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 15:04:27 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(187): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(230): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 15:06:59 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(187): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(230): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 15:08:29 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(187): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(230): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 15:09:49 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(189): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[27-Jun-2017 15:12:30 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(208): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(231): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[27-Jun-2017 15:24:13 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(208): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(231): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[27-Jun-2017 15:24:25 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(208): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(231): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[28-Jun-2017 12:10:56 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 0.42, 0)' at line 1<br />Error No: 1064<br />INSERT INTO crawled_updates (update_product_id, new_price, product_option_value_id) VALUES (, 0.42, 0) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(75): DB->query('INSERT INTO cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->uploadInUpdates(NULL, 0.42)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(5 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[28-Jun-2017 12:17:02 Europe/Sofia] PHP Parse error:  syntax error, unexpected '{' in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/catalog/product_form.tpl on line 95
+[28-Jun-2017 12:23:29 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '112' at line 1<br />Error No: 1064<br />DELETE FROM color_connection WHERE product_option_value_id 112 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('DELETE FROM col...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/catalog/product.php(346): DB->query('DELETE FROM col...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelCatalogProduct->deleteProduct('104')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/catalog/product.php(178): Proxy->__call('deleteProduct', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storag in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 09:42:13 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(209): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:48:45 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(237): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:49:24 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(237): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:50:47 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(237): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:51:03 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(237): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:51:15 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(237): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:56:28 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 09:58:58 Europe/Sofia] PHP Parse error:  syntax error, unexpected ''<br>'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 220
+[29-Jun-2017 09:59:07 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:00:21 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(247): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:00:39 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(247): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:01:17 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:01:49 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(211): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(242): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:02:16 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(211): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(242): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:06:14 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(244): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:06:57 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:07:31 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:08:10 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:08:28 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(216): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(247): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:08:49 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:09:38 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:11:39 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:12:16 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(215): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(246): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:12:44 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(243): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:13:15 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(245): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:16:12 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(245): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:18:22 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(243): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:18:40 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: The current node list is empty. in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:568
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->text()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(245): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controll in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 568
+[29-Jun-2017 10:23:18 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function count() on string in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:214
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(251): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(252): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extensio in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 214
+[29-Jun-2017 10:24:11 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function text() on null in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:215
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(254): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 2)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(255): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/m in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 215
+[29-Jun-2017 10:32:26 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '() {\n          $(\'.locked_product\').tooltip();\n        });\n      Цена:,' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("LPBUW418", "LPBUW418", $(function() {\n          $(\'.locked_product\').tooltip();\n        });\n      Цена:, "1000", "Christian Lacroix", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(64): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModu in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 10:37:51 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'catch' (T_CATCH) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 469
+[29-Jun-2017 10:38:39 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'catch' (T_CATCH) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 467
+[29-Jun-2017 10:49:48 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function text() on string in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:182
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(256): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rado in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 182
+[29-Jun-2017 10:52:40 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 263
+[29-Jun-2017 10:57:06 Europe/Sofia] PHP Fatal error:  Uncaught Error: Unsupported operand types in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:203
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(206): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(258): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/sy in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 203
+[29-Jun-2017 11:00:04 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 204
+[29-Jun-2017 13:26:41 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 668
+[29-Jun-2017 13:27:22 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(272): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 7)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(331): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[29-Jun-2017 13:28:50 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'РА, "1000", "Alexander", "sky-r")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("ПЛАЖНА ЧАНТА", "TB-034-BL", 5.80 РА, "1000", "Alexander", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(64): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\n\t\t\t\t\xD0\x9F\xD0\x9B\xD0\x90\xD0\x96\xD0\x9D...', 'TB-034-BL', '\n\t\t\t\t5.80 \xD0\x in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 13:30:01 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(129): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 65)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(171): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[29-Jun-2017 13:35:57 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '() {\n          $(\'.locked_product\').tooltip();\n        });\n      Цена:,' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("LPBUW418", "LPBUW418", $(function() {\n          $(\'.locked_product\').tooltip();\n        });\n      Цена:, "1000", "Christian Lacroix", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(64): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModu in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 13:45:46 Europe/Sofia] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 289
+[29-Jun-2017 13:49:39 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'РА, "1000", "Alexander", "sky-r")' at line 1<br />Error No: 1064<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("КОМПЛЕКТ ЗА БЮРО", "1252", 3.60 РА, "1000", "Alexander", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(64): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\n\t\t\t\t\xD0\x9A\xD0\x9E\xD0\x9C\xD0\x9F\xD0\x9B...', '1252', '\n\t\t\t\t3.60 \xD0\xA0\ in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 13:52:33 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Column count doesn't match value count at row 1<br />Error No: 1136<br />INSERT INTO oc_crawled_products (product_name, product_code, product_price, product_quantity, product_manufacturer, store) VALUES ("ПОРТФЕЙЛ - LUX AURORA /ЛИМИТИРАН/ -", "P-012-51", 1,599.00, "1000", "Aurora", "sky-r") in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO oc_...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(64): DB->query('INSERT INTO oc_...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\n\t\t\t\t\xD0\x9F\xD0\x9E\xD0\xA0\xD0\xA2\xD0\xA4...', 'P-012-51', '\n\t\t\t\t1,599.00\t\t...', '1000', 'sky-r', 'Aurora')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loa in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[29-Jun-2017 14:01:56 Europe/Sofia] PHP Parse error:  syntax error, unexpected ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 209
+[29-Jun-2017 14:02:19 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 355
+[29-Jun-2017 15:55:01 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(129): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 80)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(171): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[29-Jun-2017 16:05:01 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(129): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 38)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(171): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[29-Jun-2017 17:10:18 Europe/Sofia] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:524
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): {closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(525): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(562): crawlMaxPenProductsPage(Object(Symfony\Component\DomCrawler\Crawler))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 1)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(580): S in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 524
+[30-Jun-2017 23:54:06 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(262): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(409): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommerc in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[03-Jul-2017 12:35:24 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 60.00, 0)' at line 1<br />Error No: 1064<br />INSERT INTO crawled_updates (update_product_id, new_price, product_option_value_id) VALUES (, 60.00, 0) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(75): DB->query('INSERT INTO cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->uploadInUpdates(NULL, '\n      \t\t\t\t60.0...')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/modul in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[03-Jul-2017 12:45:45 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 60.00, 0)' at line 1<br />Error No: 1064<br />INSERT INTO crawled_updates (update_product_id, new_price, product_option_value_id) VALUES (, 60.00, 0) in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('INSERT INTO cra...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(75): DB->query('INSERT INTO cra...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->uploadInUpdates(NULL, '\n      \t\t\t\t60.0...')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/modul in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[03-Jul-2017 12:48:16 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 631
+[03-Jul-2017 12:48:18 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 631
+[03-Jul-2017 14:50:13 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(566): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[03-Jul-2017 16:31:41 Europe/Sofia] PHP Parse error:  syntax error, unexpected ')' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 95
+[03-Jul-2017 16:39:07 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0, 30' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY  DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(19): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, 'product_quantit...')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(72): Proxy->__call(' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[03-Jul-2017 17:10:10 Europe/Sofia] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 17
+[03-Jul-2017 18:39:26 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0, 30' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY  DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(19): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, '', 'DESC')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(76): Proxy->__call('getAllProd in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[04-Jul-2017 20:25:02 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0, 30' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY  DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(19): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, '', 'DESC')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(76): Proxy->__call('getAllProd in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[04-Jul-2017 20:25:06 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0, 30' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY  DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(19): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, '', 'DESC')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(76): Proxy->__call('getAllProd in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 11:24:49 Europe/Sofia] PHP Parse error:  syntax error, unexpected '' беше променен у' (T_CONSTANT_ENCAPSED_STRING) in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 950
+[05-Jul-2017 11:48:36 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC LIMIT 0, 30' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY  DESC LIMIT 0, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(19): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, '', 'DESC')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(76): Proxy->__call('getAllProd in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 11:51:51 Europe/Sofia] PHP Fatal error:  Uncaught Error: Unsupported operand types in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php:70
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->upload('\xD0\x9A\xD0\xBE\xD0\xBB\xD0\xB0\xD0\xBD \xD1\x87\xD0\xB5...', 'PC002BLS', '89.00', 1000, 'dims92', '')
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(811): Proxy->__call('upload', Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php( in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php on line 70
+[05-Jul-2017 12:08:11 Europe/Sofia] PHP Fatal error:  Uncaught Error: Unsupported operand types in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:794
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9i/...')
+#7 /home/dly in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 794
+[05-Jul-2017 12:39:16 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/extension/module/product_crawler.tpl:169
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/library/template/php.php(18): require()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/template.php(20): Template\PHP->render('extension/modul...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(87): Template->render('extension/modul...')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(107): Loader->view('extension/modul...', Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#6 /home/dlydyv9i/public_html/ecomme in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/extension/module/product_crawler.tpl on line 169
+[05-Jul-2017 12:41:53 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') FROM oc_crawled_products' at line 1<br />Error No: 1064<br />SELECT COUNT() FROM oc_crawled_products in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT COUNT() ...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(27): DB->query('SELECT COUNT() ...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->countProducts()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(100): Proxy->__call('countProducts', Array)
+#5 /home/dlydyv in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 12:43:22 Europe/Sofia] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/extension/module/product_crawler.tpl:170
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/library/template/php.php(18): require()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/template.php(20): Template\PHP->render('extension/modul...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(87): Template->render('extension/modul...')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(107): Loader->view('extension/modul...', Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#6 /home/dlydyv9i/public_html/ecomme in /home/dlydyv9i/public_html/ecommerce/rado/admin/view/template/extension/module/product_crawler.tpl on line 170
+[05-Jul-2017 12:50:01 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(213): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(371): ControllerExtensionModuleProductCrawler->{closure}(Object(Symfony\Component\DomCrawler\Crawler), 17)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(255): Symfony\Component\DomCrawler\Crawler->each(Object(Closure))
+#4 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[05-Jul-2017 13:27:46 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE store = "dims92"' at line 1<br />Error No: 1064<br />SELECT * FROM oc_crawled_products ORDER BY id DESC LIMIT 0, 30 WHERE store = "dims92" in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(23): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getAllProducts(0, 30, NULL, 'DESC', 'dims92')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 13:45:36 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Undeclared variable: dims92<br />Error No: 1327<br />SELECT *, oc_product_description.name AS product_name, oc_product.price AS product_price, oc_product.quantity AS product_quantity, oc_product.product_id AS product_id FROM crawled_updates INNER JOIN oc_product_description ON crawled_updates.update_product_id = oc_product_description.product_id INNER JOIN oc_product ON crawled_updates.update_product_id = oc_product.product_id LEFT JOIN oc_product_option_value ON oc_product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN oc_option_value_description ON oc_product_option_value.option_value_id = oc_option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT dims92, 3660 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT *, oc_pr...', Array)
+#1 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 13:46:13 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Undeclared variable: dims92<br />Error No: 1327<br />SELECT *, oc_product_description.name AS product_name, oc_product.price AS product_price, oc_product.quantity AS product_quantity, oc_product.product_id AS product_id FROM crawled_updates INNER JOIN oc_product_description ON crawled_updates.update_product_id = oc_product_description.product_id INNER JOIN oc_product ON crawled_updates.update_product_id = oc_product.product_id LEFT JOIN oc_product_option_value ON oc_product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN oc_option_value_description ON oc_product_option_value.option_value_id = oc_option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT dims92, 3630 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT *, oc_pr...', Array)
+#1 /home/dlydyv9i/public_html/ecommer in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 13:46:32 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Undeclared variable: dims92<br />Error No: 1327<br />SELECT *, oc_product_description.name AS product_name, oc_product.price AS product_price, oc_product.quantity AS product_quantity, oc_product.product_id AS product_id FROM crawled_updates INNER JOIN oc_product_description ON crawled_updates.update_product_id = oc_product_description.product_id INNER JOIN oc_product ON crawled_updates.update_product_id = oc_product.product_id LEFT JOIN oc_product_option_value ON oc_product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN oc_option_value_description ON oc_product_option_value.option_value_id = oc_option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT dims92, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT *, oc_pr...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[05-Jul-2017 13:49:13 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Undeclared variable: dims92<br />Error No: 1327<br />SELECT *, oc_product_description.name AS product_name, oc_product.price AS product_price, oc_product.quantity AS product_quantity, oc_product.product_id AS product_id FROM crawled_updates INNER JOIN oc_product_description ON crawled_updates.update_product_id = oc_product_description.product_id INNER JOIN oc_product ON crawled_updates.update_product_id = oc_product.product_id LEFT JOIN oc_product_option_value ON oc_product_option_value.product_option_value_id = crawled_updates.product_option_value_id LEFT JOIN oc_option_value_description ON oc_product_option_value.option_value_id = oc_option_value_description.option_value_id ORDER BY crawled_updates.update_product_id DESC LIMIT dims92, 30 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT *, oc_pr...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[06-Jul-2017 11:20:11 Europe/Sofia] PHP Fatal error:  Uncaught Error: Call to a member function getAll() on null in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php:115
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(120): ControllerExtensionModuleProductCrawler->setData()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php on line 115
+[07-Jul-2017 13:28:06 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:29:06 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:29:45 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:29:47 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:31:07 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:31:37 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(232): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:33:46 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(233): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:33:49 Europe/Sofia] PHP Fatal error:  Uncaught InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "boolean". in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php:123
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php(70): Symfony\Component\DomCrawler\Crawler->add(false)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(233): Symfony\Component\DomCrawler\Crawler->__construct(false)
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleProductCrawler->upload()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#5 /home/dl in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/vendor/symfony/dom-crawler/Crawler.php on line 123
+[07-Jul-2017 13:46:06 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<br />Error No: 1064<br />UPDATE oc_product_option_value SET quantity = 0 WHERE product_option_value_id =  in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE oc_produ...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/uploaded_code.php(38): DB->query('UPDATE oc_produ...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleUploadedCode->updateColorQuantity(NULL, 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(928): Proxy->__call('updateColorQua in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[07-Jul-2017 13:56:10 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<br />Error No: 1064<br />UPDATE oc_crawled_products SET product_quantity = 0 WHERE id =  in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE oc_crawl...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(140): DB->query('UPDATE oc_crawl...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->updateQuantity(NULL, 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(940): Proxy->__call('updateQuantity', Array)
+#5 /hom in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[07-Jul-2017 14:36:02 Europe/Sofia] PHP Fatal error:  Cannot redeclare ModelExtensionModuleUploadedCode::getAll() in /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/uploaded_code.php on line 69
+[07-Jul-2017 14:59:34 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'dims92' in 'where clause'<br />Error No: 1054<br />SELECT * FROM oc_crawled_products WHERE store = dims92 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(30): DB->query('SELECT * FROM o...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->getByStore('dims92')
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(925): Proxy->__call('getByStore', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerExtensionModuleP in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[07-Jul-2017 15:43:54 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'Array' in 'where clause'<br />Error No: 1054<br />UPDATE oc_crawled_products SET product_quantity = 0 WHERE id = Array in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE oc_crawl...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/crawled_product.php(147): DB->query('UPDATE oc_crawl...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleCrawledProduct->updateQuantity(Array, 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(959): Proxy->__call('updateQuantity', Array)
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): Cont in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[07-Jul-2017 15:50:51 Europe/Sofia] PHP Fatal error:  Uncaught Exception: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'product_id = 114' at line 1<br />Error No: 1064<br />UPDATE oc_product SET quantity = 0WHERE product_id = 114 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/db.php(16): DB\MySQLi->query('UPDATE oc_produ...', Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/admin/model/extension/module/uploaded_code.php(51): DB->query('UPDATE oc_produ...')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/loader.php(178): ModelExtensionModuleUploadedCode->updateQuantity('114', 0)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/proxy.php(25): Loader->{closure}(Array, Array)
+#4 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/extension/module/product_crawler.php(955): Proxy->__call('updateQuantity', Array)
+#5 in /home/dlydyv9i/public_html/ecommerce/rado/system/library/db/mysqli.php on line 40
+[12-Jul-2017 10:07:49 Europe/Sofia] PHP Warning:  require_once(/home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php): failed to open stream: No such file or directory in /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php on line 109
+[12-Jul-2017 10:07:49 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '/home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php' (include_path='.:/usr/local/php7.0/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php on line 109
+[26-Jul-2017 09:44:37 Europe/Sofia] PHP Parse error:  syntax error, unexpected end of file in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/library/cart/user.php on line 17
+[26-Jul-2017 09:45:17 Europe/Sofia] PHP Fatal error:  Uncaught Error: Class 'Cart\User' not found in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/login.php:13
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupLogin->index()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(19): Front->execute(Object(Action))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9i/...')
+#5 /home/dlydyv9i/public_html/ecommerce/rado/admin/index.php(19): start('admin')
+#6 {main}
+  thrown in /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/login.php on line 13
+[26-Jul-2017 09:54:27 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 09:54:32 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 09:59:49 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 09:59:51 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 09:59:52 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 10:02:00 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 10:02:06 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 10:02:17 Europe/Sofia] PHP Fatal error:  Uncaught DOMPDF_Exception: Unable to find a suitable font replacement for: '"dejavu sans bold"' in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php:807
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php(718): Style->get_font_family()
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/text_frame_reflower.cls.php(354): Style->__get('font_family')
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Text_Frame_Reflower->get_min_max_width()
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_width()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_decorator.cls.php(559): Frame_Reflower->get_min_max_width()
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/frame_reflower.cls.php(164): Frame_Decorator->get_min_max_widt in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/include/style.cls.php on line 807
+[26-Jul-2017 10:13:16 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'use' (T_USE) in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php on line 2556
+[26-Jul-2017 10:13:29 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '/home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf_new/dompdf/autoload.inc.php' (include_path='.:/usr/local/php7.0/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php on line 2555
+[26-Jul-2017 10:14:10 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '/home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf_new/lib/php-font-lib/src/FontLib/Autoloader.php' (include_path='.:/usr/local/php7.0/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf_new/autoload.inc.php on line 20
+[26-Jul-2017 10:16:49 Europe/Sofia] PHP Parse error:  syntax error, unexpected 'use' (T_USE) in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php on line 2556
+[26-Jul-2017 10:17:21 Europe/Sofia] PHP Fatal error:  require_once(): Failed opening required '/home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf_new/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php' (include_path='.:/usr/local/php7.0/lib/php') in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf_new/dompdf/autoload.inc.php on line 20
+[26-Jul-2017 10:25:07 Europe/Sofia] PHP Fatal error:  Cannot declare class HTML5_Data, because the name is already in use in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/lib/html5lib/Data.php on line 5
+[26-Jul-2017 10:26:43 Europe/Sofia] PHP Fatal error:  Uncaught Error: Class 'DOMPDF' not found in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php:2558
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php(2549): ControllerSaleOrder->pdf_create('<!DOCTYPE html>...', 'invoice-20', '1', 'portrait', true)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerSaleOrder->pdfinvoice()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/public_html/ecommerce/rado in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php on line 2558
+[26-Jul-2017 10:26:56 Europe/Sofia] PHP Fatal error:  Cannot declare class HTML5_Data, because the name is already in use in /home/dlydyv9i/public_html/ecommerce/rado/system/library/dompdf/lib/html5lib/Data.php on line 5
+[26-Jul-2017 15:48:39 Europe/Sofia] PHP Warning:  unlink(/home/dlydyv9i/public_html/ecommerce/rado/system/storage/cache/cache.manufacturer.0.1501058494): No such file or directory in /home/dlydyv9i/public_html/ecommerce/rado/system/library/cache/file.php on line 17
+[27-Jul-2017 11:12:32 Europe/Sofia] PHP Fatal error:  Uncaught Error: Class 'Controllersaleorder' not found in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php:43
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/startup.php(124): require_once('/home/dlydyv9i/...')
+#6 /home/dlydyv9i/public_html/ecommerce/rado/admin/index.php(19): start('admin')
+#7 {main}
+  thrown in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php on line 43
+[27-Jul-2017 11:15:19 Europe/Sofia] PHP Fatal error:  Uncaught Error: Class 'Dompdf\Dompdf\Options' not found in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php:2558
+Stack trace:
+#0 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php(2549): ControllerSaleOrder->pdf_create('\xEF\xBB\xBF<!DOCTYPE ht...', 'invoice-20', '1', 'portrait', true)
+#1 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerSaleOrder->pdfinvoice()
+#2 /home/dlydyv9i/public_html/ecommerce/rado/admin/controller/startup/router.php(26): Action->execute(Object(Registry), Array)
+#3 /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/system/engine/action.php(51): ControllerStartupRouter->index()
+#4 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(34): Action->execute(Object(Registry))
+#5 /home/dlydyv9i/public_html/ecommerce/rado/system/engine/front.php(29): Front->execute(Object(Action))
+#6 /home/dlydyv9i/pu in /home/dlydyv9i/public_html/ecommerce/rado/system/storage/modification/admin/controller/sale/order.php on line 2558

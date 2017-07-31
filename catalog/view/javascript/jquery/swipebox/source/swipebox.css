@@ -12,7 +12,7 @@ html.swipebox-html.swipebox-touch { overflow: hidden !important; }
 #swipebox-action, #swipebox-caption { position: absolute; left: 0; z-index: 999; height: 50px; width: 100%; }
 #swipebox-action { bottom: -50px; }
 #swipebox-action.visible-bars { -ms-transform: translateY(-50px); -webkit-transform: translateY(-50px); transform: translateY(-50px); }
-#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next, #swipebox-action #swipebox-close { background-image: url("img/icons.png"); background-repeat: no-repeat; border: none !important; text-decoration: none !important; cursor: pointer; position: absolute; width: 50px; height: 50px; top: 0; }
+#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next, #swipebox-action #swipebox-close { background-image: url("img/icons.png"); background-repeat: no-repeat; border: none !important; text-decoration: none !important; cursor: pointer; position: absolute; width: 60px; height: 60px; top: 0; }
 #swipebox-action #swipebox-prev { background-position: -32px 13px; right: 100px; }
 #swipebox-action #swipebox-next { background-position: -78px 13px; right: 40px; }
 #swipebox-action #swipebox-close { background-position: 15px 12px; left: 40px; }

@@ -197,8 +197,10 @@
 			<div class="form-horizontal qc-totals">
 				<% _.each(model.totals, function(total) { %>
 				<div class="row">
+				<% if(total.title != 'Фиксирана цена за доставка') { %>
 					<label class="col-sm-9 col-xs-6 control-label" ><%= total.title %></label>
 					<div class="col-sm-3 col-xs-6 form-control-static text-right"><%= total.text %></div>
+			<%	} %>
 				</div>
 				<% }) %>
 			</div>

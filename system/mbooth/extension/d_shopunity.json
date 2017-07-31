@@ -1,6 +1,6 @@
 {
     "codename": "d_shopunity",
-    "version": "3.0.55",
+    "version": "3.1.0",
     "name": "Shopunity Extension manager",
     "description": "Allows the user to connect his opencart store to shopunity network and purchase modules with ease",
     "index": "module/d_shopunity",
@@ -40,6 +40,8 @@
     "files": [
         "system/mbooth/extension/d_shopunity.json",
         "system/mbooth/install/d_shopunity.xml",
+        "system/mbooth/install/d_shopunity_oc2_patch.xml",
+        "system/mbooth/install/d_shopunity_oc230_patch.xml",
         "system/mbooth/install/d_shopunity.php",
         "system/mbooth/install/d_shopunity.sql",
         "system/mbooth/readme/d_shopunity.md",
@@ -76,6 +78,18 @@
         "admin/view/javascript/shopunity"
     ],
     "changelog": [
+        {
+            "version":"3.1.0",
+            "change": "1. Added d_shopunity_oc2_patch"
+        },
+        {
+            "version":"3.0.57",
+            "change": "1. Added isense labs support. Added ocmod install/uninstall"
+        },
+        {
+            "version":"3.0.56",
+            "change": "1.Added vouchers in billing/invoice "
+        },
         {
             "version":"3.0.55",
             "change": "1.Added packs. 2.Added library type"

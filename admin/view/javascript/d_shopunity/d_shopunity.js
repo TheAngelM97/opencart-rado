@@ -44,6 +44,25 @@ d_shopunity = {
         return false;
     },
 
+    popupPayInvoice: function($node){
+
+        this.popupStart('Pay invoice');
+        var that = this;
+        $.ajax({
+            url: $node.data('href'),
+            dataType: 'json',
+            method: 'get',
+            success: function(json) {
+                
+                if(json['content']){
+                    that.popupShow(json['content']);
+                }
+            }
+        }); 
+
+        return false;
+    },
+
     popup: function($node){
 
         this.popupStart('Install extension');
@@ -98,11 +117,11 @@ d_shopunity = {
         var that = this;
         swal({  
             title: "Find your External order", 
-            text: "<p>If you have a license from Opencart, you can claim it in Shopuniy. Provide your Opencart Email and Order Id</p><form id=\"claim_external_order\" class=\"form\"><input value=\"opencart\" name=\"market\" id=\"market\" type=\"hidden\" /><input class=\"form-control show\" placeholder=\"E-mail\" name=\"user_id\" id=\"user_id\" type=\"email\" /><input class=\"form-control show\" placeholder=\"Order Id\" name=\"order_id\" id=\"order_id\" type=\"text\" /></form>",
+            text: "<p>If you have a license from Opencart or any other regestered External Marketplace, you can claim it in Shopuniy. Provide your External Market Email and Order Id (Purchase Id)</p><br/><form id=\"claim_external_order\" class=\"form\"><select class=\"form-control show\"  name=\"market\" id=\"market\"><option value=\"opencart\">Opencart.com</option><option value=\"isenselabs\">Isenselabs.com</option></select><input class=\"form-control show\" placeholder=\"E-mail\" name=\"user_id\" id=\"user_id\" type=\"email\" /><input class=\"form-control show\" placeholder=\"Order Id\" name=\"order_id\" id=\"order_id\" type=\"text\" /></form>",
             html: true,
             showCancelButton: true, 
             confirmButtonColor: "#8fbb6c",  
-            confirmButtonText: "Yes, Update it!",   
+            confirmButtonText: "Find my License!",   
             closeOnConfirm: false,
             closeOnCancel: true,
             showLoaderOnConfirm: true
@@ -554,6 +573,10 @@ d_shopunity = {
 
         $(document).on('click', '.popup-purchase', function(){
             that.popupPurchase($(this));
+        });
+
+        $(document).on('click', '.popup-pay-invoice', function(){
+            that.popupPayInvoice($(this));
         });
 
         $(document).on('click', '.popup-extension', function(){

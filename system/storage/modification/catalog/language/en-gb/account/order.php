@@ -2,7 +2,12 @@
 // Heading
 $_['heading_title']         = 'Order History';
 
-// Text
+
+				$_['text_invoice']               = 'Invoice';
+				$_['text_telephone']             = 'Telephone';
+				$_['text_email']                 = 'E-Mail';
+				$_['text_website']               = 'Web Site:';
+			
 $_['text_account']          = 'Account';
 $_['text_order']            = 'Order Information';
 $_['text_order_detail']     = 'Order Details';

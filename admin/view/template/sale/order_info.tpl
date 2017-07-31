@@ -2,7 +2,9 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="pull-right"><a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></a> <a href="<?php echo $shipping; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_shipping_print; ?>" class="btn btn-info"><i class="fa fa-truck"></i></a> <a href="<?php echo $edit; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a> <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <div class="pull-right">
+      <a href="<?= $protocol_link ?>" target="_blank" data-toggle="tooltip" title="Предавателен протокол" class="btn btn-info"><i class="fa fa-print"></i></a>
+      <a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice_print; ?>" class="btn btn-info"><i class="fa fa-print"></i></a> <a href="<?php echo $shipping; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_shipping_print; ?>" class="btn btn-info"><i class="fa fa-truck"></i></a> <a href="<?php echo $edit; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a> <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1><?php echo $heading_title; ?></h1>
       <ul class="breadcrumb">
         <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -20,7 +22,7 @@
           </div>
           <table class="table">
             <tbody>
-              <tr>
+              <tr style="display: none;">
                 <td style="width: 1%;"><button data-toggle="tooltip" title="<?php echo $text_store; ?>" class="btn btn-info btn-xs"><i class="fa fa-shopping-cart fa-fw"></i></button></td>
                 <td><a href="<?php echo $store_url; ?>" target="_blank"><?php echo $store_name; ?></a></td>
               </tr>
@@ -56,7 +58,7 @@
                 <?php echo $firstname; ?> <?php echo $lastname; ?>
                 <?php } ?></td>
             </tr>
-            <tr>
+            <tr style="display: none;">
               <td><button data-toggle="tooltip" title="<?php echo $text_customer_group; ?>" class="btn btn-info btn-xs"><i class="fa fa-group fa-fw"></i></button></td>
               <td><?php echo $customer_group; ?></td>
             </tr>
@@ -87,7 +89,7 @@
                   <button disabled="disabled" class="btn btn-success btn-xs"><i class="fa fa-refresh"></i></button>
                   <?php } ?></td>
               </tr>
-              <tr>
+              <tr style="display: none;">
                 <td><?php echo $text_reward; ?></td>
                 <td class="text-right"><?php echo $reward; ?></td>
                 <td class="text-center"><?php if ($customer && $reward) { ?>
@@ -100,7 +102,7 @@
                   <button disabled="disabled" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
                   <?php } ?></td>
               </tr>
-              <tr>
+              <tr style="display: none;">
                 <td><?php echo $text_affiliate; ?>
                   <?php if ($affiliate) { ?>
                   (<a href="<?php echo $affiliate; ?>"><?php echo $affiliate_firstname; ?> <?php echo $affiliate_lastname; ?></a>)
@@ -129,9 +131,9 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <td style="width: 50%;" class="text-left"><?php echo $text_payment_address; ?></td>
+              <td style="width: 50%;" class="text-left"><?php echo $text_shipping_address;  ?></td>
               <?php if ($shipping_method) { ?>
-              <td style="width: 50%;" class="text-left"><?php echo $text_shipping_address; ?></td>
+              <td style="width: 50%; display: none;" class="text-left"><?php echo $text_shipping_address; ?></td>
               <?php } ?>
             </tr>
           </thead>
@@ -139,7 +141,7 @@
             <tr>
               <td class="text-left"><?php echo $payment_address; ?></td>
               <?php if ($shipping_method) { ?>
-              <td class="text-left"><?php echo $shipping_address; ?></td>
+              <td class="text-left" style="display: none;"><?php echo $shipping_address; ?></td>
               <?php } ?>
             </tr>
           </tbody>
@@ -147,8 +149,8 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <td class="text-left"><?php echo $column_product; ?></td>
               <td class="text-left"><?php echo $column_model; ?></td>
+              <td class="text-left"><?php echo $column_product; ?></td>
               <td class="text-right"><?php echo $column_quantity; ?></td>
               <td class="text-right"><?php echo $column_price; ?></td>
               <td class="text-right"><?php echo $column_total; ?></td>
@@ -157,7 +159,8 @@
           <tbody>
             <?php foreach ($products as $product) { ?>
             <tr>
-              <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+              <td class="text-left"><?php echo $product['model'] ?></td>
+              <td class="text-left"><a href="<?php echo $product['href']; ?>" target="_blank"><?php echo $product['name']; ?></a>
                 <?php foreach ($product['option'] as $option) { ?>
                 <br />
                 <?php if ($option['type'] != 'file') { ?>
@@ -166,7 +169,6 @@
                 &nbsp;<small> - <?php echo $option['name']; ?>: <a href="<?php echo $option['href']; ?>"><?php echo $option['value']; ?></a></small>
                 <?php } ?>
                 <?php } ?></td>
-              <td class="text-left"><?php echo $product['model'] . '-' . $option['color-code'] ?></td>
               <td class="text-right"><?php echo $product['quantity']; ?></td>
               <td class="text-right"><?php echo $product['price']; ?></td>
               <td class="text-right"><?php echo $product['total']; ?></td>
@@ -227,18 +229,19 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-order-status"><?php echo $entry_order_status; ?></label>
                   <div class="col-sm-10">
-                    <select name="order_status_id" id="input-order-status" class="form-control">
-                      <?php foreach ($order_statuses as $order_statuses) { ?>
-                      <?php if ($order_statuses['order_status_id'] == $order_status_id) { ?>
-                      <option value="<?php echo $order_statuses['order_status_id']; ?>" selected="selected"><?php echo $order_statuses['name']; ?></option>
-                      <?php } else { ?>
-                      <option value="<?php echo $order_statuses['order_status_id']; ?>"><?php echo $order_statuses['name']; ?></option>
-                      <?php } ?>
-                      <?php } ?>
-                    </select>
+                    <?php 
+                      foreach ($order_statuses as $order_statuses) {
+                        if ($order_statuses['order_status_id'] == $order_status_id) { ?>
+                            <input type="radio" name="order_status_id" value="<?= $order_statuses['order_status_id'] ?>" checked="checked"><?php echo $order_statuses['name']; ?>
+                  <?php  }
+                        else { ?>
+                            <input type="radio" name="order_status_id" value="<?= $order_statuses['order_status_id'] ?>"><?php echo $order_statuses['name']; ?>
+                  <?php  }
+                      }
+                    ?>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: none;">
                   <label class="col-sm-2 control-label" for="input-override"><span data-toggle="tooltip" title="<?php echo $help_override; ?>"><?php echo $entry_override; ?></span></label>
                   <div class="col-sm-10">
                     <input type="checkbox" name="override" value="1" id="input-override" />
@@ -591,7 +594,7 @@ $('#button-history').on('click', function() {
 		url: '<?php echo $catalog; ?>index.php?route=api/order/history&token=' + token + '&store_id=<?php echo $store_id; ?>&order_id=<?php echo $order_id; ?>',
 		type: 'post',
 		dataType: 'json',
-		data: 'order_status_id=' + encodeURIComponent($('select[name=\'order_status_id\']').val()) + '&notify=' + ($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&override=' + ($('input[name=\'override\']').prop('checked') ? 1 : 0) + '&append=' + ($('input[name=\'append\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
+		data: 'order_status_id=' + encodeURIComponent($('input[name=\'order_status_id\']:checked').val()) + '&notify=' + ($('input[name=\'notify\']').prop('checked') ? 1 : 0) + '&override=' + ($('input[name=\'override\']').prop('checked') ? 1 : 0) + '&append=' + ($('input[name=\'append\']').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('textarea[name=\'comment\']').val()),
 		beforeSend: function() {
 			$('#button-history').button('loading');
 		},
@@ -620,7 +623,7 @@ $('#button-history').on('click', function() {
 });
 
 function changeStatus(){
-	var status_id = $('select[name="order_status_id"]').val();
+	var status_id = $('input[name="order_status_id"]:checked').val();
 
 	$('#openbay-info').remove();
 
@@ -634,7 +637,7 @@ function changeStatus(){
 }
 
 function addOrderInfo(){
-	var status_id = $('select[name="order_status_id"]').val();
+	var status_id = $('input[name="order_status_id"]:checked').val();
 
 	$.ajax({
 		url: 'index.php?route=extension/openbay/addorderinfo&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>&status_id=' + status_id,
@@ -648,7 +651,7 @@ $(document).ready(function() {
 	changeStatus();
 });
 
-$('select[name="order_status_id"]').change(function(){
+$('input[name="order_status_id"]:checked').change(function(){
 	changeStatus();
 });
 //--></script> 

@@ -5,7 +5,7 @@
     $count = 0;
     foreach ($products as $product) { 
       if ($count == 0 || $count == 4) { ?>
-        <div class="row">
+        <div class="row mr-left">
 <?php  }
     ?>
     <div class="product-thumb col-md-3">
@@ -28,10 +28,10 @@
       </div>
       <div class="button-group" style="text-align: center;">
         <button class="btn-primary" type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><span><?php echo $button_cart; ?></span></button>
-        <div class="add-to-links">
+<!--         <div class="add-to-links">
         <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
         <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-        </div>
+        </div> -->
       </div>
     </div>
   <?php 

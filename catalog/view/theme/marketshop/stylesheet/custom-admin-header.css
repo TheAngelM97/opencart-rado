@@ -1,0 +1,25 @@
+/*
+** Red  : #ef2809;
+** Blue : #013567;
+*/
+
+#menu{
+    display: inline;
+}
+
+#menu > li{
+    display: inline-block;
+}
+
+#column-left.active {
+    width: 100%;
+}
+
+#column-left{
+    position: relative;
+    padding-top: 20px;
+}
+
+#column-left.active #profile{
+    display: inline;
+}
