@@ -50,6 +50,10 @@ Temporary Items
 config.php
 admin/config.php
 
+#Cache
+system/storage/cache/*
+image/cache/*
+
 #htaccess
 .htaccess
 .htaccess
