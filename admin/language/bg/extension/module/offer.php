@@ -6,4 +6,5 @@
 	$_['text_data'] = 'Данни';
 	$_['text_name'] = 'Име';
 	$_['text_products'] = 'Продукти';
+	$_['text_quantity'] = 'Количество';
 ?>

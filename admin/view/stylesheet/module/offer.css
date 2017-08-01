@@ -22,27 +22,46 @@
 	border-radius: 5px;
 	position: absolute;
 	top: 40px;
+	z-index: 100;
 }
 .suggestions ul {
 	list-style-type: none;
 	font-size: 14px;
 	padding-left: 0;
+	margin-bottom: 0;
 }
 .suggestions ul li {
-	padding-left: 15px;
+	color: black;
+	cursor: pointer;
+	padding: 5px 10px;
 	display: block;
 	transition: 0.2s;
 }
 .suggestions ul li:hover{
-	background: purple;
-}
-.suggestions ul li:hover a {
-	padding: 8px 0;
 	color: white;
+	background: purple;
+	padding: 8px 13px;
 }
-.suggestions ul li a {
-	padding: 4px 0;
-	display: block;
-	color: black;
+.products, .product {
+	margin-bottom: 20px;
+}
+.products-holder .image-holder {
+	padding: 10px;
+	width: 80px;
+	margin-right: 10px;
+	background: #EAEAEA;
+	float: left;
 	transition: 0.2s;
+}
+.products-holder .image-holder:hover {
+	padding: 0px;
+}
+.products-holder .product-info-holder {
+	margin-right: 20px;
+	font-size: 18px;
+	float: left;
+}
+.product .quantity-holder {
+	margin-bottom: 20px;
+	float: left;
 }
