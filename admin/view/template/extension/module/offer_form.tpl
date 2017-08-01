@@ -34,7 +34,22 @@
 					<div class="form-group">
 						<label for="products" class="col-md-2 control-label"><?= $text_products ?></label>
 						<div class="col-md-6">
-							<input type="text" id="products" name="products" class="form-control">
+							<input type="text" id="products" name="products" class="form-control products">
+							<div class="suggestions">
+								<ul>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+									<li><a href="#">suggestion</a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
 						</div>
 						<i class="material-icons add add-product">add_box</i>
 					</div>
@@ -55,7 +70,15 @@
 				data: {search: search},
 			})
 			.done(function(data) {
+				data = JSON.parse(data)
+
 				console.log(data)
+
+				if (data.products) {
+					for (product of data.products) {
+						console.log(product.name)
+					}
+				}
 				console.log("success")
 			})
 			.fail(function(err) {

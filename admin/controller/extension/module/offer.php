@@ -49,7 +49,13 @@ class ControllerExtensionModuleOffer extends Controller
 	public function searchProduct()
 	{
 		if ($this->request->server['REQUEST_METHOD'] == 'POST' && isset($this->request->post)) {
-			echo json_encode(array('success'));
+			$this->load->model('extension/module/offer');
+
+			$search = $this->request->post['search'];
+
+			$result = $this->model_extension_module_offer->searchProduct($search);
+
+			echo json_encode(array('products' => $result));
 		}
 		else {
 			echo json_encode(array('error'));

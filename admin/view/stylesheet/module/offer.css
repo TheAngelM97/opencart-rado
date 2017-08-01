@@ -12,3 +12,37 @@
 .add-product {
 	font-size: 35px;
 }
+.products {
+	position: relative;
+}
+.suggestions {
+	width: 96.5%;
+	background: white;
+	border: 1px solid purple;
+	border-radius: 5px;
+	position: absolute;
+	top: 40px;
+}
+.suggestions ul {
+	list-style-type: none;
+	font-size: 14px;
+	padding-left: 0;
+}
+.suggestions ul li {
+	padding-left: 15px;
+	display: block;
+	transition: 0.2s;
+}
+.suggestions ul li:hover{
+	background: purple;
+}
+.suggestions ul li:hover a {
+	padding: 8px 0;
+	color: white;
+}
+.suggestions ul li a {
+	padding: 4px 0;
+	display: block;
+	color: black;
+	transition: 0.2s;
+}
