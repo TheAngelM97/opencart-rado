@@ -7,4 +7,6 @@
 	$_['text_name'] = 'Име';
 	$_['text_products'] = 'Продукти';
 	$_['text_quantity'] = 'Количество';
+	$_['text_discount'] = 'Отстъпка';
+	$_['text_add'] = 'Добави';
 ?>

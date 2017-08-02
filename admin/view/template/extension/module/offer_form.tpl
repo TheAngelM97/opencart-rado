@@ -26,7 +26,7 @@
 				<form action="<?= $store_offer_link ?>" method="POST" class="form-horizontal">
 					<div class="form-group">
 						<label for="name" class="col-md-2 control-label"><?= $text_name ?></label>
-						<div class="col-md-10">
+						<div class="col-md-6">
 							<input type="text" id="name" name="name" class="form-control">
 						</div>
 					</div>
@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<label for="products" class="col-md-2 control-label"><?= $text_products ?></label>
 						<div class="col-md-6">
-							<input type="text" id="products" name="products" class="form-control products">
+							<input type="text" id="products" class="form-control products">
 							<div class="suggestions" style="display: none;">
 								<ul>
 								</ul>
@@ -45,7 +45,14 @@
 						<i class="material-icons add add-product">add_box</i>
 					</div>
 
-					<button type="submit" class="btn btn-primary">Добави</button>
+					<div class="form-group">
+						<label for="discount" class="col-md-2 control-label"><?= $text_discount ?> (%)</label>
+						<div class="col-md-6">
+							<input type="number" id="discount" name="discount" class="form-control">
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-primary"><?= $text_add ?></button>
 				</form>
 			</div>
 		</div>
@@ -171,19 +178,20 @@
 				input.attr({
 					type: 'number',
 					class: 'form-control quantity-input',
-					name: 'quantity['+data.product.product_id+']',
+					name: 'products['+data.product.product_id+'][quantity]',
 					id: 'quantity-' + data.product.product_id,
 					min: '0'
 				})
 
 				input.data('product-price', data.product.price)
+				input.data('product-id', data.product.product_id)
 
 				quantityHolder.append(label)
 				quantityHolder.append(input)
 
 				let hiddenInput = $('<input>')
 				hiddenInput.attr({
-					name: 'products[]',
+					name: 'products['+data.product.product_id+']',
 					type: 'hidden',
 					value: data.product.product_id
 				})
@@ -206,9 +214,27 @@
 			})	
 		});
 
-		$('body').on('keyup', '.product-quantity', function() {
+		$('body').on('keyup', '.quantity-input', function() {
+			let id = $(this).data('product-id')
 			let price = $(this).data('product-price')
-			console.log(price)
+			let quantity = $(this).val()
+
+			let total = Math.round((quantity * price) * 100) / 100
+
+			let inputPrice = $('<input>')
+			inputPrice.attr({
+				type: 'hidden',
+				name: 'products['+id+'][total-price]'
+			});
+
+			inputPrice.addClass('total-quantity-price')
+			inputPrice.val(total)
+
+			if ($(this).parent('.quantity-holder').find('.total-quantity-price').length) {
+				$(this).parent('.quantity-holder').children('.total-quantity-price').remove()
+			}
+
+			$(this).parent('.quantity-holder').append(inputPrice)
 		});
 	});
 </script>

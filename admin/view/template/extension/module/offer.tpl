@@ -30,8 +30,39 @@
 							<th>Процент отстъпка</th>
 							<th>Цена</th>
 							<th>Дата на създаване</th>
+							<th>Изтрий</th>
 						</tr>
 					</thead>
+					<?php 
+						if (count($offers)) { ?>
+							<tbody>
+								<?php 
+									foreach ($offers as $id => $offer) { ?>
+										<tr>
+											<td><?= $offer['person_name'] ?></td>
+											<td>
+												<?php 
+													foreach ($offer['products'] as $product) {
+														echo $product['name'] . ' - ' . $product['offer_quantity'] . ' броя' . '<br>';
+													}
+												?>
+											</td>
+											<td><?= $offer['discount'] ?> <strong>(%)</strong></td>
+											<td><?= number_format(round(($offer['total_price'] - ($offer['discount'] / 100) * $offer['total_price']), 2), 2) ?></td>
+											<td><?= $offer['created_at'] ?></td>
+											<td>
+												<a href="<?= $delete_link ?>&id=<?=$id?>">
+													<div class="delete-offer text-center">
+														<i class="material-icons">delete</i>
+													</div>
+												</a>
+											</td>
+										</tr>			
+							<?php	}
+								?>
+							</tbody>
+				<?php	}
+					?>
 				</table>
 			</div>
 		</div>

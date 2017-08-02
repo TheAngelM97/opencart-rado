@@ -65,3 +65,10 @@
 	margin-bottom: 20px;
 	float: left;
 }
+.delete-offer {
+	color: purple;
+	transition: 0.2s;
+}
+.delete-offer:hover {
+	color: #FF153C;
+}

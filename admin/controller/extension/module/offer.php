@@ -19,10 +19,20 @@ class ControllerExtensionModuleOffer extends Controller
 		$this->data['get_product_link'] = $this->url->link('extension/module/offer/getProduct');
 		//store offer
 		$this->data['store_offer_link'] = $this->url->link('extension/module/offer/store', 'token=' . $this->session->data['token'], true);
+		//delete offer
+		$this->data['delete_link'] = $this->url->link('extension/module/offer/delete', 'token=' . $this->session->data['token'], true);
 	}
 
 	public function index() {
 		$this->setData();
+
+		//Load model
+		$this->load->model('extension/module/offer');
+
+		//Get offers
+		$offers = $this->model_extension_module_offer->getAll();
+
+		$this->data['offers'] = $offers;
 
 		$this->load->language('extension/module/offer');
 
@@ -47,6 +57,8 @@ class ControllerExtensionModuleOffer extends Controller
 		$this->data['text_name'] = $this->language->get('text_name');
 		$this->data['text_products'] = $this->language->get('text_products');
 		$this->data['text_quantity'] = $this->language->get('text_quantity');
+		$this->data['text_discount'] = $this->language->get('text_discount');
+		$this->data['text_add'] = $this->language->get('text_add');
 
 		$this->response->setOutput($this->load->view('extension/module/offer_form', $this->data));
 	}
@@ -54,11 +66,24 @@ class ControllerExtensionModuleOffer extends Controller
 	public function store()
 	{
 		if ($this->request->server['REQUEST_METHOD'] == 'POST' && isset($this->request->post)) {
-			var_dump($this->request->post);
-			exit;
+			$person_name = $this->request->post['name'];
+			$products = $this->request->post['products'];
+			$discount = $this->request->post['discount'];
+
+			//Get toal price
+			$total_price = 0;
+			foreach ($products as $product) {
+				$total_price += $product['total-price'];
+			}
+
+			//Load model
+			$this->load->model('extension/module/offer');
+
+			//Inster into DB
+			$this->model_extension_module_offer->add($person_name, $products, $total_price, $discount);
 		}
 
-		$this->response->setOutput($this->load->view('extension/module/offer', $this->data));
+		$this->response->redirect($this->url->link('extension/module/offer', 'token=' . $this->session->data['token'], true));
 	}
 
 	public function searchProduct()
@@ -89,6 +114,20 @@ class ControllerExtensionModuleOffer extends Controller
 		else {
 			echo json_encode(array('error'));
 		}
+	}
+
+	public function delete()
+	{
+		if (isset($this->request->get['id'])) {
+			$id = $this->request->get['id'];
+
+			//Load model
+			$this->load->model('extension/module/offer');
+
+			$this->model_extension_module_offer->delete($id);
+		}
+
+		$this->response->redirect($this->url->link('extension/module/offer', 'token=' . $this->session->data['token'], true));
 	}
 }
 ?>
